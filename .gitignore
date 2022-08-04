@@ -15,3 +15,5 @@ Scripts/GrapevineXL_LOCAL_989.gs
 env/*
 .vscode/settings.json
 **/*.gsz~
+
+templates

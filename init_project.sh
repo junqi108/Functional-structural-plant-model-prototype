@@ -4,6 +4,10 @@
 # Main
 ###################################################################
 
+if [ ! -d ".git" ]; then
+   git init
+fi
+
 declare -a project_dirs=("documents" "docs" "inputs" "scenarios" "src" "utils" "outputs")
 
 for i in "${project_dirs[@]}"
@@ -14,17 +18,19 @@ do
    fi
 done
 
+if [ ! -d templates ]; then
+   echo "Creating 'templates' directory"
+   git submodule add -f https://github.com/PlantandFoodResearch/functional-structural-model-templates templates
+fi
+
 if files=$(ls -qAH -- src) && [ -z "$files" ]; then
    echo "Initialising GroIMP project"
    cp -r templates/src/* src
 fi
 
-if [ ! -d templates ]; then
-   echo "Creating 'templates' directory"
-   git submodule add -f https://github.com/PlantandFoodResearch/functional-structural-model-templates templates
-else
-   echo "Updating 'templates' directory"
-   cd templates && git pull origin main && cd ..
+if files=$(ls -qAH -- utils) && [ -z "$files" ]; then
+   echo "Initialising utility files"
+   cp -r templates/utils/* utils
 fi
 
 if [ ! -f outputs/.gitignore ]; then
@@ -53,8 +59,5 @@ for i in templates/documents/installation/*
 do
    cp "$i" documents/installation
 done
-
-echo "Updating init_project.sh"
-cp templates/general/init_project.sh .
 
 echo Done
