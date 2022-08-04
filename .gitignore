@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/GroIMP_opt/
+/Model_output/
+Scripts/GrapevineXL_REMOTE_989.gs
+Scripts/GrapevineXL_BACKUP_989.gs
+Scripts/GrapevineXL_BASE_989.gs
+Scripts/GrapevineXL_LOCAL_989.gs
+*.png
+**/*.db
+/.leafShape.rgg.swp
+**/__pycache__/
+env/*
+.vscode/settings.json
+**/*.gsz~
