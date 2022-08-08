@@ -1,19 +1,30 @@
+# Groimp
+**/config.properties.txt
+**/*.gsz~
+
+# R
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-/GroIMP_opt/
-/Model_output/
-Scripts/GrapevineXL_REMOTE_989.gs
-Scripts/GrapevineXL_BACKUP_989.gs
-Scripts/GrapevineXL_BASE_989.gs
-Scripts/GrapevineXL_LOCAL_989.gs
-*.png
-**/*.db
-/.leafShape.rgg.swp
+
+# Python
 **/__pycache__/
 env/*
-.vscode/settings.json
-**/*.gsz~
 
+# General
+.vscode/settings.json
+*.png
+**/*.db
+**/.env
 templates
+
+# Sphinx
+**/*_static
+**/*_templates
+**/source/api
+
+# Slurm
+**/*.sif
+**/slurm-*.out
+**/core.*
