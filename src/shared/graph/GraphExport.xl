@@ -1,3 +1,13 @@
+package shared.graph;
+
+// ********************************************** //
+// 		Imports
+// ********************************************** //
+
+// Jackson
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 // Grogra
 import de.grogra.graph.impl.Node;
 import de.grogra.pf.io.FileWriterSource;
@@ -14,9 +24,9 @@ import de.grogra.ext.exchangegraph.XEGExport;
 import java.util.Map;
 import java.util.HashMap;
 
-// Jackson
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+// ********************************************** //
+// 		Class
+// ********************************************** //
 
 /**  
  * The GroIMP graph exporter.
@@ -30,7 +40,7 @@ class GraphExport {
 	/**
 	 * The map of GroIMP graphs.
 	 */
-	public Map graphHistory;
+	protected Map graphHistory;
 	
 	/**
 	 * Get the current GroIMP graph.
@@ -85,8 +95,8 @@ class GraphExport {
 	 *
 	 * @return The GroIMP graph.
 	 */
-	public void get(int step) {
-		graphHistory.get(step);
+	public ObjectNode get(int step) {
+		return graphHistory.get(step);
 	}
 	
 	/**
