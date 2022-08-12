@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['organ_12',['Organ',['../main_8rgg_a46545cf58e723bfb148e2198af3c6ccc.html#a46545cf58e723bfb148e2198af3c6ccc',1,'main.rgg']]]
+  ['init_28',['init',['../main_8rgg_a111810a049b4abee31f4d67f26fb8a55.html#a111810a049b4abee31f4d67f26fb8a55',1,'main.rgg']]]
 ];

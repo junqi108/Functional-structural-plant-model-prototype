@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_2ergg_4',['main.rgg',['../main_8rgg.html',1,'']]]
+  ['id_8',['ID',['../classBud_aa6ad3e645221784495617fc8ee9d787c.html#aa6ad3e645221784495617fc8ee9d787c',1,'Bud']]],
+  ['init_9',['init',['../main_8rgg_a111810a049b4abee31f4d67f26fb8a55.html#a111810a049b4abee31f4d67f26fb8a55',1,'main.rgg']]]
 ];
