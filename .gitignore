@@ -1,6 +1,8 @@
 # Groimp
 **/config.properties.txt
 **/*.gsz~
+**/*.xl~
+**/*.rgg~
 
 # R
 .Rproj.user
