@@ -4,4 +4,6 @@
 # Main
 ###################################################################
 
-docker compose run groimp  
+docker compose down
+docker compose pull
+docker compose build
