@@ -3,6 +3,7 @@
 **/*.gsz~
 **/*.xl~
 **/*.rgg~
+ext/*
 
 # R
 .Rproj.user
