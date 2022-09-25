@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><graph xmlns:gx="http://grogra.de/xmlpersistence" xmlns="http://grogra.de/xmlpersistence">
  <node root="MainGraph" id="0" type="de.grogra.graph.impl.Node">
   <data gx:name="extentIndex" gx:value="7"/>
-  <node id="131" type="de.grogra.rgg.RGGRoot" edges="+">
-   <node id="133" type="main$Bud" edges="-"/>
+  <node id="135" type="de.grogra.rgg.RGGRoot" edges="+">
+   <node id="137" type="main$Bud" edges="-"/>
   </node>
  </node>
  <node root="MetaGraph" id="1" type="de.grogra.graph.impl.Node">
   <data gx:name="extentIndex" gx:value="7"/>
-  <node id="130" type="main" edges="+">
+  <node id="134" type="main" edges="+">
    <data gx:name="extentIndex" gx:value="7"/>
    <object gx:name="initialTurtleState" color="14" length="100.0" diameter="0.1" tropism="0.0" parameter="0.0" carbon="0.0" heartwood="0.0" internodeCount="0"/>
   </node>
