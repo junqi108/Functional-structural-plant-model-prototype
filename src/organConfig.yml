@@ -1,0 +1,10 @@
+leaf:
+  name: models.Leaf
+  functions:
+    - functions.Growth
+    - functions.LightInterception
+
+fruit:
+  name: models.Fruit
+  functions:
+    - functions.Growth

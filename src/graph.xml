@@ -1,55 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><graph xmlns:gx="http://grogra.de/xmlpersistence" xmlns="http://grogra.de/xmlpersistence">
  <node root="MainGraph" id="0" type="de.grogra.graph.impl.Node">
   <data gx:name="extentIndex" gx:value="7"/>
-  <node id="14737" type="de.grogra.rgg.RGGRoot" edges="+">
-   <node id="14739" type="organs$Bud" edges="-">
-    <data gx:name="radius" gx:value="0.1"/>
-    <data gx:name="rank" gx:value="1"/>
-    <data gx:name="phyllo" gx:value="1"/>
-    <data gx:name="order" gx:value="1"/>
-   </node>
-   <node id="14740" type="de.grogra.turtle.M" edges="-">
-    <data gx:name="length" gx:value="50.0"/>
-    <node id="14741" type="de.grogra.turtle.RU" edges="-">
-     <data gx:name="angle" gx:value="180.0"/>
-     <node id="14742" type="light$MyLight" edges="-">
-      <object gx:name="light" gx:type="de.grogra.imp3d.objects.SpotLight">
-       <object gx:name="color" gx:value="false 1.0 1.0 1.0"/>
-       <data gx:name="shadowless" gx:value="false"/>
-       <data gx:name="visualize" gx:value="false"/>
-       <data gx:name="numberofrays" gx:value="500"/>
-       <data gx:name="raylength" gx:value="5.0"/>
-       <data gx:name="power" gx:value="200.0"/>
-       <data gx:name="attenuationExponent" gx:value="0.0"/>
-       <data gx:name="attenuationDistance" gx:value="50.0"/>
-       <data gx:name="innerAngle" gx:value="0.3926991"/>
-       <data gx:name="outerAngle" gx:value="0.5235988"/>
-      </object>
-     </node>
-    </node>
-   </node>
+  <node id="14968" type="de.grogra.rgg.RGGRoot" edges="+">
+   <node id="14969" type="de.grogra.rgg.Axiom" edges="-"/>
   </node>
  </node>
  <node root="MetaGraph" id="1" type="de.grogra.graph.impl.Node">
   <data gx:name="extentIndex" gx:value="7"/>
-  <node id="14734" type="main" edges="+">
-   <data gx:name="extentIndex" gx:value="7"/>
-   <object gx:name="initialTurtleState" color="14" length="100.0" diameter="0.1" tropism="0.0" parameter="0.0" carbon="0.0" heartwood="0.0" internodeCount="0"/>
-   <object gx:name="lm" gx:type="de.grogra.rgg.LightModel">
-    <data gx:name="rayCount" gx:value="100000"/>
-    <data gx:name="depth" gx:value="5"/>
-    <data gx:name="minPower" gx:value="0.001"/>
-    <data gx:name="seed" gx:value="0"/>
-    <data gx:name="threadCount" gx:value="0"/>
-    <object gx:name="spectrumFactory" gx:type="de.grogra.ray.physics.Spectrum3d" gx:value="0.0 0.0 0.0"/>
-    <array gx:name="visibleLayers" gx:value="true true true true true true true true true true true true true true true true"/>
-   </object>
-  </node>
-  <node id="14735" type="light" edges="+">
+  <node id="14966" type="main" edges="+">
    <data gx:name="extentIndex" gx:value="7"/>
    <object gx:name="initialTurtleState" color="14" length="100.0" diameter="0.1" tropism="0.0" parameter="0.0" carbon="0.0" heartwood="0.0" internodeCount="0"/>
   </node>
-  <node id="14736" type="organs" edges="+">
+  <node id="14967" type="Leaf" edges="+">
    <data gx:name="extentIndex" gx:value="7"/>
    <object gx:name="initialTurtleState" color="14" length="100.0" diameter="0.1" tropism="0.0" parameter="0.0" carbon="0.0" heartwood="0.0" internodeCount="0"/>
   </node>

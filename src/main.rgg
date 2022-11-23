@@ -1,52 +1,43 @@
-import static light.*;
-import static organs.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.io.File;
 
-const float GOLDEN_ANGLE = 137.5;
-const float BRANCH_ANGLE = 50;
-const float LEAF_ANGLE = 70;
-const int PHYLLOCHRON = 1;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-protected void init()
-[
-Axiom ==> Bud(1, PHYLLOCHRON, 1);
-// light source is placed
-// above the scene
-==>> ^ M(50) RU(180) MyLight;
-]
-public void run()
-[
-    Bud(r, p, o), (p > 0) ==> Bud(r, p-1, o);
-    b:Bud(r, p, o), (r < 10 && p == 0 && o < 4) ==> if (forall(distance(b, (* Internode *)) > 0.6)) (
-        RV(-0.1) Internode Node
-        [ RL(BRANCH_ANGLE) Bud(r, PHYLLOCHRON, o+1) ]
-        [ RL(LEAF_ANGLE) Leaf(0f) ]
-        RH(GOLDEN_ANGLE) RV(-0.1) Internode Bud(r+1, PHYLLOCHRON, o)
-    );
+import models.*;
+import functions.*;
 
-    Bud(r, p, o), (r == 10) ==> RV(-0.1) Internode RV(-0.1) Internode Flower;
-]
+static List organs = new ArrayList();
 
-// light model instance
-// 100000: number of random rays
-// 5: recursion depth (nb. of reflections)
-LightModel lm = new LightModel(100000, 5);
+protected void init() {
 
-public void grow() {
-// apply growth rules
-run();
-// compute light
-lm.compute();
-// calculate the amount of light
-// (integrated over the whole spectrum),
-// absorbed by a leaf
-absorb();
+    Leaf leaf = new Leaf();
+    File organConfig = new File("/var/model/src/organConfig.yml");
+
+    ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+    JsonNode organTree = mapper.readTree(organConfig);
+
+    for (JsonNode organNode : organTree) {
+        // Create organ instances
+        String organName = organNode.get("name");
+        Class organClass = Class.forName(organName);
+        GenericOrgan organ = (GenericOrgan) organClass.getDeclaredConstructor().newInstance();
+
+        JsonNode functions = organNode.get("functions");
+
+        for (JsonNode functionName : functions) {
+            String className = functionName.asText();
+            Class functionClass = Class.forName(className);
+            IFunction function = (IFunction) functionClass.getDeclaredConstructor().newInstance();
+
+            organ.getCollector().add(function);
+        }
+    }
 }
-
-protected void absorb() [
-lf:Leaf ::> {
-// 2.25 - conversion factor W -> PAR
-// (photosynthetically active radiation [mikro mol/m^2/s])
-lf[al] = lm.getAbsorbedPower3d(lf).integrate() * 2.25;
-//println(lf[al]);
+public void run() {
+    for (GenericOrgan organ : organs) {
+        organ.run();
+    }
 }
-]
