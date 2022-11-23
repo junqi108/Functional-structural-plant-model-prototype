@@ -1,11 +1,14 @@
 package functions;
 
+import Utils;
+import functions.IFunction;
+
 public class Growth implements IFunction {
     public void init() {
-        println("init Growth");
+
     }
 
     public void run() {
-        println("run Growth");
+        Utils.print("run Growth");
     }
 }

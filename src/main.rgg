@@ -13,15 +13,16 @@ static List organs = new ArrayList();
 
 protected void init() {
 
-    Leaf leaf = new Leaf();
-    File organConfig = new File("/var/model/src/organConfig.yml");
+    clearConsole();
+
+    File organConfig = new File("/var/model/inputs/organConfig.yml");
 
     ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
     JsonNode organTree = mapper.readTree(organConfig);
 
     for (JsonNode organNode : organTree) {
         // Create organ instances
-        String organName = organNode.get("name");
+        String organName = organNode.get("name").asText();
         Class organClass = Class.forName(organName);
         GenericOrgan organ = (GenericOrgan) organClass.getDeclaredConstructor().newInstance();
 
@@ -34,9 +35,12 @@ protected void init() {
 
             organ.getCollector().add(function);
         }
+
+        organs.add(organ);
     }
 }
 public void run() {
+    Utils.print(organs.size());
     for (GenericOrgan organ : organs) {
         organ.run();
     }

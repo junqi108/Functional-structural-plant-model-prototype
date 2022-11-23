@@ -5,11 +5,19 @@ import functions.FunctionCollector;
 public abstract class GenericOrgan {
     private FunctionCollector collector;
 
-    public FunctionCollector getCollector() {
-        return collector;
+    public GenericOrgan() {
+        init();
+    }
+
+    public void init() {
+        collector = new FunctionCollector();
     }
 
     public void run() {
         collector.run();
+    }
+
+    public FunctionCollector getCollector() {
+        return collector;
     }
 }
