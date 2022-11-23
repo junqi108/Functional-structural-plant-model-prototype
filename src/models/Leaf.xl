@@ -1,3 +1,5 @@
+package models;
+
 import models.GenericOrgan;
 
 public class Leaf extends GenericOrgan {
