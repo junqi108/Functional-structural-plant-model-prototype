@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import fspm.models.config.ConfigFile;
-
 public class FileReader {
     private ObjectMapper mapper;
 

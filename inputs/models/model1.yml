@@ -1,4 +1,4 @@
 name: model1
 plugins:
-  - functions.Growth
-  - functions.LightInterception
+  - fspm.functions.Growth
+  - fspm.functions.LightInterception

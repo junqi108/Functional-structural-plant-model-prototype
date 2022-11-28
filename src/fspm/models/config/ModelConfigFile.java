@@ -2,7 +2,7 @@ package fspm.models.config;
 
 import java.util.List;
 
-public class ModelConfigFile {
+public class ModelConfigFile extends ConfigFile {
     private String name;
     private List configs;
     private List plugins;

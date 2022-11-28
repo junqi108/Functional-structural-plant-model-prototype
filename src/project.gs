@@ -12,12 +12,12 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/FileReader.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-xl" name="/var/model/src/fspm/models/organs/GenericOrgan.xl"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/functions/IFunction.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/config/ConfigFile.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/functions/FunctionCollector.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/config/ModelConfigFile.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/config/ConfigFile.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15066"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15075"/>
     </ref>
    </ref>
   </ref>
