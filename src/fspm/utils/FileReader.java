@@ -1,11 +1,11 @@
-package utils;
+package fspm.utils;
 import java.io.File;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import models.config.ConfigFile;
+import fspm.models.config.ConfigFile;
 
 public class FileReader {
     private ObjectMapper mapper;
@@ -14,7 +14,7 @@ public class FileReader {
         
     }
 
-    public Class getClassFromYAML(String path, Class targetClass) {
+    public Object getClassFromYAML(String path, Class targetClass) {
         File file = new File(path);
         mapper = new ObjectMapper(new YAMLFactory());
 

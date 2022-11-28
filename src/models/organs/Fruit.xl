@@ -1,7 +1,0 @@
-package models.organs;
-
-import models.organs.GenericOrgan;
-
-public class Fruit extends GenericOrgan {
-    
-}

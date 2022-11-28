@@ -1,4 +1,4 @@
-package models.config;
+package fspm.models.config;
 
 public class BooleanField extends Field {
 

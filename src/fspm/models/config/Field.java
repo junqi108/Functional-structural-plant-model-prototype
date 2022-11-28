@@ -1,4 +1,4 @@
-package models.config;
+package fspm.models.config;
 
 abstract class Field {
     private String name;

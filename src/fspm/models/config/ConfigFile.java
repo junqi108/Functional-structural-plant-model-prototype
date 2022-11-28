@@ -1,4 +1,4 @@
-package models.config;
+package fspm.models.config;
 
 import java.util.ArrayList;
 import java.util.HashMap;

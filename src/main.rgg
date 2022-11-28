@@ -1,19 +1,21 @@
 import java.util.List;
 import java.util.ArrayList;
 
-import models.*;
-import functions.*;
+import fspm.models.config.*;
+import fspm.models.organs.*;
+import fspm.functions.*;
+import fspm.utils.*;
 
 static List organs = new ArrayList();
-
+                         
 protected void init() {
 
     clearConsole();
 
     FileReader fr = new FileReader();
 
-    ModelConfigFile modelConfigFile = fr.getClassFromYAML(
-        "/var/model/inputs/models/simpleModel.yml", ModelConfigFile.class);
+    ModelConfigFile modelConfigFile = (ModelConfigFile) fr.getClassFromYAML(
+        "/var/model/inputs/models/model1.yml", ModelConfigFile.class);
 
     println(modelConfigFile.getName());
 
@@ -42,7 +44,7 @@ protected void init() {
     // }
 }
 public void run() {
-    Utils.print(organs.size());
+    println(organs.size());
     for (GenericOrgan organ : organs) {
         organ.run();
     }
