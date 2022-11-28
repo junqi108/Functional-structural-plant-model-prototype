@@ -1,10 +1,5 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.io.File;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import models.*;
 import functions.*;
@@ -15,29 +10,36 @@ protected void init() {
 
     clearConsole();
 
-    File organConfig = new File("/var/model/inputs/organConfig.yml");
+    FileReader fr = new FileReader();
 
-    ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-    JsonNode organTree = mapper.readTree(organConfig);
+    ModelConfigFile modelConfigFile = fr.getClassFromYAML(
+        "/var/model/inputs/models/simpleModel.yml", ModelConfigFile.class);
 
-    for (JsonNode organNode : organTree) {
-        // Create organ instances
-        String organName = organNode.get("name").asText();
-        Class organClass = Class.forName(organName);
-        GenericOrgan organ = (GenericOrgan) organClass.getDeclaredConstructor().newInstance();
+    println(modelConfigFile.getName());
 
-        JsonNode functions = organNode.get("functions");
+    // File organConfig = new File("/var/model/inputs/organConfig.yml");
 
-        for (JsonNode functionName : functions) {
-            String className = functionName.asText();
-            Class functionClass = Class.forName(className);
-            IFunction function = (IFunction) functionClass.getDeclaredConstructor().newInstance();
+    // ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+    // JsonNode organTree = mapper.readTree(organConfig);
 
-            organ.getCollector().add(function);
-        }
+    // for (JsonNode organNode : organTree) {
+    //     // Create organ instances
+    //     String organName = organNode.get("name").asText();
+    //     Class organClass = Class.forName(organName);
+    //     GenericOrgan organ = (GenericOrgan) organClass.getDeclaredConstructor().newInstance();
 
-        organs.add(organ);
-    }
+    //     JsonNode functions = organNode.get("functions");
+
+    //     for (JsonNode functionName : functions) {
+    //         String className = functionName.asText();
+    //         Class functionClass = Class.forName(className);
+    //         IFunction function = (IFunction) functionClass.getDeclaredConstructor().newInstance();
+
+    //         organ.getCollector().add(function);
+    //     }
+
+    //     organs.add(organ);
+    // }
 }
 public void run() {
     Utils.print(organs.size());

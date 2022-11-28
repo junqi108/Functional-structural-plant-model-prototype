@@ -1,0 +1,16 @@
+leaf:
+  name: models.Leaf
+  subbed-updates:
+    - functions.Growth
+    - functions.LightInterception
+  self-functions:
+    - functions.LeafShape
+  update-functions:
+    - functions.LeafGrowth # required for Growth update
+
+fruit:
+  name: models.Fruit
+  subbed-updates:
+    - functions.Growth
+  update-functions:
+    - functions.FruitGrowth

@@ -1,0 +1,6 @@
+package models.organs;
+
+import models.organs.GenericOrgan;
+
+public class Leaf extends GenericOrgan {
+}
