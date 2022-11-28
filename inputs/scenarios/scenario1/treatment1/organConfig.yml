@@ -1,16 +1,16 @@
 leaf:
-  name: models.Leaf
+  name: fspm.models.organs.Leaf
   subbed-updates:
-    - functions.Growth
-    - functions.LightInterception
+    - fspm.functions.Growth
+    - fspm.functions.LightInterception
   self-functions:
-    - functions.LeafShape
+    - fspm.functions.LeafShape
   update-functions:
-    - functions.LeafGrowth # required for Growth update
+    - fspm.functions.LeafGrowth # required for Growth update
 
 fruit:
-  name: models.Fruit
+  name: fspm.models.organs.Fruit
   subbed-updates:
-    - functions.Growth
+    - fspm.functions.Growth
   update-functions:
-    - functions.FruitGrowth
+    - fspm.functions.FruitGrowth

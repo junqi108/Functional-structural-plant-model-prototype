@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import fspm.models.config.*;
 import fspm.models.organs.*;
+import fspm.models.scenario.*;
 import fspm.functions.*;
 import fspm.utils.*;
 
@@ -14,38 +15,34 @@ protected void init() {
 
     FileReader fr = new FileReader();
 
+    // Path /var/model required to import into GroIMP
     ModelConfigFile modelConfigFile = (ModelConfigFile) fr.getClassFromYAML(
         "/var/model/inputs/models/model1.yml", ModelConfigFile.class);
 
-    println(modelConfigFile.getName());
+    Utils.print(modelConfigFile.getName());
 
-    // File organConfig = new File("/var/model/inputs/organConfig.yml");
+    for (String pluginName : modelConfigFile.getPlugins()) {
+        Utils.print(pluginName);
+    }
 
-    // ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-    // JsonNode organTree = mapper.readTree(organConfig);
 
-    // for (JsonNode organNode : organTree) {
-    //     // Create organ instances
-    //     String organName = organNode.get("name").asText();
-    //     Class organClass = Class.forName(organName);
-    //     GenericOrgan organ = (GenericOrgan) organClass.getDeclaredConstructor().newInstance();
 
-    //     JsonNode functions = organNode.get("functions");
+    Scenario scenario = new ScenarioConfigDeserializer().deserialize(
+        "/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
 
-    //     for (JsonNode functionName : functions) {
-    //         String className = functionName.asText();
-    //         Class functionClass = Class.forName(className);
-    //         IFunction function = (IFunction) functionClass.getDeclaredConstructor().newInstance();
+    for (Treatment treatment : scenario.getTreatments()) {
+        Utils.print(treatment);
+    }
 
-    //         organ.getCollector().add(function);
-    //     }
 
-    //     organs.add(organ);
+    // List organs = new OrganConfigDeserializer().deserialize(
+    //     "/var/model/inputs/scenarios/scenario1/treatment1/organConfig.yml");
+    
+    // for (GenericOrgan organ : organs) {
+    //     Utils.print(organ);
     // }
+    
 }
 public void run() {
-    println(organs.size());
-    for (GenericOrgan organ : organs) {
-        organ.run();
-    }
+    
 }

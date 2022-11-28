@@ -15,9 +15,16 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/functions/FunctionCollector.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/config/ModelConfigFile.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/config/ConfigFile.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="/var/model/src/fspm/utils/Utils.rgg"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/ScenarioConfigDeserializer.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/TreatmentConfigDeserializer.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/scenario/Scenario.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/scenario/Treatment.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/OrganConfigDeserializer.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15075"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15151"/>
+     <de.grogra.pf.registry.NodeReference name="Utils" ref="15152"/>
     </ref>
    </ref>
   </ref>
