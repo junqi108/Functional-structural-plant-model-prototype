@@ -1,4 +1,4 @@
-package fspm.config;
+package fspm.exceptions;
 
 public class CategoryNotFoundException extends RuntimeException {
     public CategoryNotFoundException(String name) {

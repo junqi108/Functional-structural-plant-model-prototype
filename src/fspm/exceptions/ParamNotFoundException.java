@@ -1,4 +1,4 @@
-package fspm.config;
+package fspm.exceptions;
 
 public class ParamNotFoundException extends RuntimeException {
     public ParamNotFoundException(String name) {

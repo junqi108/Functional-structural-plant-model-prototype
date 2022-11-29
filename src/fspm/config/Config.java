@@ -3,6 +3,9 @@ package fspm.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import fspm.exceptions.CategoryNotFoundException;
+import fspm.exceptions.UniqueKeyException;
+
 public class Config {
     // Singleton design pattern
     private static Config instance = null;

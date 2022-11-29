@@ -3,6 +3,8 @@ package fspm.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import fspm.exceptions.ParamNotFoundException;
+
 public class ParamContainer {
     // Implicitly of their specified types defined using e.g: Map<String, Boolean>
     private Map booleanParams;
