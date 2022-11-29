@@ -11,11 +11,7 @@ import fspm.models.scenario.Scenario;
 import fspm.models.scenario.Treatment;
 
 public class ScenarioConfigDeserializer {
-    public ScenarioConfigDeserializer() {
-
-    }
-
-    public Scenario deserialize(String pathname) {
+    public static Scenario deserialize(String pathname) {
         File configFile = new File(pathname);
 
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
@@ -26,11 +22,10 @@ public class ScenarioConfigDeserializer {
         scenario.setName(scenarioTree.get("name").asText());
 
         // Deserialize treatments
-        TreatmentConfigDeserializer tDeserializer = new TreatmentConfigDeserializer();
         JsonNode treatmentsNode = scenarioTree.get("treatments");
 
         for (JsonNode treatmentNode : treatmentsNode) {
-            Treatment treatment = tDeserializer.deserialize(treatmentNode);
+            Treatment treatment = TreatmentConfigDeserializer.deserialize(treatmentNode);
             scenario.addTreatment(treatment);
         }
 

@@ -1,11 +1,11 @@
 import java.util.List;
 import java.util.ArrayList;
 
-import fspm.models.config.*;
-import fspm.models.organs.*;
-import fspm.models.scenario.*;
+import fspm.config.*;
 import fspm.functions.*;
 import fspm.utils.*;
+import fspm.models.organs.*;
+import fspm.models.scenario.*;
 
 static List organs = new ArrayList();
                          
@@ -14,25 +14,30 @@ protected void init() {
     clearConsole();
 
     FileReader fr = new FileReader();
+    fr.setConfigOutput(Config.getInstance());
+    fr.setDataStoreOutput(DataStore.getInstance());
 
     // Path /var/model required to import into GroIMP
-    ModelConfigFile modelConfigFile = (ModelConfigFile) fr.getClassFromYAML(
-        "/var/model/inputs/models/model1.yml", ModelConfigFile.class);
+    fr.parseModel("/var/model/inputs/models/model1.yml");
+    fr.parseScenario("/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
+    fr.parseScenario("/var/model/inputs/scenarios/scenario2.yml");
+    //fr.readData();
+    
+}
+public void run() {
+    Config config = Config.getInstance();
 
-    Utils.print(modelConfigFile.getName());
+    Utils.print(config.getModelConfig().getName());
 
-    for (String pluginName : modelConfigFile.getPlugins()) {
+    for (String pluginName : config.getModelConfig().getPlugins()) {
         Utils.print(pluginName);
     }
 
+    Scenario scenario = config.getScenario("Scenario 1");
+    Utils.print(scenario);
 
-
-    Scenario scenario = new ScenarioConfigDeserializer().deserialize(
-        "/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
-
-    for (Treatment treatment : scenario.getTreatments()) {
-        Utils.print(treatment);
-    }
+    scenario = config.getScenario("Scenario 2");
+    Utils.print(scenario);
 
 
     // List organs = new OrganConfigDeserializer().deserialize(
@@ -41,8 +46,4 @@ protected void init() {
     // for (GenericOrgan organ : organs) {
     //     Utils.print(organ);
     // }
-    
-}
-public void run() {
-    
 }

@@ -5,11 +5,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import fspm.models.scenario.Treatment;
 
 public class TreatmentConfigDeserializer {
-    public TreatmentConfigDeserializer() {
 
-    }
-
-    public Treatment deserialize(JsonNode treatmentNode) {
+    public static Treatment deserialize(JsonNode treatmentNode) {
         Treatment treatment = new Treatment();
         treatment.setName(treatmentNode.get("name").asText());
         treatment.setStartYear(treatmentNode.get("start-year"));

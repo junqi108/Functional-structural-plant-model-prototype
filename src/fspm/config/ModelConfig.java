@@ -4,12 +4,12 @@ import java.util.List;
 
 import Utils;
 
-public class ModelConfigFile extends ConfigFile {
+public class ModelConfig {
     private String name;
     private List configs;
     private List plugins;
 
-    public ModelConfigFile() {
+    public ModelConfig() {
         Utils.print("Created model config");
     }
 
