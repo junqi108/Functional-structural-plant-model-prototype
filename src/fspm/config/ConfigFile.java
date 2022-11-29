@@ -1,4 +1,4 @@
-package fspm.models.config;
+package fspm.config;
 
 public abstract class ConfigFile {
     
