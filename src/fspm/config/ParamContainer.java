@@ -12,6 +12,8 @@ public class ParamContainer {
     private Map doubleParams;
     private Map stringParams;
 
+    // TODO: use ArrayNodes and NodeFactory to store all types of params and use get(), instead of requiring maps for each type
+
     public ParamContainer() {
         booleanParams = new HashMap();
         intParams = new HashMap();

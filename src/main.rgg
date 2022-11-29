@@ -7,15 +7,11 @@ import fspm.utils.*;
 import fspm.models.organs.*;
 import fspm.models.scenario.*;
 
-static List organs = new ArrayList();
-                         
 protected void init() {
 
     clearConsole();
 
     FileReader fr = new FileReader();
-    fr.setConfigOutput(Config.getInstance());
-    fr.setDataStoreOutput(DataStore.getInstance());
 
     // Path /var/model required to import into GroIMP
     fr.parseModel("/var/model/inputs/models/model1.yml");

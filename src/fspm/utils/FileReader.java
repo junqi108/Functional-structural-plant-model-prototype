@@ -10,11 +10,15 @@ import fspm.config.ModelConfig;
 import fspm.models.scenario.Scenario;
 
 public class FileReader {
-    private ObjectMapper mapper;
     private Config config;
     private DataStore dataStore;
 
+    private ObjectMapper mapper;
+
     public FileReader() {
+        // Allow shorthand usage
+        config = Config.getInstance();
+        dataStore = DataStore.getInstance();
     }
 
     public Object getClassFromYAML(String path, Class targetClass) {
@@ -24,25 +28,12 @@ public class FileReader {
         return mapper.readValue(file, targetClass);
     }
 
-    /**
-     * Set the Config instance that will receive the parsed configs from this reader.
-     * @param config
-     */
-    public void setConfigOutput(Config config) {
-        this.config = config;
-    }
-
-    /**
-     * Set the DataStore instance that will receive the parsed data from this reader.
-     * @param config
-     */
-    public void setDataStoreOutput(DataStore dataStore) {
-        this.dataStore = dataStore;
-    }
-
-
     public void parseModel(String path) {
         config.setModelConfig((ModelConfig) getClassFromYAML(path, ModelConfig.class));
+    }
+
+    public void parseParams(String path) {
+        //config.addCategory(path, null);
     }
 
     public void parseScenario(String path) {

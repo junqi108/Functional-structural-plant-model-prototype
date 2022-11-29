@@ -17,7 +17,9 @@ public class Config {
     private OrganConfig organConfig;
     private List scenarios;
 
-    // Category of parameters
+    /**
+     * Category of parameters
+     */
     private Map categories;
 
     public Config() {
