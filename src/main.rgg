@@ -1,47 +1,45 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.io.File;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-
-import models.*;
-import functions.*;
-
-static List organs = new ArrayList();
+import fspm.config.*;
+import fspm.functions.*;
+import fspm.utils.*;
+import fspm.models.organs.*;
+import fspm.models.scenario.*;
 
 protected void init() {
 
     clearConsole();
 
-    File organConfig = new File("/var/model/inputs/organConfig.yml");
+    FileReader fr = new FileReader();
 
-    ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-    JsonNode organTree = mapper.readTree(organConfig);
-
-    for (JsonNode organNode : organTree) {
-        // Create organ instances
-        String organName = organNode.get("name").asText();
-        Class organClass = Class.forName(organName);
-        GenericOrgan organ = (GenericOrgan) organClass.getDeclaredConstructor().newInstance();
-
-        JsonNode functions = organNode.get("functions");
-
-        for (JsonNode functionName : functions) {
-            String className = functionName.asText();
-            Class functionClass = Class.forName(className);
-            IFunction function = (IFunction) functionClass.getDeclaredConstructor().newInstance();
-
-            organ.getCollector().add(function);
-        }
-
-        organs.add(organ);
-    }
+    // Path /var/model required to import into GroIMP
+    fr.parseModel("/var/model/inputs/models/model1.yml");
+    fr.parseScenario("/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
+    fr.parseScenario("/var/model/inputs/scenarios/scenario2.yml");
+    //fr.readData();
+    
 }
 public void run() {
-    Utils.print(organs.size());
-    for (GenericOrgan organ : organs) {
-        organ.run();
+    Config config = Config.getInstance();
+
+    Utils.print(config.getModelConfig().getName());
+
+    for (String pluginName : config.getModelConfig().getPlugins()) {
+        Utils.print(pluginName);
     }
+
+    Scenario scenario = config.getScenario("Scenario 1");
+    Utils.print(scenario);
+
+    scenario = config.getScenario("Scenario 2");
+    Utils.print(scenario);
+
+
+    // List organs = new OrganConfigDeserializer().deserialize(
+    //     "/var/model/inputs/scenarios/scenario1/treatment1/organConfig.yml");
+    
+    // for (GenericOrgan organ : organs) {
+    //     Utils.print(organ);
+    // }
 }

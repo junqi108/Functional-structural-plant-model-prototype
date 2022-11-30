@@ -1,7 +1,7 @@
-package functions;
+package fspm.functions;
 
-import Utils;
-import functions.IFunction;
+import fspm.utils.Utils;
+import fspm.functions.IFunction;
 
 public class LightInterception implements IFunction {
     public void init() {

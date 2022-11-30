@@ -1,6 +1,6 @@
-package models;
+package fspm.models.organs;
 
-import functions.FunctionCollector;
+import fspm.functions.FunctionCollector;
 
 public abstract class GenericOrgan {
     private FunctionCollector collector;

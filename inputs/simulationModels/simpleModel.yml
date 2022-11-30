@@ -1,4 +1,0 @@
-name: Simple Model
-configs: 
-  - environmentConfig.yml
-  - organConfig.yml

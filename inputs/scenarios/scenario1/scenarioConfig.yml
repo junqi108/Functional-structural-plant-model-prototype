@@ -1,0 +1,17 @@
+name: "Scenario 1"
+treatments:
+  treatment1:
+    name: "Treatment 1"
+    start-year: 2020
+    end-year: 2022
+    configs:
+      - s1-t1-organConfig.yml
+      - s1-t1-paramConfig.yml
+
+  treatment2:
+    name: "Treatment 2"
+    start-year: 2021
+    end-year: 2024
+    configs:
+      - s1-t2-organConfig.yml
+      - s1-t2-paramConfig.yml
