@@ -10,24 +10,12 @@ import fspm.config.ParamContainer;
 import java.io.File;
 
 public class ParamConfigDeserializer {
-    public static ParamConfigDeserializer deserialize(String pathname) {
+    public static JsonNode deserialize(String pathname) {
         File configFile = new File(pathname);
 
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        JsonNode scenarioTree = mapper.readTree(configFile);
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode tree = mapper.readTree(configFile);
 
-        // Deserialize scenario
-        Scenario scenario = new Scenario();
-        scenario.setName(scenarioTree.get("name").asText());
-
-        // Deserialize treatments
-        JsonNode treatmentsNode = scenarioTree.get("treatments");
-
-        for (JsonNode treatmentNode : treatmentsNode) {
-            Treatment treatment = TreatmentConfigDeserializer.deserialize(treatmentNode);
-            scenario.addTreatment(treatment);
-        }
-
-        return scenario;
+        return tree;
     }
 }

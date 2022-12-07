@@ -3,6 +3,10 @@ package fspm.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+
 import fspm.exceptions.ParamNotFoundException;
 
 public class ParamContainer {
@@ -13,12 +17,23 @@ public class ParamContainer {
     private Map stringParams;
 
     // TODO: use ArrayNodes and NodeFactory to store all types of params and use get(), instead of requiring maps for each type
+    private ArrayNode params;
 
     public ParamContainer() {
-        booleanParams = new HashMap();
-        intParams = new HashMap();
-        doubleParams = new HashMap();
-        stringParams = new HashMap();
+        // booleanParams = new HashMap();
+        // intParams = new HashMap();
+        // doubleParams = new HashMap();
+        // stringParams = new HashMap();
+
+        params = JsonNodeFactory.instance.arrayNode();
+    }
+
+    public void addNode(JsonNode node) {
+        params.add(node);
+    }
+
+    public JsonNode get(String key) {
+        return params.get(key);
     }
 
     public boolean getBoolean(String key) {

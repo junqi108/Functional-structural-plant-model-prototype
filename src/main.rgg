@@ -1,5 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 import fspm.config.*;
 import fspm.functions.*;
@@ -18,22 +21,30 @@ protected void init() {
     fr.parseScenario("/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
     fr.parseScenario("/var/model/inputs/scenarios/scenario2.yml");
     //fr.readData();
+
+    
     
 }
 public void run() {
-    Config config = Config.getInstance();
 
-    Utils.print(config.getModelConfig().getName());
+    ParamContainer container = new ParamContainer();
+    JsonNode params = ParamConfigDeserializer.deserialize("/var/model/inputs/paramSetTest.json");
 
-    for (String pluginName : config.getModelConfig().getPlugins()) {
-        Utils.print(pluginName);
-    }
+    Utils.print(params.get("params").get("param2"));
 
-    Scenario scenario = config.getScenario("Scenario 1");
-    Utils.print(scenario);
+    // Config config = Config.getInstance();
 
-    scenario = config.getScenario("Scenario 2");
-    Utils.print(scenario);
+    // Utils.print(config.getModelConfig().getName());
+
+    // for (String pluginName : config.getModelConfig().getPlugins()) {
+    //     Utils.print(pluginName);
+    // }
+
+    // Scenario scenario = config.getScenario("Scenario 1");
+    // Utils.print(scenario);
+
+    // scenario = config.getScenario("Scenario 2");
+    // Utils.print(scenario);
 
 
     // List organs = new OrganConfigDeserializer().deserialize(
