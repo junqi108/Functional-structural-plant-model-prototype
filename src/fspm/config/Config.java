@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fspm.exceptions.CategoryNotFoundException;
+import fspm.exceptions.NotFoundException;
 import fspm.exceptions.UniqueKeyException;
 import fspm.models.scenario.Scenario;
 
@@ -83,7 +83,7 @@ public class Config {
         ParamContainer category = (ParamContainer) categories.get(key);
 
         if (category == null) {
-            throw new CategoryNotFoundException(key);
+            throw new NotFoundException(key);
         }
 
         return category;
