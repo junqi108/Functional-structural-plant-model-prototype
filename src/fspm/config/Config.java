@@ -1,30 +1,22 @@
 package fspm.config;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import fspm.domain.scenario.Scenario;
-import fspm.util.exceptions.NotFoundException;
-import fspm.util.exceptions.UniqueKeyException;
 
 public class Config {
     // Singleton design pattern
     private static Config instance = null;
 
+    private ParamConfig paramConfig;
     private ModelConfig modelConfig;
     private OrganConfig organConfig;
-    private List scenarios;
 
-    /**
-     * Category of parameters
-     */
-    private Map categories;
+    private List scenarios;
 
     public Config() {
         scenarios = new ArrayList();
-        categories = new HashMap();
     }
 
     public static Config getInstance() {
@@ -35,6 +27,12 @@ public class Config {
         return instance;
     }
 
+    public ParamConfig getParamConfig() {
+        return paramConfig;
+    }
+    public void setParamConfig(ParamConfig config) {
+        this.paramConfig = config;
+    }
 
     public ModelConfig getModelConfig() {
         return modelConfig;
@@ -49,6 +47,7 @@ public class Config {
     public void setOrganConfig(OrganConfig config) {
         this.organConfig = config;
     }
+
 
     public List getScenarios() {
         return scenarios;
@@ -70,22 +69,5 @@ public class Config {
     }
     public void addScenario(Scenario scenario) {
         scenarios.add(scenario);
-    }
-
-
-    public void addCategory(String key, ParamContainer category) {
-        // Not null if key already used
-        if (categories.putIfAbsent(key, category) != null) {
-            throw new UniqueKeyException(key);
-        }
-    }
-    public ParamContainer getCategory(String key) {
-        ParamContainer category = (ParamContainer) categories.get(key);
-
-        if (category == null) {
-            throw new NotFoundException(key);
-        }
-
-        return category;
     }
 }

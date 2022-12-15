@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import fspm.config.ParamContainer;
+import fspm.config.ParamConfig;
 
 import java.io.File;
 
