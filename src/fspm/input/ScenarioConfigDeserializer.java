@@ -1,14 +1,14 @@
-package fspm.utils;
+package fspm.input;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import java.io.File;
+import fspm.domain.scenario.Scenario;
+import fspm.domain.scenario.Treatment;
 
-import fspm.models.scenario.Scenario;
-import fspm.models.scenario.Treatment;
+import java.io.File;
 
 public class ScenarioConfigDeserializer {
     public static Scenario deserialize(String pathname) {

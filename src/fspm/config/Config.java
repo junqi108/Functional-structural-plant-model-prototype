@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fspm.exceptions.NotFoundException;
-import fspm.exceptions.UniqueKeyException;
-import fspm.models.scenario.Scenario;
+import fspm.domain.scenario.Scenario;
+import fspm.util.exceptions.NotFoundException;
+import fspm.util.exceptions.UniqueKeyException;
 
 public class Config {
     // Singleton design pattern

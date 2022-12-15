@@ -1,12 +1,12 @@
-package fspm.utils;
+package fspm.input;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import fspm.functions.IFunction;
-import fspm.models.organs.GenericOrgan;
+import fspm.domain.functions.IFunction;
+import fspm.domain.organs.GenericOrgan;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,0 +1,7 @@
+package fspm.domain.organs;
+
+import fspm.domain.organs.GenericOrgan;
+
+public class Fruit extends GenericOrgan {
+    
+}

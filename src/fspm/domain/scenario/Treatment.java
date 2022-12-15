@@ -1,4 +1,4 @@
-package fspm.models.scenario;
+package fspm.domain.scenario;
 
 import java.util.List;
 

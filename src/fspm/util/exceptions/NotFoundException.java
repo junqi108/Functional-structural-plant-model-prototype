@@ -1,4 +1,4 @@
-package fspm.exceptions;
+package fspm.util.exceptions;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String name) {

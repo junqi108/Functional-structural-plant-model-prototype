@@ -1,7 +1,7 @@
-package fspm.functions;
+package fspm.domain.functions;
 
-import fspm.utils.Utils;
-import fspm.functions.IFunction;
+import fspm.domain.functions.IFunction;
+import fspm.util.Utils;
 
 public class Growth implements IFunction {
     public void init() {

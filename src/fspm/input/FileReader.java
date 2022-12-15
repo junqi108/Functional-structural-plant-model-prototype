@@ -1,4 +1,4 @@
-package fspm.utils;
+package fspm.input;
 import java.io.File;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,8 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import fspm.config.Config;
 import fspm.config.ModelConfig;
-import fspm.models.scenario.Scenario;
+import fspm.data.DataStore;
+import fspm.domain.scenario.Scenario;
 
 public class FileReader {
     private Config config;

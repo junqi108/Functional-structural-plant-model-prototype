@@ -1,4 +1,4 @@
-package fspm.functions;
+package fspm.domain.functions;
 
 public interface IFunction {
     void init();

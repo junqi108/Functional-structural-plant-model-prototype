@@ -1,4 +1,4 @@
-package fspm.exceptions;
+package fspm.util.exceptions;
 
 public class UniqueKeyException extends RuntimeException {
     public UniqueKeyException(String name) {

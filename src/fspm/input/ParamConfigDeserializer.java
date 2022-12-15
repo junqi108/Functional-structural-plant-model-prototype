@@ -1,4 +1,4 @@
-package fspm.utils;
+package fspm.input;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

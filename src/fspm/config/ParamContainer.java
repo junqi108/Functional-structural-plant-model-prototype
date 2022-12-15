@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
-import fspm.exceptions.NotFoundException;
+import fspm.util.exceptions.NotFoundException;
 
 public class ParamContainer {
     // Implicitly of their specified types defined using e.g: Map<String, Boolean>

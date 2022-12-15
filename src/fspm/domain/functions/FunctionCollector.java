@@ -1,4 +1,4 @@
-package fspm.functions;
+package fspm.domain.functions;
 
 import java.util.ArrayList;
 import java.util.List;
