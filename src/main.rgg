@@ -14,43 +14,12 @@ protected void init() {
 
     clearConsole();
 
-    FileReader fr = new FileReader();
-
-    // Path /var/model required to import into GroIMP
-    fr.parseModel("/var/model/inputs/models/model1.yml");
-    fr.parseScenario("/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
-    fr.parseScenario("/var/model/inputs/scenarios/scenario2.yml");
-    //fr.readData();
-
-    
-    
+    ConfigAdapter adapter = new JsonFileReader();
+    adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
+    adapter.setConfig("/var/model/inputs/parameterset_1.json");
 }
 public void run() {
-
-    ParamContainer container = new ParamContainer();
-    JsonNode params = ParamConfigDeserializer.deserialize("/var/model/inputs/paramSetTest.json");
-
-    Utils.print(params.get("params").get("param2"));
-
-    // Config config = Config.getInstance();
-
-    // Utils.print(config.getModelConfig().getName());
-
-    // for (String pluginName : config.getModelConfig().getPlugins()) {
-    //     Utils.print(pluginName);
-    // }
-
-    // Scenario scenario = config.getScenario("Scenario 1");
-    // Utils.print(scenario);
-
-    // scenario = config.getScenario("Scenario 2");
-    // Utils.print(scenario);
-
-
-    // List organs = new OrganConfigDeserializer().deserialize(
-    //     "/var/model/inputs/scenarios/scenario1/treatment1/organConfig.yml");
-    
-    // for (GenericOrgan organ : organs) {
-    //     Utils.print(organ);
-    // }
+    ParamConfig params = Config.getInstance().getParamConfig();
+    Utils.print(params.get("inputSoilWaterPotential"));
+    Utils.print(params.get("REFTMP"));
 }

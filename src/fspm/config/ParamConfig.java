@@ -19,6 +19,9 @@ public class ParamConfig {
     public void setCategories(ArrayNode categories) {
         this.categories = categories;
     }
+    public void addCategory(JsonNode category) {
+        categories.add(category);
+    }
 
     public JsonNode getCategory(String key) {
         JsonNode category = categories.get(key);
@@ -29,5 +32,34 @@ public class ParamConfig {
 
         return category;
     }
+
+    /**
+     * Get the value of the first occurrence of this key.
+     * @param key Key of the parameter.
+     * @return JsonNode of key, null if not found.
+     */
+    public JsonNode get(String key) {
+        // Search each category
+        for (JsonNode category : categories) {
+            JsonNode value = category.get(key);
+
+            if (value != null) {
+                // Found key in category
+                return value;
+            }
+        }
+
+        throw new NotFoundException(key);
+        return null;
+    }
+
+    // public Boolean getBoolean(String key) {
+    //     JsonNode value = get(key);
+
+    //     if (value == null) {
+    //         throw new NotFoundException(key);
+    //     }
+    //     return (Boolean) value;
+    // }
     
 }
