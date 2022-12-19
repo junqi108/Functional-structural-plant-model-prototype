@@ -4,11 +4,9 @@ import java.util.Iterator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import fspm.input.*;
 import fspm.config.*;
-import fspm.functions.*;
-import fspm.utils.*;
-import fspm.models.organs.*;
-import fspm.models.scenario.*;
+import fspm.util.*;
 
 protected void init() {
 

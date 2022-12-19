@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://grogra.de/registry" graph="graph.xml">
- <import plugin="de.grogra.rgg" version="1.6"/>
- <import plugin="de.grogra.pf" version="1.6"/>
- <import plugin="de.grogra.imp" version="1.6"/>
  <import plugin="de.grogra.math" version="1.6"/>
+ <import plugin="de.grogra.rgg" version="1.6"/>
+ <import plugin="de.grogra.imp" version="1.6"/>
+ <import plugin="de.grogra.pf" version="1.6"/>
  <import plugin="de.grogra.imp3d" version="1.6"/>
  <registry>
   <ref name="project">
    <ref name="objects">
     <ref name="files">
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="pfs:main.rgg"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/FileReader.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-xl" name="/var/model/src/fspm/models/organs/GenericOrgan.xl"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/functions/IFunction.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/functions/FunctionCollector.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="/var/model/src/fspm/utils/Utils.rgg"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/ScenarioConfigDeserializer.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/TreatmentConfigDeserializer.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/scenario/Scenario.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/models/scenario/Treatment.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/OrganConfigDeserializer.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/input/JsonFileReader.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/Config.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/exceptions/CategoryNotFoundException.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/exceptions/UniqueKeyException.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/domain/scenario/Scenario.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/domain/scenario/Treatment.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ParamConfig.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/NotFoundException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ModelConfig.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="/var/model/src/fspm/util/Utils.rgg"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/OrganConfig.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ParamContainer.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/DataStore.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/exceptions/ParamNotFoundException.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/utils/ParamConfigDeserializer.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ConfigAdapter.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/NotSupportedException.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15283"/>
-     <de.grogra.pf.registry.NodeReference name="Utils" ref="15284"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15288"/>
+     <de.grogra.pf.registry.NodeReference name="Utils" ref="15289"/>
     </ref>
    </ref>
   </ref>
@@ -39,8 +31,8 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.49910715">
-       <de.grogra.pf.ui.registry.Split location="0.51846963" orientation="0">
+      <de.grogra.pf.ui.registry.Split location="0.4984955">
+       <de.grogra.pf.ui.registry.Split location="0.5117994" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/3d/defaultview">
@@ -57,7 +49,7 @@
          <de.grogra.pf.registry.Link source="/ui/panels/statusbar"/>
         </de.grogra.pf.ui.registry.Split>
        </de.grogra.pf.ui.registry.Split>
-       <de.grogra.pf.ui.registry.Split location="0.49604222" orientation="0">
+       <de.grogra.pf.ui.registry.Split location="0.49557522" orientation="0">
         <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/texteditor">
           <de.grogra.pf.registry.Option name="documents" type="java.lang.String" value="&quot;\&quot;pfs:main.rgg\&quot;,\&quot;pfs:Untitled-1\&quot;&quot;"/>

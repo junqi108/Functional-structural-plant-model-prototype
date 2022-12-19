@@ -42,13 +42,11 @@ public class JsonFileReader implements ConfigAdapter {
     public void setConfig(String filePath) {
         String metaClassName = getTreeFromFile(filePath).get("metaclass").asText();
 
-        switch (metaClassName) {
-            case Metaclass.CATEGORY.name:
-                setParamConfig(filePath);
-                break;
-            default:
-                throw new NotSupportedException(metaClassName + " is not supported.");
-                break;
+        // SWITCH statement unsupported by XCompiler; use IF instead
+        if (metaClassName.equals("document-category-name")) {
+            setParamConfig(filePath);
+        } else {
+            throw new NotSupportedException(metaClassName + " is not supported.");
         }
     }
 
