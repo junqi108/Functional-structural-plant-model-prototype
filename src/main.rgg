@@ -5,7 +5,7 @@ import java.util.Iterator;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import fspm.input.*;
-import fspm.config.*;
+import fspm.config.*;         
 import fspm.util.*;
 
 protected void init() {
@@ -18,6 +18,11 @@ protected void init() {
 }
 public void run() {
     ParamConfig params = Config.getInstance().getParamConfig();
-    Utils.print(params.get("inputSoilWaterPotential"));
-    Utils.print(params.get("REFTMP"));
+    Utils.print(params.get("PETIOLE_DENSITY"));
+    //params.set("PETIOLE_DENSITY", false);
+    Utils.print(params.get("PETIOLE_DENSITY"));
+    params.set("PETIOLE_DENSITY", 1);
+    Utils.print(params.get("PETIOLE_DENSITY"));
+    params.set("PETIOLE_DENSITY", 0.1);
+    Utils.print(params.get("PETIOLE_DENSITY"));
 }

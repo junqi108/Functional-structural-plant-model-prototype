@@ -4,6 +4,7 @@ import java.io.File;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import fspm.config.Config;
 import fspm.config.ConfigAdapter;
@@ -19,7 +20,7 @@ public class JsonFileReader implements ConfigAdapter {
         JsonNode tree = getTreeFromFile(filePath);
 
         ParamConfig config = new ParamConfig();
-        for (JsonNode category : tree.get("category")) {
+        for (ObjectNode category : tree.get("category")) {
             config.addCategory(category);
         }
 

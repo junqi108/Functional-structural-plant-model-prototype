@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://grogra.de/registry" graph="graph.xml">
  <import plugin="de.grogra.math" version="1.6"/>
+ <import plugin="de.grogra.pf" version="1.6"/>
  <import plugin="de.grogra.rgg" version="1.6"/>
  <import plugin="de.grogra.imp" version="1.6"/>
- <import plugin="de.grogra.pf" version="1.6"/>
  <import plugin="de.grogra.imp3d" version="1.6"/>
  <registry>
   <ref name="project">
@@ -22,8 +22,8 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/NotSupportedException.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15288"/>
-     <de.grogra.pf.registry.NodeReference name="Utils" ref="15289"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15336"/>
+     <de.grogra.pf.registry.NodeReference name="Utils" ref="15337"/>
     </ref>
    </ref>
   </ref>
@@ -31,8 +31,8 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.4984955">
-       <de.grogra.pf.ui.registry.Split location="0.5117994" orientation="0">
+      <de.grogra.pf.ui.registry.Split location="0.4966443">
+       <de.grogra.pf.ui.registry.Split location="0.5072084" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/3d/defaultview">
@@ -49,7 +49,7 @@
          <de.grogra.pf.registry.Link source="/ui/panels/statusbar"/>
         </de.grogra.pf.ui.registry.Split>
        </de.grogra.pf.ui.registry.Split>
-       <de.grogra.pf.ui.registry.Split location="0.49557522" orientation="0">
+       <de.grogra.pf.ui.registry.Split location="0.49279162" orientation="0">
         <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/texteditor">
           <de.grogra.pf.registry.Option name="documents" type="java.lang.String" value="&quot;\&quot;pfs:main.rgg\&quot;,\&quot;pfs:Untitled-1\&quot;&quot;"/>
