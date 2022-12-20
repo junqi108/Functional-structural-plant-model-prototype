@@ -7,22 +7,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import fspm.input.*;
 import fspm.config.*;         
 import fspm.util.*;
+import fspm.testing.*;
+import fspm.testing.tests.*;
 
 protected void init() {
-
     clearConsole();
 
-    ConfigAdapter adapter = new JsonFileReader();
-    adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
-    adapter.setConfig("/var/model/inputs/parameterset_1.json");
+    TestRunner.addTest(new ParamsTest());
 }
 public void run() {
-    ParamConfig params = Config.getInstance().getParamConfig();
-    Utils.print(params.get("PETIOLE_DENSITY"));
-    //params.set("PETIOLE_DENSITY", false);
-    Utils.print(params.get("PETIOLE_DENSITY"));
-    params.set("PETIOLE_DENSITY", 1);
-    Utils.print(params.get("PETIOLE_DENSITY"));
-    params.set("PETIOLE_DENSITY", 0.1);
-    Utils.print(params.get("PETIOLE_DENSITY"));
+    TestRunner.runTests();
 }

@@ -45,7 +45,7 @@ public class ParamConfig {
     public JsonNode get(String key) {
         ParamLocationInfo param = getParamLocation(key);
 
-        // TODO: consider changing NotFoundException to checked exception
+        // TODO: consider changing NotFoundException to checked exception if needed
         return param.value;
     }
 
