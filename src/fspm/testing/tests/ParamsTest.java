@@ -9,28 +9,49 @@ import fspm.testing.UnitTest;
 import Utils;
 
 public class ParamsTest implements UnitTest {
+    
+    ParamConfig params;
 
     @Override
     public void setup() {
         ConfigAdapter adapter = new JsonFileReader();
         adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
         adapter.setConfig("/var/model/inputs/parameterset_1.json");
+
+        params = Config.getInstance().getParamConfig();
     }
 
     @Override
     public void run() {
-        numericParamRejectsString();
+        //NumericParam_Set_RejectsString();
+        // NumericParam_Set_AfterCalculation();
+        BooleanParam_Get_IncorrectType();
     }
 
-    private void numericParamRejectsString() {
-        ParamConfig params = Config.getInstance().getParamConfig();
+    private void NumericNode_Set_Basic() {
+        Utils.print(params.get("PETIOLE_DENSITY"));
+        params.set("PETIOLE_DENSITY", 0.1);
+        Utils.print(params.get("PETIOLE_DENSITY"));
+    }
+    
+    private void NumericParam_Set_RejectsString() {
         Utils.print(params.get("PETIOLE_DENSITY"));
         //params.set("PETIOLE_DENSITY", false);
         Utils.print(params.get("PETIOLE_DENSITY"));
         params.set("PETIOLE_DENSITY", 1);
-        Utils.print(params.get("PETIOLE_DENSITY"));
-        params.set("PETIOLE_DENSITY", 0.1);
-        Utils.print(params.get("PETIOLE_DENSITY"));
+        
+    }
+
+    private void NumericParam_Set_AfterCalculation() {
+        for (int i = 0; i < 5; i++) {
+            double calc = params.getDouble("PETIOLE_DENSITY") + 0.2;
+            params.set("PETIOLE_DENSITY", calc);
+            Utils.print(params.get("PETIOLE_DENSITY"));
+        }
+    }
+
+    private void BooleanParam_Get_IncorrectType() {
+        double calc = params.getDouble("useComplexLeaf") + 0.1;
     }
     
 }

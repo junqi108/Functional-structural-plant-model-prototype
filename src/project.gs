@@ -24,17 +24,13 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/UnitTest.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/ParamsTest.java"/>
     </ref>
-    <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15344"/>
-     <de.grogra.pf.registry.NodeReference name="Utils" ref="15345"/>
-    </ref>
    </ref>
   </ref>
   <ref name="workbench">
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.49766573">
+      <de.grogra.pf.ui.registry.Split location="0.23730224">
        <de.grogra.pf.ui.registry.Split location="0.5035063" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
@@ -62,7 +58,7 @@
          </de.grogra.pf.ui.registry.PanelFactory>
          <de.grogra.pf.registry.Link source="/ui/panels/attributeeditor"/>
         </de.grogra.pf.ui.registry.Tab>
-        <de.grogra.pf.ui.registry.Tab selectedIndex="1">
+        <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.registry.Link source="/ui/panels/log"/>
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/console"/>
         </de.grogra.pf.ui.registry.Tab>

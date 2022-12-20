@@ -42,11 +42,34 @@ public class ParamConfig {
      * @param key
      * @return JsonNode of key, null if not found.
      */
-    public JsonNode get(String key) {
+    public Boolean getBoolean(String key) {
         ParamLocationInfo param = getParamLocation(key);
 
-        // TODO: consider changing NotFoundException to checked exception if needed
-        return param.value;
+        if (!param.type.equals(JsonNodeType.BOOLEAN)) {
+            throw new NotFoundException(key, "Could not find parameter of boolean type");
+            return null;
+        }
+        return param.value.asBoolean();
+    }
+
+    public Integer getInt(String key) {
+        ParamLocationInfo param = getParamLocation(key);
+
+        if (!param.type.equals(JsonNodeType.NUMBER)) {
+            throw new NotFoundException(key, "Could not find parameter of number type");
+            return null;
+        }
+        return getParamLocation(key).value.asInt();
+    }
+    public Double getDouble(String key) {
+        ParamLocationInfo param = getParamLocation(key);
+
+        // TODO: consider moving out into separate method to reduce code duplication
+        if (!param.type.equals(JsonNodeType.NUMBER)) {
+            throw new NotFoundException(key, "Could not find parameter of number type");
+            return null;
+        }
+        return getParamLocation(key).value.asDouble();
     }
 
     /**
