@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://grogra.de/registry" graph="graph.xml">
+ <import plugin="de.grogra.imp" version="1.6"/>
+ <import plugin="de.grogra.imp3d" version="1.6"/>
  <import plugin="de.grogra.rgg" version="1.6"/>
  <import plugin="de.grogra.math" version="1.6"/>
- <import plugin="de.grogra.imp3d" version="1.6"/>
  <import plugin="de.grogra.pf" version="1.6"/>
- <import plugin="de.grogra.imp" version="1.6"/>
  <registry>
   <ref name="project">
    <ref name="objects">
@@ -16,13 +16,18 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ParamConfig.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/NotFoundException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ModelConfig.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="/var/model/src/fspm/util/Utils.rgg"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/OrganConfig.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ConfigAdapter.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/NotSupportedException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/TestRunner.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/UnitTest.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/ParamsTest.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="/var/model/src/fspm/util/RGGUtils.rgg"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/Utility.java"/>
+    </ref>
+    <ref name="meta">
+     <de.grogra.pf.registry.NodeReference name="main" ref="15421"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15422"/>
     </ref>
    </ref>
   </ref>
@@ -30,8 +35,8 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.23730224">
-       <de.grogra.pf.ui.registry.Split location="0.5035063" orientation="0">
+      <de.grogra.pf.ui.registry.Split location="0.43768117">
+       <de.grogra.pf.ui.registry.Split location="0.5010661" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/3d/defaultview">
@@ -48,7 +53,7 @@
          <de.grogra.pf.registry.Link source="/ui/panels/statusbar"/>
         </de.grogra.pf.ui.registry.Split>
        </de.grogra.pf.ui.registry.Split>
-       <de.grogra.pf.ui.registry.Split location="0.49509117" orientation="0">
+       <de.grogra.pf.ui.registry.Split location="0.4946695" orientation="0">
         <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/texteditor">
           <de.grogra.pf.registry.Option name="documents" type="java.lang.String" value="&quot;\&quot;pfs:main.rgg\&quot;,\&quot;pfs:Untitled-1\&quot;&quot;"/>
@@ -58,7 +63,7 @@
          </de.grogra.pf.ui.registry.PanelFactory>
          <de.grogra.pf.registry.Link source="/ui/panels/attributeeditor"/>
         </de.grogra.pf.ui.registry.Tab>
-        <de.grogra.pf.ui.registry.Tab selectedIndex="0">
+        <de.grogra.pf.ui.registry.Tab selectedIndex="1">
          <de.grogra.pf.registry.Link source="/ui/panels/log"/>
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/console"/>
         </de.grogra.pf.ui.registry.Tab>

@@ -1,7 +1,6 @@
 package fspm.domain.functions;
 
-import fspm.domain.functions.IFunction;
-import fspm.util.Utils;
+import fspm.util.*;
 
 public class LightInterception implements IFunction {
     public void init() {
@@ -9,6 +8,6 @@ public class LightInterception implements IFunction {
     }
 
     public void run() {
-        Utils.print("run LightInterception");
+        Utility.println("run LightInterception");
     }
 }
