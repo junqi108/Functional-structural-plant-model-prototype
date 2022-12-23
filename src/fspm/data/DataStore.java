@@ -1,7 +1,5 @@
 package fspm.data;
 
-import javax.xml.crypto.Data;
-
 public class DataStore {
     private static DataStore instance = null;
 
