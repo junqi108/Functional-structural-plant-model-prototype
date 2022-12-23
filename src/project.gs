@@ -31,8 +31,8 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/IntegerParam.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15485"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15486"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15509"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15510"/>
     </ref>
    </ref>
   </ref>

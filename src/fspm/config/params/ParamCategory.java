@@ -39,6 +39,13 @@ public class ParamCategory {
         throw new NotFoundException(paramKey);
     }
 
+
+    public void setParam(String key, Parameter param) {
+        // TODO: better explanation or structure of why checks may or may not be needed (due to previous checks on higher classes)
+        params.put(key, param);
+    }
+
+
     @Override
     public String toString() {
         String format = "Category: " + key + "\n";

@@ -25,6 +25,9 @@ protected void init() {
     Utility.println(config.getInt("int"));
 
     Utility.println(config.getCategory("cat"));
+    config.set("test", false);
+    config.set("int", 1);
+    Utility.println(config.getCategory("cat"));
 }
 public void run() {
     //TestRunner.runTests();

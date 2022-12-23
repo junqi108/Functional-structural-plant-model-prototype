@@ -33,7 +33,7 @@ public class ParamConfig {
         if (category != null) {
             return category;
         }
-        throw new NotFoundException(key);
+        throw new NotFoundException(key, "Could not find parameter");
     }
 
     public boolean getBool(String key) {
@@ -54,47 +54,31 @@ public class ParamConfig {
         throw new NotFoundException(key, "Could not find as a integer parameter");
     }
 
-    /**
-     * Get the category and value of the first parameter found with this key.
-     * @param key
-     * @return ParamLocationInfo object if found, null if not found.
-     */
-    private ParamLocationInfo getParamLocation(String key) {
-        for (ParamCategory category : categories.values()) {
-            Parameter param = category.getParam(key);
 
-            if (param != null) {
-                // Found key in category
-                return new ParamLocationInfo(category, param);
-            }
+
+    public void set(String key, boolean value) {
+        ParamLocationInfo paramInfo = getParamLocation(key);
+
+        if (paramInfo.param instanceof BooleanParam) {
+            ((BooleanParam) paramInfo.param).setValue(value);
+
+            paramInfo.category.setParam(key, paramInfo.param);
+            return;
         }
-        
-        throw new NotFoundException(key);
-        return null;
+        throw new NotFoundException(key, "Could not find as a boolean parameter");
     }
 
+    public void set(String key, int value) {
+        ParamLocationInfo paramInfo = getParamLocation(key);
 
-
-
-    // public void set(String key, boolean value) {
-    //     ParamLocationInfo param = getParamLocation(key);
-
-    //     if (param.type.equals(JsonNodeType.BOOLEAN)) {
-    //         param.category.put(param.key, value);
-    //     } else {
-    //         throw new NotFoundException(param.key, "Could not find parameter of boolean type");
-    //     }
-    // }
-
-    // public void set(String key, String value) {
-    //     ParamLocationInfo param = getParamLocation(key);
-
-    //     if (param.type.equals(JsonNodeType.STRING)) {
-    //         param.category.put(param.key, value);
-    //     } else {
-    //         throw new NotFoundException(param.key, "Could not find parameter of string type");
-    //     }
-    // }
+        if (paramInfo.param instanceof IntegerParam) {
+            ((IntegerParam) paramInfo.param).setValue(value);
+            
+            paramInfo.category.setParam(key, paramInfo.param);
+            return;
+        }
+        throw new NotFoundException(key, "Could not find as an integer parameter");
+    }
 
 
 
@@ -124,6 +108,25 @@ public class ParamConfig {
     //         throw new NotFoundException(param.key, "Could not find parameter of number type");
     //     }
     // }
+
+    /**
+     * Get the category and value of the first parameter found with this key.
+     * @param key
+     * @return ParamLocationInfo object if found, null if not found.
+     */
+    private ParamLocationInfo getParamLocation(String key) {
+        for (ParamCategory category : categories.values()) {
+            Parameter param = category.getParam(key);
+
+            if (param != null) {
+                // Found key in category
+                return new ParamLocationInfo(category, param);
+            }
+        }
+        
+        throw new NotFoundException(key);
+        return null;
+    }
 
     /**
      * Allows for information about a parameter's storage location (category, etc.) 
