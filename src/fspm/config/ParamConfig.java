@@ -1,15 +1,10 @@
 package fspm.config;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.NumericNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.JsonNodeType;
-
+import fspm.config.params.*;
+import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.NotFoundException;
 
 public class ParamConfig {
@@ -17,73 +12,60 @@ public class ParamConfig {
      * List of parameter categories stored as ObjectNodes.
      * Each parameter is stored inside these ObjectNodes as JsonNodes.
      */
-    private List categories; // Assumes params are stored in a 'category' JsonNode
+    private Map categories; // Assumes params are stored in a 'category' JsonNode
 
     public ParamConfig() {
-        categories = new ArrayList();
+        categories = new HashMap();
     }
     
-    public void addCategory(ObjectNode category) {
-        categories.add(category);
+    public void addCategory(ParamCategory category) {
+        // Use category key as unique identifier
+        if (categories.containsKey(category.getKey())) {
+            throw new KeyConflictException(category.getKey());
+        } else {
+            categories.put(category.getKey(), category);
+        }
     }
 
-    // public ObjectNode getCategory(String key) {
-    //     ObjectNode category = categories.get(key);
+    public ParamCategory getCategory(String key) {
+        ParamCategory category = (ParamCategory) categories.get(key);
 
-    //     if (category == null) {
-    //         throw new NotFoundException(key);
-    //     }
-
-    //     return category;
-    // }
-
-    /**
-     * Get the value of the first occurrence of this key.
-     * @param key
-     * @return JsonNode of key, null if not found.
-     */
-    public Boolean getBoolean(String key) {
-        ParamLocationInfo param = getParamLocation(key);
-
-        if (!param.type.equals(JsonNodeType.BOOLEAN)) {
-            throw new NotFoundException(key, "Could not find parameter of boolean type");
-            return null;
+        if (category != null) {
+            return category;
         }
-        return param.value.asBoolean();
+        throw new NotFoundException(key);
     }
 
-    public Integer getInt(String key) {
-        ParamLocationInfo param = getParamLocation(key);
-
-        if (!param.type.equals(JsonNodeType.NUMBER)) {
-            throw new NotFoundException(key, "Could not find parameter of number type");
-            return null;
+    public boolean getBool(String key) {
+        Parameter param = getParamLocation(key).param;
+        
+        if (param instanceof BooleanParam) {
+            return ((BooleanParam) param).getValue(); 
         }
-        return getParamLocation(key).value.asInt();
+        throw new NotFoundException(key, "Could not find as a boolean parameter");
     }
-    public Double getDouble(String key) {
-        ParamLocationInfo param = getParamLocation(key);
 
-        // TODO: consider moving out into separate method to reduce code duplication
-        if (!param.type.equals(JsonNodeType.NUMBER)) {
-            throw new NotFoundException(key, "Could not find parameter of number type");
-            return null;
+    public int getInt(String key) {
+        Parameter param = getParamLocation(key).param;
+        
+        if (param instanceof IntegerParam) {
+            return ((IntegerParam) param).getValue(); 
         }
-        return getParamLocation(key).value.asDouble();
+        throw new NotFoundException(key, "Could not find as a integer parameter");
     }
 
     /**
-     * Get the category and value of the parameter with this key.
+     * Get the category and value of the first parameter found with this key.
      * @param key
      * @return ParamLocationInfo object if found, null if not found.
      */
     private ParamLocationInfo getParamLocation(String key) {
-        for (ObjectNode category : categories) {
-            JsonNode value = category.get(key);
+        for (ParamCategory category : categories.values()) {
+            Parameter param = category.getParam(key);
 
-            if (value != null) {
+            if (param != null) {
                 // Found key in category
-                return new ParamLocationInfo(category, key, value);
+                return new ParamLocationInfo(category, param);
             }
         }
         
@@ -94,76 +76,67 @@ public class ParamConfig {
 
 
 
-    public void set(String key, boolean value) {
-        ParamLocationInfo param = getParamLocation(key);
+    // public void set(String key, boolean value) {
+    //     ParamLocationInfo param = getParamLocation(key);
 
-        if (param.type.equals(JsonNodeType.BOOLEAN)) {
-            param.category.put(param.key, value);
-        } else {
-            throw new NotFoundException(param.key, "Could not find parameter of boolean type");
-        }
-    }
+    //     if (param.type.equals(JsonNodeType.BOOLEAN)) {
+    //         param.category.put(param.key, value);
+    //     } else {
+    //         throw new NotFoundException(param.key, "Could not find parameter of boolean type");
+    //     }
+    // }
 
-    public void set(String key, String value) {
-        ParamLocationInfo param = getParamLocation(key);
+    // public void set(String key, String value) {
+    //     ParamLocationInfo param = getParamLocation(key);
 
-        if (param.type.equals(JsonNodeType.STRING)) {
-            param.category.put(param.key, value);
-        } else {
-            throw new NotFoundException(param.key, "Could not find parameter of string type");
-        }
-    }
+    //     if (param.type.equals(JsonNodeType.STRING)) {
+    //         param.category.put(param.key, value);
+    //     } else {
+    //         throw new NotFoundException(param.key, "Could not find parameter of string type");
+    //     }
+    // }
 
 
 
-    // Overloads for int, double, etc. to convert to JsonNodeType.NUMBER
+    // // Overloads for int, double, etc. to convert to JsonNodeType.NUMBER
 
-    public void set(String key, int value) {
-        // Convert int to JsonNodeType.NUMBER using .put(int value)
-        NumericNode convertedInt = JsonNodeFactory.instance.numberNode(value);
-        setNumber(getParamLocation(key), convertedInt);
-    }
-    public void set(String key, double value) {
-        // Convert int to JsonNodeType.NUMBER using .put(double value)
-        NumericNode convertedInt = JsonNodeFactory.instance.numberNode(value);
-        setNumber(getParamLocation(key), convertedInt);
-    }
+    // public void set(String key, int value) {
+    //     // Convert int to JsonNodeType.NUMBER using .put(int value)
+    //     NumericNode convertedInt = JsonNodeFactory.instance.numberNode(value);
+    //     setNumber(getParamLocation(key), convertedInt);
+    // }
+    // public void set(String key, double value) {
+    //     // Convert int to JsonNodeType.NUMBER using .put(double value)
+    //     NumericNode convertedInt = JsonNodeFactory.instance.numberNode(value);
+    //     setNumber(getParamLocation(key), convertedInt);
+    // }
+
+    // /**
+    //  * Set a generic JsonNodeType.NUMBER parameter.
+    //  * @param param
+    //  * @param newValue
+    //  */
+    // private void setNumber(ParamLocationInfo param, JsonNode newValue) {
+    //     // Check if parameter to be set is also a number type
+    //     if (param.type.equals(JsonNodeType.NUMBER)) {
+    //         param.category.replace(param.key, newValue);
+    //     } else {
+    //         throw new NotFoundException(param.key, "Could not find parameter of number type");
+    //     }
+    // }
 
     /**
-     * Set a generic JsonNodeType.NUMBER parameter.
-     * @param param
-     * @param newValue
-     */
-    private void setNumber(ParamLocationInfo param, JsonNode newValue) {
-        // Check if parameter to be set is also a number type
-        if (param.type.equals(JsonNodeType.NUMBER)) {
-            param.category.replace(param.key, newValue);
-        } else {
-            throw new NotFoundException(param.key, "Could not find parameter of number type");
-        }
-    }
-
-    /**
-     * Allows for information about a parameter's storage location (category, key, etc.) 
+     * Allows for information about a parameter's storage location (category, etc.) 
      * to be passed to methods as a parameter.
      * Only used in this class.
      */
     private class ParamLocationInfo {
-        public final ObjectNode category;
-        public final String key;
-        public final JsonNode value;
+        public final ParamCategory category;
+        public final Parameter param;
 
-        /**
-         * Can be derived directly from {@link ParamLocationInfo#value}, but included for
-         * readability in conditionals
-         */
-        public final JsonNodeType type;
-
-        public ParamLocationInfo(ObjectNode category, String key, JsonNode value) {
+        public ParamLocationInfo(ParamCategory category, Parameter param) {
             this.category = category;
-            this.key = key;
-            this.value = value;
-            this.type = value.getNodeType();
+            this.param = param;
         }
     }
 }

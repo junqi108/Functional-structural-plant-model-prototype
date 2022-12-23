@@ -11,18 +11,31 @@ import fspm.config.ConfigAdapter;
 import fspm.config.ModelConfig;
 import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
+import fspm.config.params.*;
 import fspm.util.exceptions.NotSupportedException;
 
 public class JsonFileReader implements ConfigAdapter {
 
     @Override
     public void setParamConfig(String filePath) {
-        JsonNode tree = getTreeFromFile(filePath);
+        // JsonNode tree = getTreeFromFile(filePath);
 
         ParamConfig config = new ParamConfig();
-        for (ObjectNode category : tree.get("category")) {
-            config.addCategory(category);
-        }
+        // for (ObjectNode category : tree.get("category")) {
+        //     for (JsonNode param : )
+        //     config.addCategory(category);
+        // }
+    
+        // Dummy test values
+        
+
+        ParamCategory cat = new ParamCategory("cat");
+        Parameter p = new BooleanParam("test", true);
+        cat.add(p);
+        cat.add(new BooleanParam("test2", false));
+        cat.add(new IntegerParam("int", 2));
+
+        config.addCategory(cat);
 
         Config.getInstance().setParamConfig(config);
     }

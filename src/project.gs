@@ -24,10 +24,15 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/ParamsTest.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-grogra-rgg" name="/var/model/src/fspm/util/RGGUtils.rgg"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/Utility.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/ParamCategory.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/Parameter.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/BooleanParam.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/KeyConflictException.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/IntegerParam.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15421"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15422"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15485"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15486"/>
     </ref>
    </ref>
   </ref>
@@ -35,8 +40,8 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.43768117">
-       <de.grogra.pf.ui.registry.Split location="0.5010661" orientation="0">
+      <de.grogra.pf.ui.registry.Split location="0.44609666">
+       <de.grogra.pf.ui.registry.Split location="0.4984326" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/3d/defaultview">
@@ -53,7 +58,7 @@
          <de.grogra.pf.registry.Link source="/ui/panels/statusbar"/>
         </de.grogra.pf.ui.registry.Split>
        </de.grogra.pf.ui.registry.Split>
-       <de.grogra.pf.ui.registry.Split location="0.4946695" orientation="0">
+       <de.grogra.pf.ui.registry.Split location="0.4937304" orientation="0">
         <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/texteditor">
           <de.grogra.pf.registry.Option name="documents" type="java.lang.String" value="&quot;\&quot;pfs:main.rgg\&quot;,\&quot;pfs:Untitled-1\&quot;&quot;"/>
