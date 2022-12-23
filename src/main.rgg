@@ -4,53 +4,32 @@ import java.util.Iterator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import fspm.input.*;
 import fspm.config.*;
-import fspm.functions.*;
-import fspm.utils.*;
-import fspm.models.organs.*;
-import fspm.models.scenario.*;
+import fspm.config.params.*;      
+import fspm.util.*;
+import fspm.testing.*;
+import fspm.testing.tests.*;
 
 protected void init() {
-
     clearConsole();
 
-    FileReader fr = new FileReader();
+    //TestRunner.addTest(new ParamsTest());
 
-    // Path /var/model required to import into GroIMP
-    fr.parseModel("/var/model/inputs/models/model1.yml");
-    fr.parseScenario("/var/model/inputs/scenarios/scenario1/scenarioConfig.yml");
-    fr.parseScenario("/var/model/inputs/scenarios/scenario2.yml");
-    //fr.readData();
+    ConfigAdapter adapter = new JsonFileReader();
+    adapter.setParamConfig("some file path");
 
-    
-    
+    ParamConfig config = Config.getInstance().getParamConfig();
+
+    Utility.println(config.getBool("test") + " " + config.getBool("test2"));
+    Utility.println(config.getInt("int"));
+
+    Utility.println(config.getCategory("cat"));
+    config.set("test", false);
+    config.set("int", 1);
+    Utility.println(config.getCategory("cat"));
 }
 public void run() {
-
-    ParamContainer container = new ParamContainer();
-    JsonNode params = ParamConfigDeserializer.deserialize("/var/model/inputs/paramSetTest.json");
-
-    Utils.print(params.get("params").get("param2"));
-
-    // Config config = Config.getInstance();
-
-    // Utils.print(config.getModelConfig().getName());
-
-    // for (String pluginName : config.getModelConfig().getPlugins()) {
-    //     Utils.print(pluginName);
-    // }
-
-    // Scenario scenario = config.getScenario("Scenario 1");
-    // Utils.print(scenario);
-
-    // scenario = config.getScenario("Scenario 2");
-    // Utils.print(scenario);
-
-
-    // List organs = new OrganConfigDeserializer().deserialize(
-    //     "/var/model/inputs/scenarios/scenario1/treatment1/organConfig.yml");
+    //TestRunner.runTests();
     
-    // for (GenericOrgan organ : organs) {
-    //     Utils.print(organ);
-    // }
 }

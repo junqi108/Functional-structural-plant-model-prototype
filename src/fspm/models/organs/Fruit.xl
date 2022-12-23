@@ -1,7 +1,0 @@
-package fspm.models.organs;
-
-import fspm.models.organs.GenericOrgan;
-
-public class Fruit extends GenericOrgan {
-    
-}

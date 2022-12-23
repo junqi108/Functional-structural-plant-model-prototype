@@ -1,5 +1,0 @@
-// Temporary class to allow printing regardless of file type (rgg, java or xl)
-
-public static void print(String s) {
-    println(s);
-}

@@ -1,0 +1,6 @@
+package fspm.domain.organs;
+
+import fspm.domain.organs.GenericOrgan;
+
+public class Leaf extends GenericOrgan {
+}
