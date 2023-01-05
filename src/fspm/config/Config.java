@@ -5,8 +5,15 @@ import java.util.List;
 
 import fspm.domain.scenario.Scenario;
 
+/**
+ * Configuration class for simulations.
+ * @author Ou-An Chuang
+ * @since 15-12-2022
+ */
 public class Config {
-    // Singleton design pattern
+    /**
+     * Global config singleton.
+     */
     private static Config instance = null;
 
     private ParamConfig paramConfig;
