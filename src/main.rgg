@@ -17,17 +17,11 @@ protected void init() {
     //TestRunner.addTest(new ParamsTest());
 
     ConfigAdapter adapter = new JsonFileReader();
-    adapter.setParamConfig("some file path");
+    adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
 
     ParamConfig config = Config.getInstance().getParamConfig();
-
-    Utility.println(config.getBool("test") + " " + config.getBool("test2"));
-    Utility.println(config.getInt("int"));
-
-    Utility.println(config.getCategory("cat"));
-    config.set("test", false);
-    config.set("int", 1);
-    Utility.println(config.getCategory("cat"));
+    
+    Utility.println(config.getCategory("Boolean_variables"));
 }
 public void run() {
     //TestRunner.runTests();

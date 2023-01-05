@@ -1,6 +1,7 @@
 package fspm.input;
 
 import java.io.File;
+import java.util.Iterator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,30 +13,43 @@ import fspm.config.ModelConfig;
 import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
 import fspm.config.params.*;
+import fspm.util.Utility;
 import fspm.util.exceptions.NotSupportedException;
 
 public class JsonFileReader implements ConfigAdapter {
 
     @Override
     public void setParamConfig(String filePath) {
-        // JsonNode tree = getTreeFromFile(filePath);
+        JsonNode tree = getTreeFromFile(filePath);
 
         ParamConfig config = new ParamConfig();
-        // for (ObjectNode category : tree.get("category")) {
-        //     for (JsonNode param : )
-        //     config.addCategory(category);
-        // }
-    
-        // Dummy test values
-        
 
-        ParamCategory cat = new ParamCategory("cat");
-        Parameter p = new BooleanParam("test", true);
-        cat.add(p);
-        cat.add(new BooleanParam("test2", false));
-        cat.add(new IntegerParam("int", 2));
+        JsonNode categoriesNode = tree.get("category");
+        Iterator categoryNames = categoriesNode.fieldNames();
 
-        config.addCategory(cat);
+        for (ObjectNode categoryNode : categoriesNode) {
+            String categoryName = categoryNames.next().toString();
+            Utility.println(categoryName);
+            
+            ParamCategory category = new ParamCategory(categoryName);
+            Iterator paramNames = categoryNode.fieldNames();
+
+            for (JsonNode paramNode : categoryNode) {
+                if (paramNode.isInt()) {
+                    category.add(new IntegerParam(
+                        paramNames.next().toString(), 
+                        paramNode.intValue()));
+
+                } else if (paramNode.isBoolean()) {
+                    category.add(new BooleanParam(
+                        paramNames.next().toString(), 
+                        paramNode.booleanValue()));
+                } else {
+                    Utility.println(paramNames.next() + " uses an unsupported type.");
+                }
+            }
+            config.addCategory(category);
+        }
 
         Config.getInstance().setParamConfig(config);
     }
