@@ -29,10 +29,7 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/BooleanParam.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/KeyConflictException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/IntegerParam.java"/>
-    </ref>
-    <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15545"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15546"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/ParamFactory.java"/>
     </ref>
    </ref>
   </ref>
@@ -68,7 +65,7 @@
          </de.grogra.pf.ui.registry.PanelFactory>
          <de.grogra.pf.registry.Link source="/ui/panels/attributeeditor"/>
         </de.grogra.pf.ui.registry.Tab>
-        <de.grogra.pf.ui.registry.Tab selectedIndex="1">
+        <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.registry.Link source="/ui/panels/log"/>
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/console"/>
         </de.grogra.pf.ui.registry.Tab>

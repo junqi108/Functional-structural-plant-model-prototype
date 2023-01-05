@@ -14,7 +14,7 @@ import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
 import fspm.config.params.*;
 import fspm.util.Utility;
-import fspm.util.exceptions.NotSupportedException;
+import fspm.util.exceptions.UnsupportedException;
 
 public class JsonFileReader implements ConfigAdapter {
 
@@ -23,6 +23,8 @@ public class JsonFileReader implements ConfigAdapter {
         JsonNode tree = getTreeFromFile(filePath);
 
         ParamConfig config = new ParamConfig();
+
+        ParamFactory paramFactory = new ParamFactory();
 
         JsonNode categoriesNode = tree.get("category");
         Iterator categoryNames = categoriesNode.fieldNames();
@@ -35,18 +37,7 @@ public class JsonFileReader implements ConfigAdapter {
             Iterator paramNames = categoryNode.fieldNames();
 
             for (JsonNode paramNode : categoryNode) {
-                if (paramNode.isInt()) {
-                    category.add(new IntegerParam(
-                        paramNames.next().toString(), 
-                        paramNode.intValue()));
-
-                } else if (paramNode.isBoolean()) {
-                    category.add(new BooleanParam(
-                        paramNames.next().toString(), 
-                        paramNode.booleanValue()));
-                } else {
-                    Utility.println(paramNames.next() + " uses an unsupported type.");
-                }
+                category.add(paramFactory.getParam(paramNames.next().toString(), paramNode));   
             }
             config.addCategory(category);
         }
@@ -74,7 +65,7 @@ public class JsonFileReader implements ConfigAdapter {
         if (metaClassName.equals("document-category-name")) {
             setParamConfig(filePath);
         } else {
-            throw new NotSupportedException(metaClassName + " is not supported.");
+            throw new UnsupportedException(metaClassName + " is not supported.");
         }
     }
 
