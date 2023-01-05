@@ -14,16 +14,8 @@ import fspm.testing.tests.*;
 protected void init() {
     clearConsole();
 
-    //TestRunner.addTest(new ParamsTest());
-
-    ConfigAdapter adapter = new JsonFileReader();
-    adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
-
-    ParamConfig config = Config.getInstance().getParamConfig();
-    
-    Utility.println(config.getCategory("Boolean_variables"));
+    TestRunner.addTest(new ParamsTest());
 }
 public void run() {
-    //TestRunner.runTests();
-    
+    TestRunner.runTests();
 }

@@ -13,7 +13,7 @@ public class ParamsTest implements UnitTest {
     @Override
     public void setup() {
         ConfigAdapter adapter = new JsonFileReader();
-        adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
+        // adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
         adapter.setConfig("/var/model/inputs/parameterset_1.json");
 
         params = Config.getInstance().getParamConfig();
@@ -21,9 +21,14 @@ public class ParamsTest implements UnitTest {
 
     @Override
     public void run() {
+        General_Basic();
         //NumericParam_Set_RejectsString();
         // NumericParam_Set_AfterCalculation();
         // BooleanParam_Get_IncorrectType();
+    }
+
+    private void General_Basic() {
+        Utility.println(params.getCategory("Boolean_variables"));
     }
 
     // private void NumericNode_Set_Basic() {

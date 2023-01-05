@@ -18,7 +18,6 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ModelConfig.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/OrganConfig.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/ConfigAdapter.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/NotSupportedException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/TestRunner.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/UnitTest.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/ParamsTest.java"/>
@@ -30,6 +29,13 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/KeyConflictException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/IntegerParam.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/ParamFactory.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/UnsupportedException.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/StringParam.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/DoubleParam.java"/>
+    </ref>
+    <ref name="meta">
+     <de.grogra.pf.registry.NodeReference name="main" ref="15589"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15590"/>
     </ref>
    </ref>
   </ref>
@@ -37,7 +43,7 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.3255814">
+      <de.grogra.pf.ui.registry.Split location="0.32779622">
        <de.grogra.pf.ui.registry.Split location="0.4968017" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
@@ -65,7 +71,7 @@
          </de.grogra.pf.ui.registry.PanelFactory>
          <de.grogra.pf.registry.Link source="/ui/panels/attributeeditor"/>
         </de.grogra.pf.ui.registry.Tab>
-        <de.grogra.pf.ui.registry.Tab selectedIndex="0">
+        <de.grogra.pf.ui.registry.Tab selectedIndex="1">
          <de.grogra.pf.registry.Link source="/ui/panels/log"/>
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/console"/>
         </de.grogra.pf.ui.registry.Tab>

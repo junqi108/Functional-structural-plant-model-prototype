@@ -13,7 +13,6 @@ import fspm.config.ModelConfig;
 import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
 import fspm.config.params.*;
-import fspm.util.Utility;
 import fspm.util.exceptions.UnsupportedException;
 
 public class JsonFileReader implements ConfigAdapter {
@@ -31,7 +30,6 @@ public class JsonFileReader implements ConfigAdapter {
 
         for (ObjectNode categoryNode : categoriesNode) {
             String categoryName = categoryNames.next().toString();
-            Utility.println(categoryName);
             
             ParamCategory category = new ParamCategory(categoryName);
             Iterator paramNames = categoryNode.fieldNames();
