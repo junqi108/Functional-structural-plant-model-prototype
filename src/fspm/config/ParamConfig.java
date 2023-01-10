@@ -37,28 +37,44 @@ public class ParamConfig {
         throw new NotFoundException(key, "Could not find category");
     }
 
-    public Boolean getBool(String key) {
-        // TODO: implement if shorthand config.getBool() is desired over config.getCategory().getBool()
-        throw new UnsupportedException("Not implemented.");
-        // for (ParamCategory category : categories.values()) {
-        //     category.getParam(key);
-        //     Boolean param = category.getBool(key);
 
-        //     if (param != null) {
-        //         // Found key in category
-        //         return param;
-        //     }
-        // }
+    /**
+     * Gets the first occurrence of the parameter with the given key.
+     * Shorthand method of getting parameters without needing to get through category.
+     * @param key
+     * @return Boolean parameter.
+     */
+    public Boolean getBool(String key) {
+        ParamCategory category = getCategoryWithParam(key);
+        return category.getBool(key);
     }
 
+    /**
+     * Gets the first occurrence of the parameter with the given key.
+     * Shorthand method of getting parameters without needing to get through category.
+     * @param key
+     * @return Integer parameter.
+     */
     public Integer getInt(String key) {
-        throw new UnsupportedException("Not implemented.");
-        // Parameter param = getParamLocation(key).param;
-        
-        // if (param instanceof IntegerParam) {
-        //     return ((IntegerParam) param).getValue(); 
-        // }
-        // throw new NotFoundException(key, "Could not find as a integer parameter");
+        ParamCategory category = getCategoryWithParam(key);
+        return category.getInt(key);
+    }
+
+    /**
+     * Helper method to find and get the first category containing the parameter of a given key.
+     * @param paramKey
+     * @return {@link ParamCategory} containing the parameter to be found.
+     */
+    private ParamCategory getCategoryWithParam(String paramKey) {
+        for (ParamCategory category : categories.values()) {
+            Parameter param = category.getParam(paramKey);
+
+            if (param != null) {
+                // Found key in category
+                return category;
+            }
+        }
+        throw new NotFoundException(paramKey, "Could not find parameter");
     }
 
 

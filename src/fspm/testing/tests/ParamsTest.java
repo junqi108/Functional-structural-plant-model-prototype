@@ -23,10 +23,11 @@ public class ParamsTest implements UnitTest {
 
     @Override
     public void run() {
-        General_Basic();
+        // General_Basic();
 
         // Get_NotExists();
-        Get_IncorrectType();
+        // Get_IncorrectType();
+        Get_Shorthand();
 
         //NumericParam_Set_RejectsString();
         // NumericParam_Set_AfterCalculation();
@@ -54,6 +55,14 @@ public class ParamsTest implements UnitTest {
         try {
             Utility.println(booleans.getInt("useStaticArc"));
         } catch (NotFoundException e) {}
+    }
+
+    private void Get_Shorthand() {
+        Utility.println(params.getBool("useStaticArc"));
+        Utility.println(params.getCategory("Boolean_variables").getBool("useStaticArc"));
+        
+        ParamCategory booleans = params.getCategory("Boolean_variables");
+        Utility.println(booleans.getBool("useStaticArc"));
     }
 
     // private void NumericNode_Set_Basic() {
