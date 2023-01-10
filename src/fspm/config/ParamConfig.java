@@ -6,6 +6,7 @@ import java.util.HashMap;
 import fspm.config.params.*;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.NotFoundException;
+import fspm.util.exceptions.UnsupportedException;
 
 public class ParamConfig {
     /**
@@ -33,25 +34,31 @@ public class ParamConfig {
         if (category != null) {
             return category;
         }
-        throw new NotFoundException(key, "Could not find parameter");
+        throw new NotFoundException(key, "Could not find category");
     }
 
-    public boolean getBool(String key) {
-        Parameter param = getParamLocation(key).param;
-        
-        if (param instanceof BooleanParam) {
-            return ((BooleanParam) param).getValue(); 
-        }
-        throw new NotFoundException(key, "Could not find as a boolean parameter");
+    public Boolean getBool(String key) {
+        // TODO: implement if shorthand config.getBool() is desired over config.getCategory().getBool()
+        throw new UnsupportedException("Not implemented.");
+        // for (ParamCategory category : categories.values()) {
+        //     category.getParam(key);
+        //     Boolean param = category.getBool(key);
+
+        //     if (param != null) {
+        //         // Found key in category
+        //         return param;
+        //     }
+        // }
     }
 
-    public int getInt(String key) {
-        Parameter param = getParamLocation(key).param;
+    public Integer getInt(String key) {
+        throw new UnsupportedException("Not implemented.");
+        // Parameter param = getParamLocation(key).param;
         
-        if (param instanceof IntegerParam) {
-            return ((IntegerParam) param).getValue(); 
-        }
-        throw new NotFoundException(key, "Could not find as a integer parameter");
+        // if (param instanceof IntegerParam) {
+        //     return ((IntegerParam) param).getValue(); 
+        // }
+        // throw new NotFoundException(key, "Could not find as a integer parameter");
     }
 
 

@@ -2,7 +2,9 @@ package fspm.testing.tests;
 
 import fspm.input.*;
 import fspm.config.*;
+import fspm.config.params.ParamCategory;
 import fspm.util.*;
+import fspm.util.exceptions.NotFoundException;
 import fspm.testing.*;
 import fspm.testing.UnitTest;
 
@@ -22,6 +24,10 @@ public class ParamsTest implements UnitTest {
     @Override
     public void run() {
         General_Basic();
+
+        // Get_NotExists();
+        Get_IncorrectType();
+
         //NumericParam_Set_RejectsString();
         // NumericParam_Set_AfterCalculation();
         // BooleanParam_Get_IncorrectType();
@@ -29,6 +35,25 @@ public class ParamsTest implements UnitTest {
 
     private void General_Basic() {
         Utility.println(params.getCategory("Boolean_variables"));
+        ParamCategory booleans = params.getCategory("Boolean_variables");
+        Utility.println(booleans.getBool("useCTRAM"));
+    }
+
+    private void Get_NotExists() {
+        ParamCategory booleans = params.getCategory("Boolean_variables");
+
+        try {
+            Utility.println(booleans.getBool("useStatic"));
+        } catch (NotFoundException e) {}
+    }
+
+    private void Get_IncorrectType() {
+        ParamCategory booleans = params.getCategory("Boolean_variables");
+        Utility.println(booleans.getBool("useStaticArc"));
+
+        try {
+            Utility.println(booleans.getInt("useStaticArc"));
+        } catch (NotFoundException e) {}
     }
 
     // private void NumericNode_Set_Basic() {

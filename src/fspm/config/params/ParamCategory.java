@@ -29,20 +29,40 @@ public class ParamCategory {
         }
     }
 
+    /**
+     * Get parameter with the given key.
+     * @param paramKey
+     * @return Generic {@link Parameter}, return null if not found.
+     */
     public Parameter getParam(String paramKey) {
         // Can cast params is implicitly Map<Parameter>, but this syntax is not supported by XCompiler
-        Parameter param = (Parameter) params.get(paramKey);
-
-        if (param != null) {
-            return param;
-        }
-        throw new NotFoundException(paramKey);
+        return (Parameter) params.get(paramKey);
     }
 
 
     public void setParam(String key, Parameter param) {
         // TODO: better explanation or structure of why checks may or may not be needed (due to previous checks on higher classes)
         params.put(key, param);
+    }
+
+    public Boolean getBool(String key) {
+        Parameter param = getParam(key);
+        
+        if (param instanceof BooleanParam) {
+            return ((BooleanParam) param).getValue(); 
+        } else { // if null or not expected type, etc.
+            throw new NotFoundException(key, "Could not find as a boolean parameter");
+        }
+    }
+
+    public int getInt(String key) {
+        Parameter param = getParam(key);
+        
+        if (param instanceof IntegerParam) {
+            return ((IntegerParam) param).getValue(); 
+        } else { // if null or not expected type, etc.
+            throw new NotFoundException(key, "Could not find as a integer parameter");
+        }
     }
 
 
