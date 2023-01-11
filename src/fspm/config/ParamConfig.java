@@ -67,7 +67,7 @@ public class ParamConfig {
      */
     private ParamCategory getCategoryWithParam(String paramKey) {
         for (ParamCategory category : categories.values()) {
-            Parameter param = category.getParam(paramKey);
+            Parameter param = category.get(paramKey);
 
             if (param != null) {
                 // Found key in category
@@ -85,7 +85,7 @@ public class ParamConfig {
         if (paramInfo.param instanceof BooleanParam) {
             ((BooleanParam) paramInfo.param).setValue(value);
 
-            paramInfo.category.setParam(key, paramInfo.param);
+            paramInfo.category.set(key, paramInfo.param);
             return;
         }
         throw new NotFoundException(key, "Could not find as a boolean parameter");
@@ -97,7 +97,7 @@ public class ParamConfig {
         if (paramInfo.param instanceof IntegerParam) {
             ((IntegerParam) paramInfo.param).setValue(value);
             
-            paramInfo.category.setParam(key, paramInfo.param);
+            paramInfo.category.set(key, paramInfo.param);
             return;
         }
         throw new NotFoundException(key, "Could not find as an integer parameter");
@@ -139,7 +139,7 @@ public class ParamConfig {
      */
     private ParamLocationInfo getParamLocation(String key) {
         for (ParamCategory category : categories.values()) {
-            Parameter param = category.getParam(key);
+            Parameter param = category.get(key);
 
             if (param != null) {
                 // Found key in category

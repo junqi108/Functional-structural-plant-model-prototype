@@ -31,22 +31,22 @@ public class ParamCategory {
 
     /**
      * Get parameter with the given key.
-     * @param paramKey
+     * @param key
      * @return Generic {@link Parameter}, return null if not found.
      */
-    public Parameter getParam(String paramKey) {
+    public Parameter get(String key) {
         // Can cast params is implicitly Map<Parameter>, but this syntax is not supported by XCompiler
-        return (Parameter) params.get(paramKey);
+        return (Parameter) params.get(key);
     }
 
 
-    public void setParam(String key, Parameter param) {
+    public void set(String key, Parameter param) {
         // TODO: better explanation or structure of why checks may or may not be needed (due to previous checks on higher classes)
         params.put(key, param);
     }
 
     public Boolean getBool(String key) {
-        Parameter param = getParam(key);
+        Parameter param = get(key);
         
         if (param instanceof BooleanParam) {
             return ((BooleanParam) param).getValue(); 
@@ -56,7 +56,7 @@ public class ParamCategory {
     }
 
     public int getInt(String key) {
-        Parameter param = getParam(key);
+        Parameter param = get(key);
         
         if (param instanceof IntegerParam) {
             return ((IntegerParam) param).getValue(); 
