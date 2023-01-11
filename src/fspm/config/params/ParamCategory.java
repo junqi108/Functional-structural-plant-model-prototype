@@ -3,6 +3,8 @@ package fspm.config.params;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.sound.sampled.BooleanControl;
+
 import fspm.util.Utility;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.NotFoundException;
@@ -39,31 +41,45 @@ public class ParamCategory {
         return (Parameter) params.get(key);
     }
 
+    private Parameter getIfMatching(String key, Class paramTypeClass) {
+        Parameter param = get(key);
+        
+        if (paramTypeClass.isInstance(param)) {
+            return param;
+        } else { // if null or not expected type, etc.
+            throw new NotFoundException(key, "Could not find as a " + paramTypeClass + " parameter");
+        }
+    }
+
+    public Boolean getBool(String key) {
+        BooleanParam param = (BooleanParam) getIfMatching(key, BooleanParam.class);
+        return param.getValue();
+    }
+
+    public int getInt(String key) {
+        IntegerParam param = (IntegerParam) getIfMatching(key, IntegerParam.class);
+        return param.getValue();
+    }
+
+
+
+
+    public void set(String key, boolean newValue) {
+        Parameter param = get(key);
+
+        if (param instanceof BooleanParam) {
+            ((BooleanParam) param).setValue(newValue);
+            set(key, param);
+        } else { // if null or not expected type, etc.
+            throw new NotFoundException(key, "Could not find as a boolean parameter");
+        }
+    }
 
     public void set(String key, Parameter param) {
         // TODO: better explanation or structure of why checks may or may not be needed (due to previous checks on higher classes)
         params.put(key, param);
     }
 
-    public Boolean getBool(String key) {
-        Parameter param = get(key);
-        
-        if (param instanceof BooleanParam) {
-            return ((BooleanParam) param).getValue(); 
-        } else { // if null or not expected type, etc.
-            throw new NotFoundException(key, "Could not find as a boolean parameter");
-        }
-    }
-
-    public int getInt(String key) {
-        Parameter param = get(key);
-        
-        if (param instanceof IntegerParam) {
-            return ((IntegerParam) param).getValue(); 
-        } else { // if null or not expected type, etc.
-            throw new NotFoundException(key, "Could not find as a integer parameter");
-        }
-    }
 
 
     @Override
