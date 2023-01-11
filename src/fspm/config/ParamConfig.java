@@ -60,6 +60,20 @@ public class ParamConfig {
         return category.getInt(key);
     }
 
+
+
+    public void set(String key, boolean value) {
+        ParamCategory category = getCategoryWithParam(key);
+        category.set(key, value);
+    }
+
+    public void set(String key, int value) {
+        ParamCategory category = getCategoryWithParam(key);
+        category.set(key, value);
+    }
+
+
+
     /**
      * Helper method to find and get the first category containing the parameter of a given key.
      * @param paramKey
@@ -76,7 +90,6 @@ public class ParamConfig {
         }
         throw new NotFoundException(paramKey, "Could not find parameter");
     }
-
 
 
     // public void set(String key, boolean value) {

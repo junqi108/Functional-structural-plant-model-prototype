@@ -27,7 +27,8 @@ public class ParamsTest implements UnitTest {
 
         // Get_NotExists();
         // Get_IncorrectType();
-        Get_Shorthand();
+        // Get_Shorthand();
+        Set_Booleans();
 
         //NumericParam_Set_RejectsString();
         // NumericParam_Set_AfterCalculation();
@@ -63,6 +64,17 @@ public class ParamsTest implements UnitTest {
         
         ParamCategory booleans = params.getCategory("Boolean_variables");
         Utility.println(booleans.getBool("useStaticArc"));
+    }
+
+    private void Set_Booleans() {
+        ParamCategory booleans = params.getCategory("Boolean_variables");
+        Utility.println(booleans);
+
+        booleans.set("useStaticArc", false);
+        Utility.println(booleans);
+
+        booleans.set("usePhenology", false);
+        Utility.println(booleans);
     }
 
     // private void NumericNode_Set_Basic() {

@@ -83,7 +83,7 @@ public class ParamCategory {
     }
 
     /**
-     * Helper function for getting the parameter of a given key if matches the Paramater type class provided.
+     * Helper method for getting the parameter of a given key if matches the Paramater type class provided.
      * @param key
      * @param paramTypeClass Concrete class type of {@link Parameter}
      * @return Generic {@link Parameter} if found matching parameter. Throws {@link NotFoundException} otherwise.
