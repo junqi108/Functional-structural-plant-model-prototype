@@ -79,29 +79,29 @@ public class ParamConfig {
 
 
 
-    public void set(String key, boolean value) {
-        ParamLocationInfo paramInfo = getParamLocation(key);
+    // public void set(String key, boolean value) {
+    //     ParamLocationInfo paramInfo = getParamLocation(key);
 
-        if (paramInfo.param instanceof BooleanParam) {
-            ((BooleanParam) paramInfo.param).setValue(value);
+    //     if (paramInfo.param instanceof BooleanParam) {
+    //         ((BooleanParam) paramInfo.param).setValue(value);
 
-            paramInfo.category.set(key, paramInfo.param);
-            return;
-        }
-        throw new NotFoundException(key, "Could not find as a boolean parameter");
-    }
+    //         paramInfo.category.set(key, paramInfo.param);
+    //         return;
+    //     }
+    //     throw new NotFoundException(key, "Could not find as a boolean parameter");
+    // }
 
-    public void set(String key, int value) {
-        ParamLocationInfo paramInfo = getParamLocation(key);
+    // public void set(String key, int value) {
+    //     ParamLocationInfo paramInfo = getParamLocation(key);
 
-        if (paramInfo.param instanceof IntegerParam) {
-            ((IntegerParam) paramInfo.param).setValue(value);
+    //     if (paramInfo.param instanceof IntegerParam) {
+    //         ((IntegerParam) paramInfo.param).setValue(value);
             
-            paramInfo.category.set(key, paramInfo.param);
-            return;
-        }
-        throw new NotFoundException(key, "Could not find as an integer parameter");
-    }
+    //         paramInfo.category.set(key, paramInfo.param);
+    //         return;
+    //     }
+    //     throw new NotFoundException(key, "Could not find as an integer parameter");
+    // }
 
 
 

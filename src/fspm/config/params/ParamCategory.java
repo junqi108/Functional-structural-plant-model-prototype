@@ -41,15 +41,6 @@ public class ParamCategory {
         return (Parameter) params.get(key);
     }
 
-    private Parameter getIfMatching(String key, Class paramTypeClass) {
-        Parameter param = get(key);
-        
-        if (paramTypeClass.isInstance(param)) {
-            return param;
-        } else { // if null or not expected type, etc.
-            throw new NotFoundException(key, "Could not find as a " + paramTypeClass + " parameter");
-        }
-    }
 
     public Boolean getBool(String key) {
         BooleanParam param = (BooleanParam) getIfMatching(key, BooleanParam.class);
@@ -65,19 +56,46 @@ public class ParamCategory {
 
 
     public void set(String key, boolean newValue) {
-        Parameter param = get(key);
+        BooleanParam newParam = (BooleanParam) getIfMatching(key, BooleanParam.class);
 
-        if (param instanceof BooleanParam) {
-            ((BooleanParam) param).setValue(newValue);
-            set(key, param);
-        } else { // if null or not expected type, etc.
-            throw new NotFoundException(key, "Could not find as a boolean parameter");
-        }
+        newParam.setValue(newValue);
+        set(key, newParam);
     }
 
-    public void set(String key, Parameter param) {
+    public void set(String key, int newValue) {
+        IntegerParam newParam = (IntegerParam) getIfMatching(key, IntegerParam.class);
+
+        newParam.setValue(newValue);
+        set(key, newParam);
+    }
+
+    /**
+     * Set parameter with the given key to the provided {@link Parameter}.
+     * <p>
+     * Private method as parameters should not be directly accessed (set) from outside this class; 
+     * prevents overriding parameters with a mismatching type.
+     * @param key
+     * @param param
+     */
+    private void set(String key, Parameter param) {
         // TODO: better explanation or structure of why checks may or may not be needed (due to previous checks on higher classes)
         params.put(key, param);
+    }
+
+    /**
+     * Helper function for getting the parameter of a given key if matches the Paramater type class provided.
+     * @param key
+     * @param paramTypeClass Concrete class type of {@link Parameter}
+     * @return Generic {@link Parameter} if found matching parameter. Throws {@link NotFoundException} otherwise.
+     */
+    private Parameter getIfMatching(String key, Class paramTypeClass) {
+        Parameter param = get(key);
+        
+        if (paramTypeClass.isInstance(param)) {
+            return param;
+        } else { // if null or not expected type, etc.
+            throw new NotFoundException(key, "Could not find as a " + paramTypeClass + " parameter");
+        }
     }
 
 
