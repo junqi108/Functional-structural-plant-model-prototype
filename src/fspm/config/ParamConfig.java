@@ -119,40 +119,4 @@ public class ParamConfig {
         }
         throw new NotFoundException(paramKey, "Could not find parameter");
     }
-
-    // TODO: remove as unused
-    /**
-     * Get the category and value of the first parameter found with this key.
-     * 
-     * @param key
-     * @return ParamLocationInfo object if found, null if not found.
-     */
-    private ParamLocationInfo getParamLocation(String key) {
-        for (ParamCategory category : categories.values()) {
-            Parameter param = category.get(key);
-
-            if (param != null) {
-                // Found key in category
-                return new ParamLocationInfo(category, param);
-            }
-        }
-        
-        throw new NotFoundException(key);
-        return null;
-    }
-
-    /**
-     * Allows for information about a parameter's storage location (category, etc.) 
-     * to be passed to methods as a parameter.
-     * Only used in this class.
-     */
-    private class ParamLocationInfo {
-        public final ParamCategory category;
-        public final Parameter param;
-
-        public ParamLocationInfo(ParamCategory category, Parameter param) {
-            this.category = category;
-            this.param = param;
-        }
-    }
 }
