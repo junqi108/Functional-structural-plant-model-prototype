@@ -1,4 +1,6 @@
-package fspm.config.params;
+package fspm.config.params.type;
+
+import fspm.config.params.Parameter;
 
 /**
  * Concrete {@link Parameter} implementation for integers.

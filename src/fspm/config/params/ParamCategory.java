@@ -3,6 +3,8 @@ package fspm.config.params;
 import java.util.HashMap;
 import java.util.Map;
 
+import fspm.config.params.type.BooleanParam;
+import fspm.config.params.type.IntegerParam;
 import fspm.util.Utility;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.NotFoundException;
