@@ -1,5 +1,9 @@
 package fspm.config.params;
 
+/**
+ * Concrete {@link Parameter} implementation for doubles.
+ * @author Ou-An Chuang
+ */
 public class DoubleParam extends Parameter {
     private double value;
 

@@ -18,7 +18,7 @@ import fspm.util.exceptions.UnsupportedException;
 /**
  * File reader to parse JSON config files to {@link Config}.
  * @author Ou-An Chuang
- * @since 15-12-2022
+ * @version %I%
  */
 public class JsonFileReader implements ConfigAdapter {
     @Override
@@ -53,18 +53,6 @@ public class JsonFileReader implements ConfigAdapter {
         }
 
         Config.getInstance().setParamConfig(config);
-    }
-
-    @Override
-    public void setModelConfig(String filePath) {
-        // TODO: Auto-generated method stub
-        
-    }
-
-    @Override
-    public void setOrganConfig(String filePath) {
-        // TODO: Auto-generated method stub
-        
     }
 
     @Override

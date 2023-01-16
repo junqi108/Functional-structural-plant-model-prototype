@@ -1,5 +1,9 @@
 package fspm.config.params;
 
+/**
+ * Concrete {@link Parameter} implementation for integers.
+ * @author Ou-An Chuang
+ */
 public class IntegerParam extends Parameter {
     private int value;
 
@@ -15,7 +19,6 @@ public class IntegerParam extends Parameter {
         this.value = value;
     }
 
-    // TODO: code duplication, may need to redesign parameters
     @Override
     public String toString() {
         return super.getKey() + ": " + value;

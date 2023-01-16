@@ -6,31 +6,43 @@ import java.util.List;
 import fspm.domain.scenario.Scenario;
 
 /**
- * Configuration class for simulations.
+ * Configuration class for storing input configurations to be used in simulations.
+ * 
  * @author Ou-An Chuang
- * @since 15-12-2022
+ * @version %I%
  */
 public class Config {
     /**
-     * Global config singleton.
+     * Singleton instance for the global config. 
+     * Set to null by default until instance is first retrieved with {@link #getInstance()}.
      */
     private static Config instance = null;
 
     private ParamConfig paramConfig;
+    // TODO: comment out unused configs
     private ModelConfig modelConfig;
     private OrganConfig organConfig;
 
     private List scenarios;
 
-    public Config() {
+    /**
+     * Class constructor.
+     * Private access as creation should be controlled to enforce singleton pattern
+     */
+    private Config() {
         scenarios = new ArrayList();
     }
 
+    /**
+     * Gets the singleton instance of the simulation {@link Config}.
+     * Creates a new Config if there was no existing instance.
+     * 
+     * @return Singleton instance of {@link Config}.
+     */
     public static Config getInstance() {
         if (instance == null) {
             instance = new Config();
         }
-
         return instance;
     }
 
@@ -40,6 +52,8 @@ public class Config {
     public void setParamConfig(ParamConfig config) {
         this.paramConfig = config;
     }
+
+    // TODO: comment out unused methods
 
     public ModelConfig getModelConfig() {
         return modelConfig;

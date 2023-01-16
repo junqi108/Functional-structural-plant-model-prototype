@@ -1,5 +1,9 @@
 package fspm.config.params;
 
+/**
+ * Concrete {@link Parameter} implementation for Strings.
+ * @author Ou-An Chuang
+ */
 public class StringParam extends Parameter {
     private String value;
 

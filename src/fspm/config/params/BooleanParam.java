@@ -1,5 +1,9 @@
 package fspm.config.params;
 
+/**
+ * Concrete {@link Parameter} implementation for booleans.
+ * @author Ou-An Chuang
+ */
 public class BooleanParam extends Parameter {
     private boolean value;
 

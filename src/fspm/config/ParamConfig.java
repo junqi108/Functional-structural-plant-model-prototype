@@ -8,17 +8,34 @@ import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.NotFoundException;
 import fspm.util.exceptions.UnsupportedException;
 
+/**
+ * Parameter configuration class for storing parameter categories.
+ * 
+ * @author Ou-An Chuang
+ * @version %I%
+ */
 public class ParamConfig {
     /**
-     * List of parameter categories stored as ObjectNodes.
-     * Each parameter is stored inside these ObjectNodes as JsonNodes.
+     * List of parameter categories stored as {@link ParamCategory} instances.
      */
-    private Map categories; // Assumes params are stored in a 'category' JsonNode
+    private Map categories;
 
+    /**
+     * Class constructor.
+     * <p>
+     * All initialisations go here.
+     */
     public ParamConfig() {
         categories = new HashMap();
     }
     
+    /**
+     * Adds a new category.
+     * 
+     * @param category {@link ParamCategory} to be added.
+     * @throws KeyConflictException     If there is already a category with 
+     *                                  the same key.
+     */
     public void addCategory(ParamCategory category) {
         // Use category key as unique identifier
         if (categories.containsKey(category.getKey())) {
@@ -28,6 +45,14 @@ public class ParamConfig {
         }
     }
 
+    /**
+     * Gets the category with the given key.
+     * 
+     * @param key The category key.
+     * @return The {@link ParamCategory} with the given key.
+     * @throws NotFoundException    If the category with the given key 
+     *                              could not be found.
+     */
     public ParamCategory getCategory(String key) {
         ParamCategory category = (ParamCategory) categories.get(key);
 
@@ -41,7 +66,8 @@ public class ParamConfig {
     /**
      * Gets the first occurrence of the parameter with the given key.
      * Shorthand method of getting parameters without needing to get through category.
-     * @param key
+     * 
+     * @param key The parameter key.
      * @return Boolean parameter.
      */
     public Boolean getBool(String key) {
@@ -52,7 +78,8 @@ public class ParamConfig {
     /**
      * Gets the first occurrence of the parameter with the given key.
      * Shorthand method of getting parameters without needing to get through category.
-     * @param key
+     * 
+     * @param key The parameter key.
      * @return Integer parameter.
      */
     public Integer getInt(String key) {
@@ -75,8 +102,10 @@ public class ParamConfig {
 
 
     /**
-     * Helper method to find and get the first category containing the parameter of a given key.
-     * @param paramKey
+     * Helper method to find and get the first category 
+     * containing the parameter of a given key.
+     * 
+     * @param paramKey The parameter key.
      * @return {@link ParamCategory} containing the parameter to be found.
      */
     private ParamCategory getCategoryWithParam(String paramKey) {
@@ -91,62 +120,10 @@ public class ParamConfig {
         throw new NotFoundException(paramKey, "Could not find parameter");
     }
 
-
-    // public void set(String key, boolean value) {
-    //     ParamLocationInfo paramInfo = getParamLocation(key);
-
-    //     if (paramInfo.param instanceof BooleanParam) {
-    //         ((BooleanParam) paramInfo.param).setValue(value);
-
-    //         paramInfo.category.set(key, paramInfo.param);
-    //         return;
-    //     }
-    //     throw new NotFoundException(key, "Could not find as a boolean parameter");
-    // }
-
-    // public void set(String key, int value) {
-    //     ParamLocationInfo paramInfo = getParamLocation(key);
-
-    //     if (paramInfo.param instanceof IntegerParam) {
-    //         ((IntegerParam) paramInfo.param).setValue(value);
-            
-    //         paramInfo.category.set(key, paramInfo.param);
-    //         return;
-    //     }
-    //     throw new NotFoundException(key, "Could not find as an integer parameter");
-    // }
-
-
-
-    // // Overloads for int, double, etc. to convert to JsonNodeType.NUMBER
-
-    // public void set(String key, int value) {
-    //     // Convert int to JsonNodeType.NUMBER using .put(int value)
-    //     NumericNode convertedInt = JsonNodeFactory.instance.numberNode(value);
-    //     setNumber(getParamLocation(key), convertedInt);
-    // }
-    // public void set(String key, double value) {
-    //     // Convert int to JsonNodeType.NUMBER using .put(double value)
-    //     NumericNode convertedInt = JsonNodeFactory.instance.numberNode(value);
-    //     setNumber(getParamLocation(key), convertedInt);
-    // }
-
-    // /**
-    //  * Set a generic JsonNodeType.NUMBER parameter.
-    //  * @param param
-    //  * @param newValue
-    //  */
-    // private void setNumber(ParamLocationInfo param, JsonNode newValue) {
-    //     // Check if parameter to be set is also a number type
-    //     if (param.type.equals(JsonNodeType.NUMBER)) {
-    //         param.category.replace(param.key, newValue);
-    //     } else {
-    //         throw new NotFoundException(param.key, "Could not find parameter of number type");
-    //     }
-    // }
-
+    // TODO: remove as unused
     /**
      * Get the category and value of the first parameter found with this key.
+     * 
      * @param key
      * @return ParamLocationInfo object if found, null if not found.
      */
