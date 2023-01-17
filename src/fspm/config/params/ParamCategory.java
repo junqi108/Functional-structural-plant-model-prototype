@@ -49,7 +49,7 @@ public class ParamCategory {
         if (params.containsKey(param.getKey())) {
             throw new KeyConflictException(param.getKey());
         } else {
-            set(key, param);
+            set(param.getKey(), param);
         }
     }
 
