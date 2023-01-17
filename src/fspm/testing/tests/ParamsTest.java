@@ -28,9 +28,11 @@ public class ParamsTest implements UnitTest {
         // Get_NotExists();
         // Get_IncorrectType();
         // Get_Shorthand();
-        Set_Booleans();
 
-        //NumericParam_Set_RejectsString();
+        // Set_Booleans();
+        Set_Integers();
+
+        // NumericParam_Set_RejectsString();
         // NumericParam_Set_AfterCalculation();
         // BooleanParam_Get_IncorrectType();
     }
@@ -75,6 +77,16 @@ public class ParamsTest implements UnitTest {
 
         booleans.set("usePhenology", false);
         Utility.println(booleans);
+    }
+
+    private void Set_Integers() {
+        Utility.println(params.getInt("nrStrips"));
+        
+        for (int i = 0; i < 5; i++) {
+            int calc = params.getInt("nrStrips") + 1;
+            params.set("nrStrips", calc);
+            Utility.println(params.getInt("nrStrips"));
+        }   
     }
 
     // private void NumericNode_Set_Basic() {
