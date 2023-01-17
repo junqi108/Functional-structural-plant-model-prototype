@@ -34,8 +34,8 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/type/StringParam.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15765"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15766"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15769"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15770"/>
     </ref>
    </ref>
   </ref>

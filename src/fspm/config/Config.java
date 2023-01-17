@@ -19,18 +19,20 @@ public class Config {
     private static Config instance = null;
 
     private ParamConfig paramConfig;
-    // TODO: comment out unused configs
-    private ModelConfig modelConfig;
-    private OrganConfig organConfig;
 
-    private List scenarios;
+    // TODO: configs not implemented yet
+    // private ModelConfig modelConfig;
+    // private OrganConfig organConfig;
+
+    // TODO: scenarios not implemented
+    // private List scenarios;
 
     /**
      * Class constructor.
      * Private access as creation should be controlled to enforce singleton pattern
      */
     private Config() {
-        scenarios = new ArrayList();
+        // scenarios = new ArrayList();
     }
 
     /**
@@ -53,42 +55,44 @@ public class Config {
         this.paramConfig = config;
     }
 
-    // TODO: comment out unused methods
+    // TODO: configs not implemented
 
-    public ModelConfig getModelConfig() {
-        return modelConfig;
-    }
-    public void setModelConfig(ModelConfig config) {
-        this.modelConfig = config;
-    }
+    // public ModelConfig getModelConfig() {
+    //     return modelConfig;
+    // }
+    // public void setModelConfig(ModelConfig config) {
+    //     this.modelConfig = config;
+    // }
 
-    public OrganConfig getOrganConfig() {
-        return organConfig;
-    }
-    public void setOrganConfig(OrganConfig config) {
-        this.organConfig = config;
-    }
+    // public OrganConfig getOrganConfig() {
+    //     return organConfig;
+    // }
+    // public void setOrganConfig(OrganConfig config) {
+    //     this.organConfig = config;
+    // }
 
 
-    public List getScenarios() {
-        return scenarios;
-    }
-    public Scenario getScenario(String name) {
-        // Cannot use foreach as List does not have explicit Scenario type
-        for (int i = 0; i < scenarios.size(); i++) {
-            Scenario scenario = (Scenario) scenarios.get(i);
+    // TODO: scenarios not implemented
+
+    // public List getScenarios() {
+    //     return scenarios;
+    // }
+    // public Scenario getScenario(String name) {
+    //     // Cannot use foreach as List does not have explicit Scenario type
+    //     for (int i = 0; i < scenarios.size(); i++) {
+    //         Scenario scenario = (Scenario) scenarios.get(i);
             
-            if (scenario.getName().equals(name)) {
-                return scenario;
-            }
-        }
-        // TODO: consider throwing a checked exception
-        return null;
-    }
-    public void setScenarios(List scenarios) {
-        this.scenarios = scenarios;
-    }
-    public void addScenario(Scenario scenario) {
-        scenarios.add(scenario);
-    }
+    //         if (scenario.getName().equals(name)) {
+    //             return scenario;
+    //         }
+    //     }
+    //     // FIXME: consider throwing a checked exception
+    //     return null;
+    // }
+    // public void setScenarios(List scenarios) {
+    //     this.scenarios = scenarios;
+    // }
+    // public void addScenario(Scenario scenario) {
+    //     scenarios.add(scenario);
+    // }
 }
