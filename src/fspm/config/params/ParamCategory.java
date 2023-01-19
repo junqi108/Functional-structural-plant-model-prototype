@@ -7,7 +7,8 @@ import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
 import fspm.util.Utility;
 import fspm.util.exceptions.KeyConflictException;
-import fspm.util.exceptions.NotFoundException;
+import fspm.util.exceptions.KeyNotFoundException;
+import fspm.util.exceptions.TypeNotFoundException;
 
 /**
  * A ParamCategory stores {@link Parameter Parameters} that belong to 
@@ -55,13 +56,20 @@ public class ParamCategory {
 
     /**
      * Get generic {@link Parameter} with the given key.
+     * Use this method to check whether a parameter exists in this category.
      * 
      * @param key The parameter key.
-     * @return Generic {@link Parameter}. Returns null if not found.
+     * @return Generic {@link Parameter}. 
+     * @throws KeyNotFoundException If the given key could not be found.
      */
     public Parameter get(String key) {
         // Can cast params is implicitly Map<Parameter>, but this syntax is not supported by XCompiler
-        return (Parameter) params.get(key);
+        Parameter param = (Parameter) params.get(key);
+
+        if (param != null) {
+            return param;
+        }
+        throw new KeyNotFoundException(key);
     }
 
 
@@ -115,16 +123,16 @@ public class ParamCategory {
      * @param key The parameter key.
      * @param paramTypeClass Concrete class type of {@link Parameter}.
      * @return Generic {@link Parameter} if found matching parameter.
-     * @throws NotFoundException    If the provided parameter is not an
-     *                              instance of the {@link Parameter} type.
+     * @throws TypeNotFoundException    If the provided parameter is not an
+     *                                  instance of the {@link Parameter} type.
      */
     private Parameter getIfInstanceOf(String key, Class paramTypeClass) {
         Parameter param = get(key);
         
         if (paramTypeClass.isInstance(param)) {
             return param;
-        } else { // if null or not expected type, etc.
-            throw new NotFoundException(key, "Could not find as a " + paramTypeClass + " parameter");
+        } else {
+            throw new TypeNotFoundException(key, paramTypeClass.toString());
         }
     }
 

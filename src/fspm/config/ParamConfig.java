@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import fspm.config.params.*;
 import fspm.util.exceptions.KeyConflictException;
-import fspm.util.exceptions.NotFoundException;
+import fspm.util.exceptions.KeyNotFoundException;
 import fspm.util.exceptions.UnsupportedException;
 
 /**
@@ -50,8 +50,8 @@ public class ParamConfig {
      * 
      * @param key The category key.
      * @return The {@link ParamCategory} with the given key.
-     * @throws NotFoundException    If the category with the given key 
-     *                              could not be found.
+     * @throws KeyNotFoundException    If the category with the given key 
+     *                                 could not be found.
      */
     public ParamCategory getCategory(String key) {
         ParamCategory category = (ParamCategory) categories.get(key);
@@ -59,7 +59,7 @@ public class ParamConfig {
         if (category != null) {
             return category;
         }
-        throw new NotFoundException(key, "Could not find category");
+        throw new KeyNotFoundException(key, "Could not find category");
     }
 
 
@@ -110,13 +110,14 @@ public class ParamConfig {
      */
     private ParamCategory getCategoryWithParam(String paramKey) {
         for (ParamCategory category : categories.values()) {
-            Parameter param = category.get(paramKey);
-
-            if (param != null) {
-                // Found key in category
+            try {
+                Parameter param = category.get(paramKey);
                 return category;
+            } catch (KeyNotFoundException e) {
+                // Not found in this category, continue and check next category.
             }
         }
-        throw new NotFoundException(paramKey, "Could not find parameter");
+        // Not found in any category.
+        throw new KeyNotFoundException(paramKey);
     }
 }
