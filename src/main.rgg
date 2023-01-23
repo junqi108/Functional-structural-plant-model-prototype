@@ -10,8 +10,6 @@ import fspm.testing.tests.*;
 
 protected void init() {
     clearConsole();
-
-    TestRunner.addTest(new ParamsTest());
 }
 public void run() {
     TestRunner.runTests();

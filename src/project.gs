@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://grogra.de/registry" graph="graph.xml">
  <import plugin="de.grogra.pf" version="1.6"/>
- <import plugin="de.grogra.rgg" version="1.6"/>
  <import plugin="de.grogra.imp" version="1.6"/>
- <import plugin="de.grogra.math" version="1.6"/>
  <import plugin="de.grogra.imp3d" version="1.6"/>
+ <import plugin="de.grogra.math" version="1.6"/>
+ <import plugin="de.grogra.rgg" version="1.6"/>
  <registry>
   <ref name="project">
    <ref name="objects">
@@ -33,10 +33,11 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/type/StringParam.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/KeyNotFoundException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/TypeNotFoundException.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/ParamsUnitTest.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15797"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15798"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15821"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15822"/>
     </ref>
    </ref>
   </ref>
@@ -44,8 +45,8 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.54416573">
-       <de.grogra.pf.ui.registry.Split location="0.49458483" orientation="0">
+      <de.grogra.pf.ui.registry.Split location="0.543618">
+       <de.grogra.pf.ui.registry.Split location="0.49436393" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/3d/defaultview">
@@ -62,7 +63,7 @@
          <de.grogra.pf.registry.Link source="/ui/panels/statusbar"/>
         </de.grogra.pf.ui.registry.Split>
        </de.grogra.pf.ui.registry.Split>
-       <de.grogra.pf.ui.registry.Split location="0.49458483" orientation="0">
+       <de.grogra.pf.ui.registry.Split location="0.49436393" orientation="0">
         <de.grogra.pf.ui.registry.Tab selectedIndex="0">
          <de.grogra.pf.ui.registry.PanelFactory source="/ui/panels/texteditor">
           <de.grogra.pf.registry.Option name="documents" type="java.lang.String" value="&quot;\&quot;pfs:main.rgg\&quot;,\&quot;pfs:Untitled-1\&quot;&quot;"/>

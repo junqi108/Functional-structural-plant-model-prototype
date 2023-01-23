@@ -16,7 +16,6 @@ public class ParamsTest implements UnitTest {
     @Override
     public void setup() {
         ConfigAdapter adapter = new JsonFileReader();
-        // adapter.setParamConfig("/var/model/inputs/parameterset_1.json");
         adapter.setConfig("/var/model/inputs/resources/model.input.data.name.json");
 
         params = Config.getInstance().getParamConfig();
