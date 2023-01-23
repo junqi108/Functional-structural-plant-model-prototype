@@ -1,13 +1,10 @@
 {
-    "_id": {
-        "$oid": "639b8370084c1bee24cb44b9"
-    },
-    "instance": "1.2.3.9999.1.8.1.1.1.1",
+    "name": "model.input.data.name",
     "class": "model.input.data",
     "metaclass": "document-category-name",
     "category": {
         "Boolean_variables": {
-        "inputEnvironmentCondition": true,
+        "inputEnvironmentCondition": false,
         "inputLeafN": true,
         "inputSoilWaterPotential": true,
         "woodBiomassCalcMethod": 2,
