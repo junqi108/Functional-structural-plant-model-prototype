@@ -1,6 +1,6 @@
 PROJECT_NAME = Functional Structural Plant Model
 EXTENSION_MAPPING = rgg=java xl=java
-FILE_PATTERNS = *.rgg *.xl
+FILE_PATTERNS = *.rgg *.xl *.java
 INPUT = .
 GENERATE_TREEVIEW = YES
 EXTRACT_ALL = YES
