@@ -23,15 +23,20 @@ public class TestRunner {
             
     }
 
-    // TODO: format test result output
+    // TODO: auto format test result output
     public static void reportResult(Result result) {
         for (Failure failure : result.getFailures()) {
-            Utility.println(failure.toString());
+            Utility.println(
+                failure.toString() + "\n" +
+                failure.getTrimmedTrace()
+            );
+            
         }
         Utility.println("Finished. Result: Failures: " +
             result.getFailureCount() + ". Ignored: " +
             result.getIgnoreCount() + ". Tests run: " +
             result.getRunCount() + ". Time: " +
-            result.getRunTime() + "ms.");
+            result.getRunTime() + "ms."
+        );
     }
 }

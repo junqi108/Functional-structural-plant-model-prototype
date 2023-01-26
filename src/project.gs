@@ -35,8 +35,8 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/config/ParamConfigTestSuite.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15885"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15886"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15957"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15958"/>
     </ref>
    </ref>
   </ref>
@@ -44,7 +44,7 @@
    <ref name="state">
     <de.grogra.pf.ui.registry.Layout name="layout">
      <de.grogra.pf.ui.registry.MainWindow>
-      <de.grogra.pf.ui.registry.Split location="0.53456223">
+      <de.grogra.pf.ui.registry.Split location="0.3878012">
        <de.grogra.pf.ui.registry.Split location="0.4939577" orientation="0">
         <de.grogra.pf.ui.registry.Split orientation="0">
          <de.grogra.pf.registry.Link source="/ui/panels/rgg/toolbar"/>
