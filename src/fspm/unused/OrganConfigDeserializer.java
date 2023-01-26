@@ -1,4 +1,4 @@
-package fspm.input;
+package fspm.unused;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import fspm.domain.functions.IFunction;
-import fspm.domain.organs.GenericOrgan;
 
 import java.io.File;
 import java.util.ArrayList;
