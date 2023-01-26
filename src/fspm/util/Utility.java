@@ -22,4 +22,16 @@ public class Utility {
     public static void println(String s) {
         RGGUtils.print(s);
     }
+
+    /**
+     * Explicitly calls toString() on the given object and prints line to GroIMP console
+     * with {@link #println(String s)}.
+     * <p>
+     * Safeguards against objects which cannot be implicitly converted to Strings.
+     * 
+     * @param s The String to output to the GroIMP console.
+     */
+    public static void println(Object obj) {
+        Utility.println(obj.toString());
+    }
 }
