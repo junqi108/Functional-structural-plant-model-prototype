@@ -3,7 +3,6 @@ package fspm.config.params;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import fspm.config.params.type.*;
-import fspm.util.Utility;
 import fspm.util.exceptions.UnsupportedException;
 
 /**
@@ -37,6 +36,5 @@ public class ParamFactory {
         }
 
         throw new UnsupportedException(name + " uses an unsupported type.");
-        return null;
     }
 }
