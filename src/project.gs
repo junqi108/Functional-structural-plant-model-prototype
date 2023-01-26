@@ -31,11 +31,12 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/params/type/StringParam.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/KeyNotFoundException.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/util/exceptions/TypeNotFoundException.java"/>
-     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/ParamsUnitTest.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/config/ParamsUnitTest.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/tests/config/ParamConfigTestSuite.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="15833"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15834"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="15885"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="15886"/>
     </ref>
    </ref>
   </ref>

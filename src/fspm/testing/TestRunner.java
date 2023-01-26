@@ -1,14 +1,12 @@
 package fspm.testing;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
-import org.junit.Test;
+import org.junit.runner.notification.Failure;
 
-import fspm.testing.tests.ParamsUnitTest;
+import fspm.testing.tests.config.ParamConfigTestSuite;
+import fspm.testing.tests.config.ParamsUnitTest;
 import fspm.util.*;
 
 public class TestRunner {
@@ -16,7 +14,8 @@ public class TestRunner {
         JUnitCore junit = new JUnitCore();
         junit.addListener(new TextListener(System.out));
         
-        Result result = junit.run(
+        Result result = JUnitCore.runClasses(
+            // ParamConfigTestSuite.class, // FIXME: suite produces "no runnable methods" error
             ParamsUnitTest.class
         );
 
@@ -26,6 +25,9 @@ public class TestRunner {
 
     // TODO: format test result output
     public static void reportResult(Result result) {
+        for (Failure failure : result.getFailures()) {
+            Utility.println(failure.toString());
+        }
         Utility.println("Finished. Result: Failures: " +
             result.getFailureCount() + ". Ignored: " +
             result.getIgnoreCount() + ". Tests run: " +

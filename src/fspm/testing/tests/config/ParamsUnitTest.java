@@ -1,45 +1,42 @@
-package fspm.testing.tests;
+package fspm.testing.tests.config;
 
-import fspm.input.*;
-import fspm.config.*;
-import fspm.config.params.ParamCategory;
-import fspm.util.*;
+import fspm.config.Config;
+import fspm.config.ConfigAdapter;
+import fspm.config.ParamConfig;
+import fspm.config.params.*;
+import fspm.input.JsonFileReader;
+import fspm.util.Utility;
 import fspm.util.exceptions.KeyNotFoundException;
 import fspm.util.exceptions.TypeNotFoundException;
-import fspm.testing.*;
-import fspm.testing.UnitTest;
 
-public class ParamsTest implements UnitTest {
-    
+import org.junit.Test;
+import org.junit.Before;
+
+import junit.framework.TestCase;
+
+import static org.junit.Assert.assertEquals;
+
+public class ParamsUnitTest {
+
+    ConfigAdapter adapter = new JsonFileReader();
     ParamConfig params;
 
-    @Override
-    public void setup() {
-        ConfigAdapter adapter = new JsonFileReader();
+    @Before
+    public void setUp() {
         adapter.setConfig("/var/model/inputs/resources/model.input.data.name.json");
-
         params = Config.getInstance().getParamConfig();
     }
 
-    @Override
-    public void run() {
-        General_Basic();
-
-        Get_NotExists();
-        Get_IncorrectType();
-        Get_Shorthand();
-
-        Set_Booleans();
-        Set_Integers();
-    }
-
-    private void General_Basic() {
-        Utility.println(params.getCategory("Boolean_variables"));
+    @Test
+    public void General_Basic() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
-        Utility.println(booleans.getBool("useCTRAM"));
+        Utility.println(booleans);
+        
+        assertEquals(booleans.getBool("useCTRAM"), true);
     }
 
-    private void Get_NotExists() {
+    @Test
+    public void Get_NotExists() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
 
         try {
@@ -47,10 +44,10 @@ public class ParamsTest implements UnitTest {
         } catch (KeyNotFoundException e) {
             Utility.println("Successful catch: " + e.getMessage());
         }
-    
     }
 
-    private void Get_IncorrectType() {
+    @Test
+    public void Get_IncorrectType() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
         Utility.println(booleans.getBool("useStaticArc"));
 
@@ -61,7 +58,8 @@ public class ParamsTest implements UnitTest {
         }
     }
 
-    private void Get_Shorthand() {
+    @Test
+    public void Get_Shorthand() {
         Utility.println(params.getBool("useStaticArc"));
         Utility.println(params.getCategory("Boolean_variables").getBool("useStaticArc"));
         
@@ -69,7 +67,8 @@ public class ParamsTest implements UnitTest {
         Utility.println(booleans.getBool("useStaticArc"));
     }
 
-    private void Set_Booleans() {
+    @Test
+    public void Set_Booleans() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
         Utility.println(booleans);
 
@@ -80,7 +79,8 @@ public class ParamsTest implements UnitTest {
         Utility.println(booleans);
     }
 
-    private void Set_Integers() {
+    @Test
+    public void Set_Integers() {
         Utility.println(params.getInt("nrStrips"));
         
         for (int i = 0; i < 5; i++) {
@@ -89,5 +89,4 @@ public class ParamsTest implements UnitTest {
             Utility.println(params.getInt("nrStrips"));
         }   
     }
-    
 }
