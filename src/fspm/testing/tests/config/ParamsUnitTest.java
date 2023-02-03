@@ -30,7 +30,7 @@ public class ParamsUnitTest {
     @Test
     public void General_Basic() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
-        Utility.println(booleans);
+        // Utility.println(booleans);
         
         assertEquals(booleans.getBool("useCTRAM"), true);
     }
@@ -40,53 +40,56 @@ public class ParamsUnitTest {
         ParamCategory booleans = params.getCategory("Boolean_variables");
 
         try {
-            Utility.println(booleans.getBool("useStatic"));
+            // Utility.println(booleans.getBool("useStatic"));
         } catch (KeyNotFoundException e) {
-            Utility.println("Successful catch: " + e.getMessage());
+            // Utility.println("Successful catch: " + e.getMessage());
         }
     }
 
     @Test
     public void Get_IncorrectType() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
-        Utility.println(booleans.getBool("useStaticArc"));
+        // Utility.println(booleans.getBool("useStaticArc"));
 
         try {
-            Utility.println(booleans.getInt("useStaticArc"));
+            // Utility.println(booleans.getInt("useStaticArc"));
         } catch (TypeNotFoundException e) {
-            Utility.println("Successful catch: " + e.getMessage());
+            // Utility.println("Successful catch: " + e.getMessage());
         }
     }
 
     @Test
     public void Get_Shorthand() {
-        Utility.println(params.getBool("useStaticArc"));
-        Utility.println(params.getCategory("Boolean_variables").getBool("useStaticArc"));
+        // Utility.println(params.getBool("useStaticArc"));
+        // Utility.println(params.getCategory("Boolean_variables").getBool("useStaticArc"));
         
         ParamCategory booleans = params.getCategory("Boolean_variables");
-        Utility.println(booleans.getBool("useStaticArc"));
+        // Utility.println(booleans.getBool("useStaticArc"));
     }
 
     @Test
     public void Set_Booleans() {
         ParamCategory booleans = params.getCategory("Boolean_variables");
-        Utility.println(booleans);
+        // Utility.println(booleans);
 
         booleans.set("useStaticArc", false);
-        Utility.println(booleans);
+        // Utility.println(booleans);
 
         booleans.set("usePhenology", false);
-        Utility.println(booleans);
+        // Utility.println(booleans);
     }
 
     @Test
     public void Set_Integers() {
-        Utility.println(params.getInt("nrStrips"));
+        ParamCategory simControl = params.getCategory("simulation_control");
+        // Utility.println(params.getInt("nrStrips"));
         
         for (int i = 0; i < 5; i++) {
-            int calc = params.getInt("nrStrips") + 1;
-            params.set("nrStrips", calc);
-            Utility.println(params.getInt("nrStrips"));
-        }   
+            int calc = simControl.getInt("nrStrips") + 1;
+            simControl.set("nrStrips", calc);
+            // Utility.println(params.getInt("nrStrips"));
+        }
+
+        assertEquals(simControl.getInt("nrStrips"), 1);
     }
 }
