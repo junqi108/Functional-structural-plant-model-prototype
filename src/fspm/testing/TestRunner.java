@@ -10,43 +10,51 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import barrypitman.junitXmlFormatter.AntXmlRunListener;
-
+import fspm.testing.tests.config.ParamConfigTest;
 import fspm.testing.tests.config.ParamConfigTestSuite;
-import fspm.testing.tests.config.ParamsUnitTest;
 import fspm.util.*;
 
 public class TestRunner {
+
+    private static String xmlOutputPath = "/var/model/outputs/test_out.xml";
+
     public static void run() {
         runTests(
-            // ParamConfigTestSuite.class, // FIXME: suite produces "no runnable methods" error
-            ParamsUnitTest.class
+            /** FIXME: Suite produces "no runnable methods" error
+             */ 
+            // ParamConfigTestSuite.class
+
+            ParamConfigTest.class
         );
     }
 
     public static void runTests(Class ...classes) {
         JUnitCore junit = new JUnitCore();
 
-        // Setup listeners
+        // ===== Setup listeners
         junit.addListener(new TextListener(System.out));
+        junit.addListener(new ExecutionListener());
 
+        // Listener required for outputting result in XML
         AntXmlRunListener runListener = new AntXmlRunListener();
         try {
             runListener.setOutputStream(new FileOutputStream(
-                new File("/var/model/outputs/test_out.xml")));
+                new File(xmlOutputPath)));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         junit.addListener(runListener);
         
-        // Run tests
+        // ===== Run tests
         Result result = junit.run(classes);
         reportResult(result);
             
     }
 
-    public static void reportResult(Result result) {
+    private static void reportResult(Result result) {
+        Utility.println("\n===== Failures ===== \n");
+
         for (Failure failure : result.getFailures()) {
             Utility.println(
                 failure.toString() + "\n" +
@@ -54,6 +62,9 @@ public class TestRunner {
             );
             
         }
+
+        Utility.println("\n===== Summary ===== \n");
+
         Utility.println("Finished. Result: Failures: " +
             result.getFailureCount() + ". Ignored: " +
             result.getIgnoreCount() + ". Tests run: " +
