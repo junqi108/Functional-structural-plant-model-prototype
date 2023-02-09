@@ -13,6 +13,7 @@ import fspm.config.ParamConfig;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
+import fspm.util.Utility;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
 
@@ -33,11 +34,20 @@ public class ParamConfigTest {
 
         params = Config.getInstance().getParamConfig();
     }
+
+    // ===== Get ParamCategory
     
-    @Test(expected = KeyNotFoundException.class)
+    @Test //(expected = KeyNotFoundException.class)
     public void getNonExistentCategory() {
-        params.getCategory("Non-existent category");
+        try {
+            params.getCategory("Non-existent category");
+            fail("Expected KeyNotFoundException");
+        } catch (KeyNotFoundException e) {
+            Utility.println(e);
+        }
     }
+
+    // ===== Add ParamCategory
 
     @Test
     public void addNewCategoryWithKey() {
@@ -58,15 +68,73 @@ public class ParamConfigTest {
             .getKey().equals("integers"));
     }
 
-    @Test(expected = KeyConflictException.class)
+    @Test //(expected = KeyConflictException.class)
     public void addCategoryWithConflictingKey() {
-        params.addCategory(new ParamCategory("booleans"));
-        params.addCategory(new ParamCategory("booleans"));
+        // Using try-catch instead of expected in @Test annotation to print out exception message
+        try {
+            params.addCategory(new ParamCategory("booleans"));
+            params.addCategory(new ParamCategory("booleans"));
+            fail("Expected KeyConflictException");
+        } catch (KeyConflictException e) {
+            Utility.println(e);
+        }
     }
 
+    // ===== Get Parameter
 
-    // @Test
-    // public void addBooleanParam() {
-    //     ParamCategory booleans = new ParamCategory("booleans");
-    // }
+    @Test //(expected = KeyNotFoundException.class)
+    public void getNonExistentParam() {
+        ParamCategory booleans = new ParamCategory("booleans");
+        
+        try {
+            booleans.getBool("Non-existent boolean");
+            fail("Expected KeyNotFoundException");
+        } catch (KeyNotFoundException e) {
+            Utility.println(e);
+        }
+    }
+
+    @Test
+    public void addAndGetNewBooleanParam() {
+        ParamCategory booleans = new ParamCategory("booleans");
+        booleans.add(new BooleanParam("bool1", false));
+
+        assertEquals(false, booleans.getBool("bool1"));
+    }
+
+    @Test
+    public void addAndGetNewIntegerParam() {
+        ParamCategory integers = new ParamCategory("integers");
+        integers.add(new IntegerParam("int1", 1));
+
+        assertEquals(1, integers.getInt("int1"));
+    }
+
+    // ===== Set Parameter
+
+    @Test
+    public void setBooleanParam() {
+        ParamCategory booleans = new ParamCategory("booleans");
+        booleans.add(new BooleanParam("bool1", false));
+
+        booleans.set("bool1", true);
+        assertEquals(true, booleans.getBool("bool1"));
+    }
+
+    @Test
+    public void setIntegerParam() {
+        ParamCategory integers = new ParamCategory("integers");
+        integers.add(new IntegerParam("int1", 1));
+
+        assertEquals(1, integers.getInt("int1"));
+
+        while (integers.getInt("int1") < 5) {
+            int calc = integers.getInt("int1") + 1;
+            integers.set("int1", calc);
+        }
+
+        assertEquals(5, integers.getInt("int1"));
+    }
+
+    // TODO: add more tests and check code coverage
 }

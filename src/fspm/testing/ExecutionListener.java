@@ -8,6 +8,11 @@ import fspm.util.Utility;
 
 public class ExecutionListener extends RunListener {
     @Override
+    public void testStarted(Description description) {
+        Utility.println("-----");
+    }
+
+    @Override
     public void testFinished(Description description) {
         Utility.println("FINISH: " + description.getMethodName());
     }
