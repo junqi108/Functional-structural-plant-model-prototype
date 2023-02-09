@@ -118,6 +118,6 @@ public class ParamConfig {
             }
         }
         // Not found in any category.
-        throw new KeyNotFoundException(paramKey);
+        throw new KeyNotFoundException(paramKey, "Could not find this parameter in any category");
     }
 }

@@ -69,7 +69,7 @@ public class ParamCategory {
         if (param != null) {
             return param;
         }
-        throw new KeyNotFoundException(key);
+        throw new KeyNotFoundException(key, "Could not find parameter");
     }
 
 

@@ -37,8 +37,8 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/testing/ExecutionListener.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="16165"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16166"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="16169"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16170"/>
     </ref>
    </ref>
   </ref>
