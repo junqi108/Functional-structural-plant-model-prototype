@@ -1,4 +1,0 @@
-name: model1
-plugins:
-  - fspm.functions.Growth
-  - fspm.functions.LightInterception

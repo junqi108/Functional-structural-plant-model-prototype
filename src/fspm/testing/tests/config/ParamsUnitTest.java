@@ -23,7 +23,7 @@ public class ParamsUnitTest {
 
     @Before
     public void setUp() {
-        adapter.setConfig("/var/model/inputs/resources/model.input.data.name.json");
+        adapter.setConfig("/var/model/inputs/parameters/model.input.data.name.json");
         params = Config.getInstance().getParamConfig();
     }
 
