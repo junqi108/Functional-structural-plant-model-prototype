@@ -33,10 +33,11 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/TestRunner.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/ExecutionListener.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/unit/config/ParamConfigTest.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/unit/config/ConfigTest.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="16189"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16190"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="16201"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16202"/>
     </ref>
    </ref>
   </ref>

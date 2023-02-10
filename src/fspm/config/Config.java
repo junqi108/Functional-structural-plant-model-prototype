@@ -17,7 +17,7 @@ public class Config {
      */
     private static Config instance = null;
 
-    private ParamConfig paramConfig;
+    private ParamConfig paramConfig = null;
 
     // TODO: configs not implemented yet
     // private ModelConfig modelConfig;
