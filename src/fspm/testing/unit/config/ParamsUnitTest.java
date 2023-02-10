@@ -1,18 +1,15 @@
-package fspm.testing.tests.config;
+package fspm.testing.unit.config;
 
 import fspm.config.Config;
 import fspm.config.ConfigAdapter;
 import fspm.config.ParamConfig;
 import fspm.config.params.*;
 import fspm.input.JsonFileReader;
-import fspm.util.Utility;
 import fspm.util.exceptions.KeyNotFoundException;
 import fspm.util.exceptions.TypeNotFoundException;
 
 import org.junit.Test;
 import org.junit.Before;
-
-import junit.framework.TestCase;
 
 import static org.junit.Assert.assertEquals;
 
