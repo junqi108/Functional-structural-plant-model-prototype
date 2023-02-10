@@ -1,4 +1,4 @@
-package fspm.testing;
+package test;
 
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;

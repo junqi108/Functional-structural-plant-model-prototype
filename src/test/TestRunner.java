@@ -1,4 +1,4 @@
-package fspm.testing;
+package test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,9 +10,9 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import barrypitman.junitXmlFormatter.AntXmlRunListener;
-import fspm.testing.tests.config.ParamConfigTest;
-import fspm.testing.tests.config.ParamConfigTestSuite;
 import fspm.util.*;
+import test.unit.config.ParamConfigTest;
+// import test.unit.config.ParamConfigTestSuite;
 
 public class TestRunner {
 

@@ -1,4 +1,4 @@
-package fspm.testing.unit.config;
+package test.unit.config;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
