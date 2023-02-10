@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    ParamsUnitTest.class
+    ParamConfigTest.class
 })
 
 public class ParamConfigTestSuite {

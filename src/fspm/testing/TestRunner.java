@@ -16,22 +16,10 @@ import fspm.util.*;
 
 public class TestRunner {
 
+    private static JUnitCore junit = new JUnitCore();;
     private static String xmlOutputPath = "/var/model/outputs/test_out.xml";
 
-    public static void run() {
-        runTests(
-            /** FIXME: Suite produces "no runnable methods" error
-             */ 
-            // ParamConfigTestSuite.class
-
-            ParamConfigTest.class
-        );
-    }
-
-    public static void runTests(Class ...classes) {
-        JUnitCore junit = new JUnitCore();
-
-        // ===== Setup listeners
+    public static void setupListeners() {
         junit.addListener(new TextListener(System.out));
         junit.addListener(new ExecutionListener());
 
@@ -45,11 +33,22 @@ public class TestRunner {
             e.printStackTrace();
         }
         junit.addListener(runListener);
-        
-        // ===== Run tests
+    }
+
+    public static void main() {
+        setupListeners();
+        runTests(
+            /** FIXME: Suite produces "no runnable methods" error
+             */ 
+            // ParamConfigTestSuite.class
+
+            ParamConfigTest.class
+        );
+    }
+
+    public static void runTests(Class ...classes) {
         Result result = junit.run(classes);
-        reportResult(result);
-            
+        reportResult(result);        
     }
 
     private static void reportResult(Result result) {

@@ -12,5 +12,5 @@ protected void init() {
     clearConsole();
 }
 public void run() {
-    TestRunner.run();
+    TestRunner.main();
 }
