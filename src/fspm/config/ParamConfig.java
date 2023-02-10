@@ -12,7 +12,6 @@ import fspm.util.exceptions.UnsupportedException;
  * Parameter configuration class for storing parameter categories.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public class ParamConfig {
     /**

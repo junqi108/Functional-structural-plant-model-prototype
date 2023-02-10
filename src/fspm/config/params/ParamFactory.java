@@ -10,7 +10,6 @@ import fspm.util.exceptions.UnsupportedException;
  * implementations depending on the data type received.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public class ParamFactory {
     /**

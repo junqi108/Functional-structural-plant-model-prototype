@@ -7,7 +7,6 @@ package fspm.config.params;
  * The value field should be implemented by extending members.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public abstract class Parameter {
     private String key;

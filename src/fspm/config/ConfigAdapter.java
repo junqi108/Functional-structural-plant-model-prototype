@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
  * compatible with {@link Config}.
  * 
  * @author  Ou-An Chuang
- * @version %I%
  */
 public interface ConfigAdapter {
     /**

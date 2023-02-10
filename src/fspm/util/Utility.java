@@ -11,7 +11,6 @@ import RGGUtils;
  * Instead, classes can simply import the util package to access these methods.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public class Utility {
     /**

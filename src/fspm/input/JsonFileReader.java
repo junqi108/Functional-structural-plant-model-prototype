@@ -18,7 +18,6 @@ import fspm.util.exceptions.UnsupportedException;
 /**
  * File reader to parse JSON config files to {@link Config}.
  * @author Ou-An Chuang
- * @version %I%
  */
 public class JsonFileReader implements ConfigAdapter {
     @Override

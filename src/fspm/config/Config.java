@@ -9,7 +9,6 @@ import fspm.domain.scenario.Scenario;
  * Configuration class for storing input configurations to be used in simulations.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public class Config {
     /**
