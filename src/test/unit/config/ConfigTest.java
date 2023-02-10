@@ -7,9 +7,13 @@ import org.junit.Test;
 
 import fspm.config.Config;
 import fspm.config.ParamConfig;
-import fspm.config.params.ParamCategory;;
 
 public class ConfigTest {
+
+    @Test
+    public void getSingleton_IsNeverNull() {
+        assertNotNull(Config.getInstance());
+    }
 
     @Test
     public void getParamConfig_UnsetIsNull() {
@@ -22,12 +26,5 @@ public class ConfigTest {
 
         config.setParamConfig(new ParamConfig());
         assertNotNull(config.getParamConfig());
-    }
-
-    @Test
-    public void getParamConfig() {
-        ParamCategory category = new ParamCategory("category");
-
-        ParamConfig paramConfig = new ParamConfig();
     }
 }

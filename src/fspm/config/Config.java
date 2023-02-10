@@ -19,12 +19,9 @@ public class Config {
 
     private ParamConfig paramConfig = null;
 
-    // TODO: configs not implemented yet
+    // TODO: other configurations to be determined, for example:
     // private ModelConfig modelConfig;
     // private OrganConfig organConfig;
-
-    // TODO: scenarios not implemented
-    // private List scenarios;
 
     /**
      * Class constructor.
@@ -47,51 +44,14 @@ public class Config {
         return instance;
     }
 
+    /**
+     * Gets the parameter configuration.
+     * @return Parameter configuration, or null if it has not been set.
+     */
     public ParamConfig getParamConfig() {
         return paramConfig;
     }
     public void setParamConfig(ParamConfig config) {
         this.paramConfig = config;
     }
-
-    // TODO: configs not implemented
-
-    // public ModelConfig getModelConfig() {
-    //     return modelConfig;
-    // }
-    // public void setModelConfig(ModelConfig config) {
-    //     this.modelConfig = config;
-    // }
-
-    // public OrganConfig getOrganConfig() {
-    //     return organConfig;
-    // }
-    // public void setOrganConfig(OrganConfig config) {
-    //     this.organConfig = config;
-    // }
-
-
-    // TODO: scenarios not implemented
-
-    // public List getScenarios() {
-    //     return scenarios;
-    // }
-    // public Scenario getScenario(String name) {
-    //     // Cannot use foreach as List does not have explicit Scenario type
-    //     for (int i = 0; i < scenarios.size(); i++) {
-    //         Scenario scenario = (Scenario) scenarios.get(i);
-            
-    //         if (scenario.getName().equals(name)) {
-    //             return scenario;
-    //         }
-    //     }
-    //     // FIXME: consider throwing a checked exception
-    //     return null;
-    // }
-    // public void setScenarios(List scenarios) {
-    //     this.scenarios = scenarios;
-    // }
-    // public void addScenario(Scenario scenario) {
-    //     scenarios.add(scenario);
-    // }
 }
