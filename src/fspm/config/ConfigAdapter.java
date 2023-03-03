@@ -11,18 +11,12 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
  */
 public interface ConfigAdapter {
     /**
-     * Parses and sets the {@link ParamConfig} of {@link Config} to the contents of the provided file.
+     * Parses and returns a {@link ParamConfig} with the parameter contents of the provided file.
      * @param filePath File path to parameter configuration.
+     * @return Parsed {@link ParamConfig} for {@link Config}.
      */
-    void setParamConfig(String filePath);
+    ParamConfig parseParamConfig(String filePath);
 
     // void setModelConfig(String filePath);
     // void setOrganConfig(String filePath);
-
-    /**
-     * Generic set config using a file of any metaclass type.
-     * @param filePath File path to configuration file of any metaclass type.
-     */
-    void setConfig(String filePath);
-    
 }
