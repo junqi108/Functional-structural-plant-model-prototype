@@ -1,6 +1,7 @@
 package fspm.config.adapters;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -21,7 +22,7 @@ import fspm.util.exceptions.UnsupportedException;
  */
 public class JsonFileReader implements ConfigAdapter {
     @Override
-    public ParamConfig parseParamConfig(String filePath) {
+    public ParamConfig parseParamConfig(String filePath) throws FileNotFoundException {
         ParamConfig config = new ParamConfig();
         ParamFactory paramFactory = new ParamFactory();
 

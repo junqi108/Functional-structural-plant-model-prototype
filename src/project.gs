@@ -37,8 +37,8 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/unit/config/ConfigAdapterTest.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="16243"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16244"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="16251"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16252"/>
     </ref>
    </ref>
   </ref>
