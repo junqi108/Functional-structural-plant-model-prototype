@@ -12,7 +12,6 @@ import fspm.util.exceptions.UnsupportedException;
  * Parameter configuration class for storing parameter categories.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public class ParamConfig {
     /**
@@ -118,6 +117,6 @@ public class ParamConfig {
             }
         }
         // Not found in any category.
-        throw new KeyNotFoundException(paramKey);
+        throw new KeyNotFoundException(paramKey, "Could not find this parameter in any category");
     }
 }

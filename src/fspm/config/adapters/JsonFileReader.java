@@ -1,4 +1,4 @@
-package fspm.input;
+package fspm.config.adapters;
 
 import java.io.File;
 import java.util.Iterator;
@@ -7,22 +7,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import fspm.config.Config;
-import fspm.config.ConfigAdapter;
 import fspm.config.ModelConfig;
 import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
-import fspm.config.params.*;
+import fspm.config.params.ParamCategory;
+import fspm.config.params.ParamFactory;
+import fspm.config.params.Parameter;
 import fspm.util.exceptions.UnsupportedException;
 
 /**
  * File reader to parse JSON config files to {@link Config}.
  * @author Ou-An Chuang
- * @version %I%
  */
 public class JsonFileReader implements ConfigAdapter {
     @Override
-    public void setParamConfig(String filePath) {
+    public ParamConfig parseParamConfig(String filePath) {
         ParamConfig config = new ParamConfig();
         ParamFactory paramFactory = new ParamFactory();
 
@@ -51,20 +50,7 @@ public class JsonFileReader implements ConfigAdapter {
             }
             config.addCategory(category);
         }
-
-        Config.getInstance().setParamConfig(config);
-    }
-
-    @Override
-    public void setConfig(String filePath) {
-        String metaClassName = getTreeFromFile(filePath).get("metaclass").asText();
-
-        // SWITCH statement unsupported by XCompiler; use IF instead
-        if (metaClassName.equals("document-category-name")) {
-            setParamConfig(filePath);
-        } else {
-            throw new UnsupportedException(metaClassName + " is not supported.");
-        }
+        return config;
     }
 
     /**

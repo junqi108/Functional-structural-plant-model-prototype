@@ -16,7 +16,6 @@ import fspm.util.exceptions.TypeNotFoundException;
  * These parameters can be accessed to get or set their values.
  * 
  * @author Ou-An Chuang
- * @version %I%
  */
 public class ParamCategory {
     private String key;
@@ -69,7 +68,7 @@ public class ParamCategory {
         if (param != null) {
             return param;
         }
-        throw new KeyNotFoundException(key);
+        throw new KeyNotFoundException(key, "Could not find parameter");
     }
 
 

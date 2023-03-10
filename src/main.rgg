@@ -1,18 +1,12 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import com.fasterxml.jackson.databind.JsonNode;
-
 import fspm.util.*;
-import fspm.testing.*;
-import fspm.testing.tests.*;
+import test.TestRunner;
 
 protected void init() {
     clearConsole();
-
-    TestRunner.addTest(new ParamsTest());
+    Utility.println("Finished initialising main.rgg.");
 }
 public void run() {
-    TestRunner.runTests();
+    TestRunner.main();
+    
+    Utility.println("Finished running in main.rgg.");
 }
