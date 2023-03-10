@@ -1,7 +1,7 @@
-package fspm.config;
+package fspm.config.adapters;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import fspm.config.Config;
+import fspm.config.ParamConfig;
 
 /**
  * Defines the required methods adapters must implement to be 

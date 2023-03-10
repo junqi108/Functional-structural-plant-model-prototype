@@ -60,8 +60,7 @@ public class TestRunner {
             Utility.println(
                 failure.toString() + "\n" +
                 failure.getTrimmedTrace()
-            );
-            
+            ); 
         }
 
         Utility.println("\n===== Summary ===== \n");

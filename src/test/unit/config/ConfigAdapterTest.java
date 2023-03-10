@@ -1,4 +1,4 @@
-package test.integration;
+package test.unit.config;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,13 +8,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fspm.config.Config;
-import fspm.config.ConfigAdapter;
 import fspm.config.ParamConfig;
+import fspm.config.adapters.ConfigAdapter;
+import fspm.config.adapters.JsonFileReader;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
-import fspm.input.JsonFileReader;
 
-public class InputConfigITest {
+public class ConfigAdapterTest {
 
     @BeforeClass
     public static void init() {

@@ -1,4 +1,4 @@
-package fspm.input;
+package fspm.config.adapters;
 
 import java.io.File;
 import java.util.Iterator;
@@ -7,11 +7,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import fspm.config.ConfigAdapter;
 import fspm.config.ModelConfig;
 import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
-import fspm.config.params.*;
+import fspm.config.params.ParamCategory;
+import fspm.config.params.ParamFactory;
+import fspm.config.params.Parameter;
 import fspm.util.exceptions.UnsupportedException;
 
 /**
