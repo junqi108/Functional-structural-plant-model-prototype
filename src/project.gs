@@ -34,10 +34,11 @@
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/unit/config/ConfigTest.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/adapters/JsonFileReader.java"/>
      <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/fspm/config/adapters/ConfigAdapter.java"/>
+     <de.grogra.pf.ui.registry.SourceFile mimeType="text/x-java" name="/var/model/src/test/unit/config/ConfigAdapterTest.java"/>
     </ref>
     <ref name="meta">
-     <de.grogra.pf.registry.NodeReference name="main" ref="16205"/>
-     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16206"/>
+     <de.grogra.pf.registry.NodeReference name="main" ref="16243"/>
+     <de.grogra.pf.registry.NodeReference name="RGGUtils" ref="16244"/>
     </ref>
    </ref>
   </ref>

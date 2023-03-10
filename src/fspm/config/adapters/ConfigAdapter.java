@@ -1,5 +1,7 @@
 package fspm.config.adapters;
 
+import java.io.FileNotFoundException;
+
 import fspm.config.Config;
 import fspm.config.ParamConfig;
 
@@ -15,7 +17,7 @@ public interface ConfigAdapter {
      * @param filePath File path to parameter configuration.
      * @return Parsed {@link ParamConfig} for {@link Config}.
      */
-    ParamConfig parseParamConfig(String filePath);
+    ParamConfig parseParamConfig(String filePath) throws FileNotFoundException;
 
     // void setModelConfig(String filePath);
     // void setOrganConfig(String filePath);

@@ -1,8 +1,10 @@
 package test.unit.config;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.beans.Transient;
+import java.io.FileNotFoundException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,9 +14,11 @@ import fspm.config.ParamConfig;
 import fspm.config.adapters.ConfigAdapter;
 import fspm.config.adapters.JsonFileReader;
 import fspm.config.params.ParamCategory;
-import fspm.config.params.type.BooleanParam;
+import fspm.util.Utility;
 
 public class ConfigAdapterTest {
+
+    String testParamFile = "/var/model/src/test/resources/test_param.json";
 
     @BeforeClass
     public static void init() {
@@ -22,30 +26,34 @@ public class ConfigAdapterTest {
     }
 
     @Test
-    public void addParamConfig() {
-        // Add parameters to ParamConfig
-        ParamCategory category = new ParamCategory("category");
-        category.add(new BooleanParam("boolean", false));
-
-        ParamConfig paramConfig = new ParamConfig();
-        paramConfig.addCategory(category);
-
-        // 
-        Config.getInstance().setParamConfig(paramConfig);
-
-        paramConfig = Config.getInstance();
-        
-        assertEquals(false, paramConfig);
+    public void parseInvalidFile() {
+        try {
+            ConfigAdapter adapter = new JsonFileReader();
+            ParamConfig paramConfig = adapter.parseParamConfig(
+                "unknown path");
+        } catch (FileNotFoundException e) {
+            Utility.println(e);
+        }
     }
 
     @Test
     public void addParamConfigFromFile() {
+        Config config = Config.getInstance();
+
         ConfigAdapter adapter = new JsonFileReader();
-        ParamConfig paramConfig = adapter.parseParamConfig(
-            "/var/model/src/test/resources/test_param.json");
+        ParamConfig paramConfig;
 
-        Config.getInstance().setParamConfig(paramConfig);
+        // Try parsing test parameter file
+        try {
+            paramConfig = adapter.parseParamConfig(testParamFile);
+        } catch (FileNotFoundException e) {
+            fail("Test resource " + testParamFile + " is missing.");
+            return;
+        }
 
-        // assertEquals();
+        config.setParamConfig(paramConfig);
+        ParamCategory category = config.getParamConfig().getCategory("booleans");
+
+        assertEquals(false, category.getBool("bool1"));
     }
 }

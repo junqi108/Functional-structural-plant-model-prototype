@@ -11,6 +11,7 @@ import org.junit.runner.notification.Failure;
 
 import barrypitman.junitXmlFormatter.AntXmlRunListener;
 import fspm.util.*;
+import test.unit.config.ConfigAdapterTest;
 import test.unit.config.ConfigTest;
 import test.unit.config.ParamConfigTest;
 // import test.unit.config.ParamConfigTestSuite;
@@ -44,7 +45,8 @@ public class TestRunner {
             // ParamConfigTestSuite.class
 
             ConfigTest.class,
-            ParamConfigTest.class
+            ParamConfigTest.class,
+            ConfigAdapterTest.class
         );
     }
 
