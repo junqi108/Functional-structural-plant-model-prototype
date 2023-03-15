@@ -2,6 +2,7 @@ package fspm.config.adapters;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Iterator;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -33,7 +34,7 @@ public class JsonFileReader implements ConfigAdapter {
         Iterator categoryNames = categoriesNode.fieldNames();
 
         // Parse each category node
-        for (ObjectNode categoryNode : categoriesNode) {
+        for (JsonNode categoryNode : categoriesNode) {
             String categoryName = categoryNames.next().toString();
             ParamCategory category = new ParamCategory(categoryName);
 
@@ -63,6 +64,12 @@ public class JsonFileReader implements ConfigAdapter {
         File file = new File(filePath);
 
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readTree(file);
+        try {
+            return mapper.readTree(file);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 }
