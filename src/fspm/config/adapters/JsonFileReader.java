@@ -7,15 +7,11 @@ import java.util.Iterator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import fspm.config.ModelConfig;
-import fspm.config.OrganConfig;
 import fspm.config.ParamConfig;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.ParamFactory;
 import fspm.config.params.Parameter;
-import fspm.util.exceptions.UnsupportedException;
 
 /**
  * File reader to parse JSON config files to {@link Config}.
@@ -59,17 +55,16 @@ public class JsonFileReader implements ConfigAdapter {
      * Helper function for getting root/tree node from a JSON file.
      * @param filePath Path to JSON file.
      * @return Root/tree node.
+     * @throws FileNotFoundException
      */
-    private JsonNode getTreeFromFile(String filePath) {
+    private JsonNode getTreeFromFile(String filePath) throws FileNotFoundException {
         File file = new File(filePath);
 
         ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.readTree(file);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new FileNotFoundException(e.getMessage());
         }
-        return null;
     }
 }
