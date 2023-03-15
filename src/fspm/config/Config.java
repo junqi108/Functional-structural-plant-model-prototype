@@ -1,10 +1,5 @@
 package fspm.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import fspm.domain.scenario.Scenario;
-
 /**
  * Configuration class for storing input configurations to be used in simulations.
  * 
