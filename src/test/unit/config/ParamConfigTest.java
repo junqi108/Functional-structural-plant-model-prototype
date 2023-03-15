@@ -12,9 +12,9 @@ import fspm.config.ParamConfig;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
-import fspm.util.Utility;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
+import test.util.Utility;
 
 public class ParamConfigTest {
 

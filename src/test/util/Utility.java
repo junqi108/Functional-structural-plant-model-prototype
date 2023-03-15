@@ -1,4 +1,4 @@
-package fspm.util;
+package test.util;
 
 // Unique import method for .rgg files which do not belong to any package
 import RGGUtils;

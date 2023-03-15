@@ -3,7 +3,6 @@ package test.unit.config;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.beans.Transient;
 import java.io.FileNotFoundException;
 
 import org.junit.BeforeClass;
@@ -14,7 +13,7 @@ import fspm.config.ParamConfig;
 import fspm.config.adapters.ConfigAdapter;
 import fspm.config.adapters.JsonFileReader;
 import fspm.config.params.ParamCategory;
-import fspm.util.Utility;
+import test.util.Utility;
 
 public class ConfigAdapterTest {
 

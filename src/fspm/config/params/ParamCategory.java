@@ -5,11 +5,9 @@ import java.util.Map;
 
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
-import fspm.util.Utility;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
 import fspm.util.exceptions.TypeNotFoundException;
-
 /**
  * A ParamCategory stores {@link Parameter Parameters} that belong to 
  * a common category. Multiple ParamCategory classes may be created. 
