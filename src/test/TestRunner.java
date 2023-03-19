@@ -10,11 +10,11 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import barrypitman.junitXmlFormatter.AntXmlRunListener;
-import fspm.util.*;
 import test.unit.config.ConfigAdapterTest;
 import test.unit.config.ConfigTest;
 import test.unit.config.ParamConfigTest;
 // import test.unit.config.ParamConfigTestSuite;
+import test.util.Utility;
 
 public class TestRunner {
 

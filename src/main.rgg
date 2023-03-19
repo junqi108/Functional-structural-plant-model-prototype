@@ -1,4 +1,4 @@
-import fspm.util.*;
+import test.util.*;
 import test.TestRunner;
 
 protected void init() {
