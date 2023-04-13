@@ -8,7 +8,7 @@ import java.util.Iterator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fspm.config.ParamConfig;
+import fspm.config.ParamGroup;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.ParamFactory;
 import fspm.config.params.Parameter;
@@ -17,14 +17,19 @@ import fspm.config.params.Parameter;
  * File reader to parse JSON config files to {@link Config}.
  * @author Ou-An Chuang
  */
-public class JsonFileReader implements ConfigAdapter {
-    @Override
-    public ParamConfig parseParamConfig(String filePath) throws FileNotFoundException {
-        ParamConfig config = new ParamConfig();
+public class JsonFileReader extends ConfigAdapter {
+	
+    public JsonFileReader(String path) {
+		super(path);
+	}
+
+	@Override
+    public ParamGroup parse() throws FileNotFoundException {
+        ParamGroup config = new ParamGroup(super.path);
         ParamFactory paramFactory = new ParamFactory();
 
         // Get node structure from JSON file
-        JsonNode tree = getTreeFromFile(filePath);
+        JsonNode tree = getTreeFromFile(super.path);
 
         JsonNode categoriesNode = tree.get("category");
         Iterator categoryNames = categoriesNode.fieldNames();

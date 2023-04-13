@@ -1,5 +1,13 @@
 package fspm.config;
 
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+
+import fspm.config.adapters.ConfigAdapter;
+import fspm.util.exceptions.KeyConflictException;
+import fspm.util.exceptions.KeyNotFoundException;
+
 /**
  * Configuration class for storing input configurations to be used in simulations.
  * 
@@ -12,18 +20,18 @@ public class Config {
      */
     private static Config instance = null;
 
-    private ParamConfig paramConfig = null;
+    /**
+     * We use Map instead of Set to allow us to check for key conflicts.
+     */
+    private Map<String, ParamGroup> paramGroups;
 
-    // TODO: other configurations to be determined, for example:
-    // private ModelConfig modelConfig;
-    // private OrganConfig organConfig;
 
     /**
      * Class constructor.
      * Private access as creation should be controlled to enforce singleton pattern
      */
     private Config() {
-        // scenarios = new ArrayList();
+    	paramGroups = new HashMap<String, ParamGroup>();
     }
 
     /**
@@ -39,14 +47,39 @@ public class Config {
         return instance;
     }
 
-    /**
-     * Gets the parameter configuration.
-     * @return Parameter configuration, or null if it has not been set.
-     */
-    public ParamConfig getParamConfig() {
-        return paramConfig;
+
+    public void addGroup(ConfigAdapter adapter) throws FileNotFoundException {
+    	addGroup(adapter.parse());
     }
-    public void setParamConfig(ParamConfig config) {
-        this.paramConfig = config;
+    public void addGroup(String name, ConfigAdapter adapter) throws FileNotFoundException {
+    	addGroup(name, adapter.parse());
+    }
+    
+    /**
+     * Add a new group with a unique name.
+     * @param group
+     */
+    public void addGroup(ParamGroup group) {
+        addGroup(group.getName(), group);
+    }
+    
+    private void addGroup(String name, ParamGroup group) {
+    	if (paramGroups.containsKey(name)) {
+    		throw new KeyConflictException(name, this.toString());
+    	}
+    	paramGroups.put(name, group);
+    }
+    
+    /**
+     * Gets the parameter group with the given name.
+     * @return Parameter group
+     */
+    public ParamGroup getGroup(String name) {
+    	ParamGroup group = paramGroups.get(name);
+    	
+    	if (group == null) {
+    		throw new KeyNotFoundException(name);
+    	}
+    	return group;
     }
 }

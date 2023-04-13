@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fspm.config.Config;
-import fspm.config.ParamConfig;
+import fspm.config.ParamGroup;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
@@ -18,7 +18,7 @@ import test.util.Utility;
 
 public class ParamConfigTest {
 
-    ParamConfig params;
+    ParamGroup params;
 
     /**
      * Reinitialise an unmodified initial parameter config setup.
@@ -29,7 +29,7 @@ public class ParamConfigTest {
     @Before
     public void setup() {
         // Set parameter config to a clean instance
-        Config.getInstance().setParamConfig(new ParamConfig());
+        Config.getInstance().setParamConfig(new ParamGroup());
 
         params = Config.getInstance().getParamConfig();
     }

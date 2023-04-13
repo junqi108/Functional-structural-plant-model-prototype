@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fspm.config.Config;
-import fspm.config.ParamConfig;
+import fspm.config.ParamGroup;
 import fspm.config.adapters.ConfigAdapter;
 import fspm.config.adapters.JsonFileReader;
 import fspm.config.params.ParamCategory;
@@ -28,7 +28,7 @@ public class ConfigAdapterTest {
     public void parseInvalidFile() {
         try {
             ConfigAdapter adapter = new JsonFileReader();
-            ParamConfig paramConfig = adapter.parseParamConfig(
+            ParamGroup paramConfig = adapter.parseParamConfig(
                 "unknown path");
         } catch (FileNotFoundException e) {
             Utility.println(e);
@@ -40,7 +40,7 @@ public class ConfigAdapterTest {
         Config config = Config.getInstance();
 
         ConfigAdapter adapter = new JsonFileReader();
-        ParamConfig paramConfig;
+        ParamGroup paramConfig;
 
         // Try parsing test parameter file
         try {

@@ -13,7 +13,9 @@ import fspm.util.exceptions.UnsupportedException;
  * 
  * @author Ou-An Chuang
  */
-public class ParamConfig {
+public class ParamGroup implements ParamAccessor {
+	private String name;
+	
     /**
      * List of parameter categories stored as {@link ParamCategory} instances.
      */
@@ -24,8 +26,13 @@ public class ParamConfig {
      * <p>
      * All initialisations go here.
      */
-    public ParamConfig() {
+    public ParamGroup(String name) {
+    	this.name = name;
         categories = new HashMap();
+    }
+    
+    public String getName() {
+    	return name;
     }
     
     /**

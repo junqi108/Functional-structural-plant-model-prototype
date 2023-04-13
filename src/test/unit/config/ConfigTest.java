@@ -7,7 +7,7 @@ import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 import fspm.config.Config;
-import fspm.config.ParamConfig;
+import fspm.config.ParamGroup;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
 
@@ -27,7 +27,7 @@ public class ConfigTest {
     public void setAndGetParamConfig() {
         Config config = Config.getInstance();
 
-        config.setParamConfig(new ParamConfig());
+        config.setParamConfig(new ParamGroup());
         assertNotNull(config.getParamConfig());
     }
 
@@ -38,7 +38,7 @@ public class ConfigTest {
         ParamCategory category = new ParamCategory("category");
         category.add(new BooleanParam("boolean", false));
 
-        ParamConfig paramConfig = new ParamConfig();
+        ParamGroup paramConfig = new ParamGroup();
         paramConfig.addCategory(category);
 
         Config.getInstance().setParamConfig(paramConfig);
