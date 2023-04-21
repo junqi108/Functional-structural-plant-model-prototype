@@ -36,15 +36,19 @@ public class FSPM {
 	
 	private static void accessExamples() {
 		// Full descriptive access of hierarchy
+		println(" ===== Full descriptive access ");
 		
-//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("useStaticArc"));
-//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("inputLeafN"));
-//		
-//		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
+		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("useStaticArc"));
+		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("inputLeafN"));
 		
-//		
-//		// Contextual access
-//		
+		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
+		
+		
+		
+		// Contextual access
+
+		println(" ===== Contextual access ");
+		
 		CONFIG.setGroupContext("model.input.data.name")
 			.setCategoryContext("Boolean_variables");
 		
@@ -54,25 +58,28 @@ public class FSPM {
 		CONFIG.setCategoryContext("simulation_location");
 		
 		println(CONFIG.getString("location_name"));
-//		
-//		
-//		// Access via aliasing
-//		
-//		ParamCategory booleans = CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables");
-//		
-//		println(booleans.getBool("useStaticArc"));
-//		println(booleans.getBool("inputLeafN"));
-//		
-//		ParamCategory simulationLocation = CONFIG.getGroup("model.input.data.name").getCategory("simulation_location");
-//		
-//		println(simulationLocation.getString("location_name"));
+
 		
 		
-		// Direct access
+		// Access via aliasing
+		
+		println(" ===== Aliasing ");
+		
+		ParamCategory booleans = CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables");
+		
+		println(booleans.getBool("useStaticArc"));
+		println(booleans.getBool("inputLeafN"));
+		
+		ParamCategory simulationLocation = CONFIG.getGroup("model.input.data.name").getCategory("simulation_location");
+		
+		println(simulationLocation.getString("location_name"));
+		
+		
+		
+		// Direct access; not compatible with contextual access
 		
 //		println(" ===== Direct access");
 //		println(CONFIG.getBool("useStaticArc"));
-		
 	}
 	
 
