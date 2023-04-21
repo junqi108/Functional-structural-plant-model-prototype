@@ -13,7 +13,7 @@ import fspm.util.exceptions.KeyNotFoundException;
  * 
  * @author Ou-An Chuang
  */
-public class Config {
+public class Config implements ParamAccessor {
     /**
      * Singleton instance for the global config. 
      * Set to null by default until instance is first retrieved with {@link #getInstance()}.
@@ -24,6 +24,9 @@ public class Config {
      * We use Map instead of Set to allow us to check for key conflicts.
      */
     private Map<String, ParamGroup> paramGroups;
+    
+    private ParamGroup groupContext = null;
+    private ParamCategory categoryContext = null;
 
 
     /**
@@ -31,7 +34,7 @@ public class Config {
      * Private access as creation should be controlled to enforce singleton pattern
      */
     private Config() {
-    	paramGroups = new HashMap<String, ParamGroup>();
+    	paramGroups = new HashMap<>();
     }
 
     /**
@@ -51,35 +54,101 @@ public class Config {
     public void addGroup(ConfigAdapter adapter) throws FileNotFoundException {
     	addGroup(adapter.parse());
     }
-    public void addGroup(String name, ConfigAdapter adapter) throws FileNotFoundException {
-    	addGroup(name, adapter.parse());
+    public void addGroup(String key, ConfigAdapter adapter) throws FileNotFoundException {
+    	addGroup(key, adapter.parse());
     }
     
     /**
-     * Add a new group with a unique name.
+     * Add a new group with a unique key.
      * @param group
      */
     public void addGroup(ParamGroup group) {
-        addGroup(group.getName(), group);
+        addGroup(group.getKey(), group);
     }
     
-    private void addGroup(String name, ParamGroup group) {
-    	if (paramGroups.containsKey(name)) {
-    		throw new KeyConflictException(name, this.toString());
+    private void addGroup(String key, ParamGroup group) {
+    	if (paramGroups.containsKey(key)) {
+    		throw new KeyConflictException(key, this.toString());
     	}
-    	paramGroups.put(name, group);
+    	paramGroups.put(key, group);
     }
     
     /**
-     * Gets the parameter group with the given name.
+     * Gets the parameter group with the given key.
      * @return Parameter group
      */
-    public ParamGroup getGroup(String name) {
-    	ParamGroup group = paramGroups.get(name);
+    public ParamGroup getGroup(String key) {
+    	ParamGroup group = paramGroups.get(key);
     	
     	if (group == null) {
-    		throw new KeyNotFoundException(name);
+    		throw new KeyNotFoundException(key);
     	}
     	return group;
     }
+    
+    
+    public Config setGroupContext(String key) {
+    	try {
+    		groupContext = getGroup(key);
+    	} catch (KeyNotFoundException e) {
+    		throw new KeyNotFoundException(key, "Could not set group context as group with key does not exist.");
+    	}
+    	return this;
+    }
+    
+    public Config setCategoryContext(String key) {
+    	// Check group context has been set.
+		if (groupContext.equals(null)) {
+			throw new RuntimeException("Could not set category context as group context is undefined.");
+		}
+		
+    	try {
+    		categoryContext = groupContext.getCategory(key);
+    	} catch (KeyNotFoundException e) {
+    		throw new KeyNotFoundException(key, "Could not set category context as category with key does not exist.");
+    	}
+    	return this;
+    }
+    
+    
+
+	@Override
+	public Boolean getBool(String key) {
+		return categoryContext.getBool(key);
+	}
+
+	@Override
+	public String getString(String key) {
+		return categoryContext.getString(key);
+	}
+
+	@Override
+	public Integer getInt(String key) {
+		return categoryContext.getInt(key);
+	}
+
+	@Override
+	public Double getDouble(String key) {
+		return categoryContext.getDouble(key);
+	}
+
+	@Override
+	public void set(String key, boolean value) {
+		categoryContext.set(key, value);
+	}
+
+	@Override
+	public void set(String key, String value) {
+		categoryContext.set(key, value);
+	}
+
+	@Override
+	public void set(String key, int value) {
+		categoryContext.set(key, value);
+	}
+
+	@Override
+	public void set(String key, double value) {
+		categoryContext.set(key, value);
+	}
 }

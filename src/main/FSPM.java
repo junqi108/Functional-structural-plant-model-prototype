@@ -37,23 +37,23 @@ public class FSPM {
 	private static void accessExamples() {
 		// Full descriptive access of hierarchy
 		
-		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("useStaticArc"));
-		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("inputLeafN"));
-		
-		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("useStaticArc"));
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBool("inputLeafN"));
+//		
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
 		
 //		
 //		// Contextual access
 //		
-//		CONFIG.setGroupContext("model.input.data.name")
-//			.setCategoryContext("Boolean_variables");
-//		
-//		println(CONFIG.getBool("useStaticArc"));
-//		println(CONFIG.getBool("inputLeafN"));
-//		
-//		CONFIG.setCategoryContext("simulation_location");
-//		
-//		println(CONFIG.getString("location_name"));
+		CONFIG.setGroupContext("model.input.data.name")
+			.setCategoryContext("Boolean_variables");
+		
+		println(CONFIG.getBool("useStaticArc"));
+		println(CONFIG.getBool("inputLeafN"));
+		
+		CONFIG.setCategoryContext("simulation_location");
+		
+		println(CONFIG.getString("location_name"));
 //		
 //		
 //		// Access via aliasing
@@ -70,7 +70,7 @@ public class FSPM {
 		
 		// Direct access
 		
-		println(" ===== Direct access");
+//		println(" ===== Direct access");
 //		println(CONFIG.getBool("useStaticArc"));
 		
 	}

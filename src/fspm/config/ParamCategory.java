@@ -69,7 +69,6 @@ public class ParamCategory implements ParamAccessor {
 	 * @param param {@link Parameter} to replace or add to the category.
 	 */
 	private void set(String key, Parameter param) {
-		// TODO: better explanation or structure of why checks may or may not be needed (due to previous checks on higher classes)
 		params.put(key, param);
 	}
 
@@ -143,7 +142,7 @@ public class ParamCategory implements ParamAccessor {
 	 * @throws TypeNotFoundException    If the provided parameter is not an
 	 *                                  instance of the {@link Parameter} type.
 	 */
-	private Parameter getIfInstanceOf(String key, Class paramTypeClass) {
+	private <T extends Parameter> Parameter getIfInstanceOf(String key, Class<T> paramTypeClass) {
 		Parameter param = get(key);
 
 		if (paramTypeClass.isInstance(param)) {
@@ -167,7 +166,8 @@ public class ParamCategory implements ParamAccessor {
 		if (param != null) {
 			return param;
 		}
-		throw new KeyNotFoundException(key, "Could not find parameter");
+		throw new KeyNotFoundException(key, 
+				String.format("Could not find parameter '%s' in category '%s'", key, getKey()));
 	}
 
 

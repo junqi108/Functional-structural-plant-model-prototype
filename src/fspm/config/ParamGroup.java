@@ -14,7 +14,7 @@ import fspm.util.exceptions.UnsupportedException;
  * @author Ou-An Chuang
  */
 public class ParamGroup {
-	private String name;
+	private String key;
 	
     /**
      * List of parameter categories stored as {@link ParamCategory} instances.
@@ -26,13 +26,13 @@ public class ParamGroup {
      * <p>
      * All initialisations go here.
      */
-    public ParamGroup(String name) {
-    	this.name = name;
+    public ParamGroup(String key) {
+    	this.key = key;
         categories = new HashMap<>();
     }
     
-    public String getName() {
-    	return name;
+    public String getKey() {
+    	return key;
     }
     
     /**
