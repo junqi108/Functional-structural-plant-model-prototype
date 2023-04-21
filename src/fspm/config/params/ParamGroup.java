@@ -1,9 +1,8 @@
-package fspm.config;
+package fspm.config.params;
 
 import java.util.Map;
 import java.util.HashMap;
 
-import fspm.config.params.*;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
 import fspm.util.exceptions.UnsupportedException;

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fspm.config.adapters.ConfigAdapter;
+import fspm.config.params.ParamAccessor;
+import fspm.config.params.ParamCategory;
+import fspm.config.params.ParamGroup;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
 
@@ -87,6 +90,10 @@ public class Config implements ParamAccessor {
     }
     
     
+    
+    
+    
+    
     public Config setGroupContext(String key) {
     	try {
     		groupContext = getGroup(key);
@@ -97,10 +104,7 @@ public class Config implements ParamAccessor {
     }
     
     public Config setCategoryContext(String key) {
-    	// Check group context has been set.
-		if (groupContext.equals(null)) {
-			throw new RuntimeException("Could not set category context as group context is undefined.");
-		}
+    	checkGroupContextExists();
 		
     	try {
     		categoryContext = groupContext.getCategory(key);
@@ -111,44 +115,76 @@ public class Config implements ParamAccessor {
     }
     
     
+    
+    
+    
+    private void checkGroupContextExists() {
+    	if (groupContext == null) {
+    		throw new NullPointerException("Please set a group context to access parameter categories.");
+    	}
+    }
+    private void checkCategoryContextExists() {
+    	if (categoryContext == null) {
+    		throw new NullPointerException("Please set a category context to access parameters.");
+    	}
+    }
+    
+    
+    
+    
+    private void checkContextsExists() {
+    	checkGroupContextExists();
+    	checkCategoryContextExists();
+    }
+    
 
 	@Override
 	public Boolean getBool(String key) {
+		checkContextsExists();
 		return categoryContext.getBool(key);
 	}
 
 	@Override
 	public String getString(String key) {
+		checkContextsExists();
 		return categoryContext.getString(key);
 	}
 
 	@Override
 	public Integer getInt(String key) {
+		checkContextsExists();
 		return categoryContext.getInt(key);
 	}
 
 	@Override
 	public Double getDouble(String key) {
+		checkContextsExists();
 		return categoryContext.getDouble(key);
 	}
 
+	
+	
 	@Override
 	public void set(String key, boolean value) {
+		checkContextsExists();
 		categoryContext.set(key, value);
 	}
 
 	@Override
 	public void set(String key, String value) {
+		checkContextsExists();
 		categoryContext.set(key, value);
 	}
 
 	@Override
 	public void set(String key, int value) {
+		checkContextsExists();
 		categoryContext.set(key, value);
 	}
 
 	@Override
 	public void set(String key, double value) {
+		checkContextsExists();
 		categoryContext.set(key, value);
 	}
 }

@@ -1,4 +1,4 @@
-package fspm.config;
+package fspm.config.params;
 
 /**
  * Blueprint for all classes that handles getting and setting of parameters.

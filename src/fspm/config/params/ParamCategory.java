@@ -1,9 +1,8 @@
-package fspm.config;
+package fspm.config.params;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import fspm.config.params.Parameter;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.DoubleParam;
 import fspm.config.params.type.IntegerParam;

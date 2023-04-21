@@ -9,10 +9,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fspm.config.Config;
-import fspm.config.ParamCategory;
-import fspm.config.ParamGroup;
 import fspm.config.adapters.ConfigAdapter;
 import fspm.config.adapters.JsonFileReader;
+import fspm.config.params.ParamCategory;
+import fspm.config.params.ParamGroup;
 import test.util.Utility;
 
 public class ConfigAdapterTest {

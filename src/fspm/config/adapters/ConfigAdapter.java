@@ -3,7 +3,7 @@ package fspm.config.adapters;
 import java.io.FileNotFoundException;
 
 import fspm.config.Config;
-import fspm.config.ParamGroup;
+import fspm.config.params.ParamGroup;
 
 /**
  * Defines the required methods adapters must implement to be 

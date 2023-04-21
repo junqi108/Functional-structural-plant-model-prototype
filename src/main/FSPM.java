@@ -3,9 +3,9 @@ package main;
 import java.io.FileNotFoundException;
 
 import fspm.config.Config;
-import fspm.config.ParamCategory;
-import fspm.config.ParamGroup;
 import fspm.config.adapters.JsonFileReader;
+import fspm.config.params.ParamCategory;
+import fspm.config.params.ParamGroup;
 
 public class FSPM {
 	static final Config CONFIG = Config.getInstance();
