@@ -13,13 +13,13 @@ import fspm.util.exceptions.UnsupportedException;
  * 
  * @author Ou-An Chuang
  */
-public class ParamGroup implements ParamAccessor {
+public class ParamGroup {
 	private String name;
 	
     /**
      * List of parameter categories stored as {@link ParamCategory} instances.
      */
-    private Map categories;
+    private Map<String, ParamCategory> categories;
 
     /**
      * Class constructor.
@@ -28,7 +28,7 @@ public class ParamGroup implements ParamAccessor {
      */
     public ParamGroup(String name) {
     	this.name = name;
-        categories = new HashMap();
+        categories = new HashMap<>();
     }
     
     public String getName() {
@@ -60,7 +60,7 @@ public class ParamGroup implements ParamAccessor {
      *                                 could not be found.
      */
     public ParamCategory getCategory(String key) {
-        ParamCategory category = (ParamCategory) categories.get(key);
+        ParamCategory category = categories.get(key);
 
         if (category != null) {
             return category;
@@ -69,61 +69,61 @@ public class ParamGroup implements ParamAccessor {
     }
 
 
-    /**
-     * Gets the first occurrence of the parameter with the given key.
-     * Shorthand method of getting parameters without needing to get through category.
-     * 
-     * @param key The parameter key.
-     * @return Boolean parameter.
-     */
-    public Boolean getBool(String key) {
-        ParamCategory category = getCategoryWithParam(key);
-        return category.getBool(key);
-    }
-
-    /**
-     * Gets the first occurrence of the parameter with the given key.
-     * Shorthand method of getting parameters without needing to get through category.
-     * 
-     * @param key The parameter key.
-     * @return Integer parameter.
-     */
-    public Integer getInt(String key) {
-        ParamCategory category = getCategoryWithParam(key);
-        return category.getInt(key);
-    }
-
-
-
-    public void set(String key, boolean value) {
-        ParamCategory category = getCategoryWithParam(key);
-        category.set(key, value);
-    }
-
-    public void set(String key, int value) {
-        ParamCategory category = getCategoryWithParam(key);
-        category.set(key, value);
-    }
-
-
-
-    /**
-     * Helper method to find and get the first category 
-     * containing the parameter of a given key.
-     * 
-     * @param paramKey The parameter key.
-     * @return {@link ParamCategory} containing the parameter to be found.
-     */
-    private ParamCategory getCategoryWithParam(String paramKey) {
-        for (ParamCategory category : categories.values()) {
-            try {
-                Parameter param = category.get(paramKey);
-                return category;
-            } catch (KeyNotFoundException e) {
-                // Not found in this category, continue and check next category.
-            }
-        }
-        // Not found in any category.
-        throw new KeyNotFoundException(paramKey, "Could not find this parameter in any category");
-    }
+//    /**
+//     * Gets the first occurrence of the parameter with the given key.
+//     * Shorthand method of getting parameters without needing to get through category.
+//     * 
+//     * @param key The parameter key.
+//     * @return Boolean parameter.
+//     */
+//    public Boolean getBool(String key) {
+//        ParamCategory category = getCategoryWithParam(key);
+//        return category.getBool(key);
+//    }
+//
+//    /**
+//     * Gets the first occurrence of the parameter with the given key.
+//     * Shorthand method of getting parameters without needing to get through category.
+//     * 
+//     * @param key The parameter key.
+//     * @return Integer parameter.
+//     */
+//    public Integer getInt(String key) {
+//        ParamCategory category = getCategoryWithParam(key);
+//        return category.getInt(key);
+//    }
+//
+//
+//
+//    public void set(String key, boolean value) {
+//        ParamCategory category = getCategoryWithParam(key);
+//        category.set(key, value);
+//    }
+//
+//    public void set(String key, int value) {
+//        ParamCategory category = getCategoryWithParam(key);
+//        category.set(key, value);
+//    }
+//
+//
+//
+//    /**
+//     * Helper method to find and get the first category 
+//     * containing the parameter of a given key.
+//     * 
+//     * @param paramKey The parameter key.
+//     * @return {@link ParamCategory} containing the parameter to be found.
+//     */
+//    private ParamCategory getCategoryWithParam(String paramKey) {
+//        for (ParamCategory category : categories.values()) {
+//            try {
+//                Parameter param = category.get(paramKey);
+//                return category;
+//            } catch (KeyNotFoundException e) {
+//                // Not found in this category, continue and check next category.
+//            }
+//        }
+//        // Not found in any category.
+//        throw new KeyNotFoundException(paramKey, "Could not find this parameter in any category");
+//    }
 }

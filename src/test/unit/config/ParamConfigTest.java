@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fspm.config.Config;
+import fspm.config.ParamCategory;
 import fspm.config.ParamGroup;
-import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
 import fspm.util.exceptions.KeyConflictException;

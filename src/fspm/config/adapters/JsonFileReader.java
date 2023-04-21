@@ -8,8 +8,8 @@ import java.util.Iterator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fspm.config.ParamCategory;
 import fspm.config.ParamGroup;
-import fspm.config.params.ParamCategory;
 import fspm.config.params.ParamFactory;
 import fspm.config.params.Parameter;
 

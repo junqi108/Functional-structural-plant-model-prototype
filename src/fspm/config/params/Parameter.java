@@ -4,7 +4,8 @@ package fspm.config.params;
  * Parameter represents variables that can be stored using Java data types
  * or other user-defined types.
  * <p>
- * The value field should be implemented by extending members.
+ * The value field should be implemented by extending members, as values require
+ * specific primitive type declarations.
  * 
  * @author Ou-An Chuang
  */

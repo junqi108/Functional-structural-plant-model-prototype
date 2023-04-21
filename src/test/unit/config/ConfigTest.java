@@ -7,8 +7,8 @@ import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 import fspm.config.Config;
+import fspm.config.ParamCategory;
 import fspm.config.ParamGroup;
-import fspm.config.params.ParamCategory;
 import fspm.config.params.type.BooleanParam;
 
 public class ConfigTest {

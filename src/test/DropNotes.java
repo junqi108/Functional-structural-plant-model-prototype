@@ -1,7 +1,7 @@
 package test;
 
 import fspm.config.Config;
-import fspm.config.params.ParamCategory;
+import fspm.config.ParamCategory;
 
 public class DropNotes {
   /**
