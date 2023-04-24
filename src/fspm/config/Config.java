@@ -139,9 +139,9 @@ public class Config implements ParamAccessor {
     
 
 	@Override
-	public Boolean getBool(String key) {
+	public Boolean getBoolean(String key) {
 		checkContextsExists();
-		return categoryContext.getBool(key);
+		return categoryContext.getBoolean(key);
 	}
 
 	@Override

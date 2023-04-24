@@ -45,6 +45,6 @@ public class ConfigTest {
 
         paramConfig = Config.getInstance().getParamConfig();
         
-        assertEquals(false, paramConfig.getBool("boolean"));
+        assertEquals(false, paramConfig.getBoolean("boolean"));
     }
 }

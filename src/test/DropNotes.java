@@ -15,9 +15,9 @@ public class DropNotes {
       .getParamConfig()
       .getCategory("myCategory");
 
-    CONFIG.getBool("myBoolean1");
-    CONFIG.getBool("myBoolean2");
-    CONFIG.getBool("myBoolean3");
+    CONFIG.getBoolean("myBoolean1");
+    CONFIG.getBoolean("myBoolean2");
+    CONFIG.getBoolean("myBoolean3");
 
     CONFIG = Config.getInstance()
       .getParamConfig()
@@ -34,7 +34,7 @@ public class DropNotes {
       .getParamConfig()
       .getCategory("myCategory");
 
-    CONFIG.getBool("myBoolean1");
+    CONFIG.getBoolean("myBoolean1");
 
 
 
@@ -50,6 +50,6 @@ public class DropNotes {
       .getParamConfig()
       .getCategory("anotherCategory");
 
-    CONFIG.getBool("something");
+    CONFIG.getBoolean("something");
   }
 }

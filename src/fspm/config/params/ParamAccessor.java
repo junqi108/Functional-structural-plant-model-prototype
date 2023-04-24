@@ -4,7 +4,7 @@ package fspm.config.params;
  * Blueprint for all classes that handles getting and setting of parameters.
  */
 public interface ParamAccessor {
-	Boolean getBool(String key);
+	Boolean getBoolean(String key);
 	String getString(String key);
 	Integer getInt(String key);
 	Double getDouble(String key);

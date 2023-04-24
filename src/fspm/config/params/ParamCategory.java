@@ -106,7 +106,7 @@ public class ParamCategory implements ParamAccessor {
 
 
 	@Override
-	public Boolean getBool(String key) {
+	public Boolean getBoolean(String key) {
 		return ((BooleanParam) getIfInstanceOf(key, BooleanParam.class)).getValue();
 	}
 

@@ -86,7 +86,7 @@ public class ParamConfigTest {
         ParamCategory booleans = new ParamCategory("booleans");
         
         try {
-            booleans.getBool("Non-existent boolean");
+            booleans.getBoolean("Non-existent boolean");
             fail("Expected KeyNotFoundException");
         } catch (KeyNotFoundException e) {
             Utility.println(e);
@@ -98,7 +98,7 @@ public class ParamConfigTest {
         ParamCategory booleans = new ParamCategory("booleans");
         booleans.add(new BooleanParam("bool1", false));
 
-        assertEquals(false, booleans.getBool("bool1"));
+        assertEquals(false, booleans.getBoolean("bool1"));
     }
 
     @Test
@@ -117,7 +117,7 @@ public class ParamConfigTest {
         booleans.add(new BooleanParam("bool1", false));
 
         booleans.set("bool1", true);
-        assertEquals(true, booleans.getBool("bool1"));
+        assertEquals(true, booleans.getBoolean("bool1"));
     }
 
     @Test

@@ -53,6 +53,6 @@ public class ConfigAdapterTest {
         config.setParamConfig(paramConfig);
         ParamCategory category = config.getParamConfig().getCategory("booleans");
 
-        assertEquals(false, category.getBool("bool1"));
+        assertEquals(false, category.getBoolean("bool1"));
     }
 }
