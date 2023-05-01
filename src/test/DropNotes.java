@@ -23,7 +23,7 @@ public class DropNotes {
       .getParamConfig()
       .getCategory("otherCategory");
 
-    CONFIG.getInt("something else");
+    CONFIG.getInteger("something else");
   }
 
   /**
@@ -42,7 +42,7 @@ public class DropNotes {
       .getParamConfig()
       .getCategory("otherCategory");
 
-    CONFIG.getInt("something else");
+    CONFIG.getInteger("something else");
 
 
     

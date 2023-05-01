@@ -116,7 +116,7 @@ public class ParamCategory implements ParamAccessor {
 	}
 
 	@Override
-	public Integer getInt(String key) {
+	public Integer getInteger(String key) {
 		return ((IntegerParam) getIfInstanceOf(key, IntegerParam.class)).getValue();
 	}
 

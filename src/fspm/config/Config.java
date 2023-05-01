@@ -151,9 +151,9 @@ public class Config implements ParamAccessor {
 	}
 
 	@Override
-	public Integer getInt(String key) {
+	public Integer getInteger(String key) {
 		checkContextsExists();
-		return categoryContext.getInt(key);
+		return categoryContext.getInteger(key);
 	}
 
 	@Override

@@ -6,7 +6,7 @@ package fspm.config.params;
 public interface ParamAccessor {
 	Boolean getBoolean(String key);
 	String getString(String key);
-	Integer getInt(String key);
+	Integer getInteger(String key);
 	Double getDouble(String key);
 
 	void set(String key, boolean value);

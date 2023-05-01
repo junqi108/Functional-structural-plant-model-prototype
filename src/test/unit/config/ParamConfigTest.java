@@ -106,7 +106,7 @@ public class ParamConfigTest {
         ParamCategory integers = new ParamCategory("integers");
         integers.add(new IntegerParam("int1", 1));
 
-        assertEquals(1, integers.getInt("int1"));
+        assertEquals(1, integers.getInteger("int1"));
     }
 
     // ===== Set Parameter
@@ -125,14 +125,14 @@ public class ParamConfigTest {
         ParamCategory integers = new ParamCategory("integers");
         integers.add(new IntegerParam("int1", 1));
 
-        assertEquals(1, integers.getInt("int1"));
+        assertEquals(1, integers.getInteger("int1"));
 
-        while (integers.getInt("int1") < 5) {
-            int calc = integers.getInt("int1") + 1;
+        while (integers.getInteger("int1") < 5) {
+            int calc = integers.getInteger("int1") + 1;
             integers.set("int1", calc);
         }
 
-        assertEquals(5, integers.getInt("int1"));
+        assertEquals(5, integers.getInteger("int1"));
     }
 
     // TODO: add more tests and check code coverage
