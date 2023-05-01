@@ -17,6 +17,7 @@ env/*
 
 # General
 .vscode/settings.json
+.DS_Store
 *.png
 **/*.db
 **/.env
@@ -31,3 +32,8 @@ templates
 **/*.sif
 **/slurm-*.out
 **/core.*
+/bin/
+
+# Eclipse
+.project
+.classpath

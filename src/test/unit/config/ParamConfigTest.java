@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fspm.config.Config;
-import fspm.config.ParamConfig;
 import fspm.config.params.ParamCategory;
+import fspm.config.params.ParamGroup;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.IntegerParam;
 import fspm.util.exceptions.KeyConflictException;
@@ -18,7 +18,7 @@ import test.util.Utility;
 
 public class ParamConfigTest {
 
-    ParamConfig params;
+    ParamGroup params;
 
     /**
      * Reinitialise an unmodified initial parameter config setup.
@@ -29,7 +29,7 @@ public class ParamConfigTest {
     @Before
     public void setup() {
         // Set parameter config to a clean instance
-        Config.getInstance().setParamConfig(new ParamConfig());
+        Config.getInstance().setParamConfig(new ParamGroup());
 
         params = Config.getInstance().getParamConfig();
     }
@@ -86,7 +86,7 @@ public class ParamConfigTest {
         ParamCategory booleans = new ParamCategory("booleans");
         
         try {
-            booleans.getBool("Non-existent boolean");
+            booleans.getBoolean("Non-existent boolean");
             fail("Expected KeyNotFoundException");
         } catch (KeyNotFoundException e) {
             Utility.println(e);
@@ -98,7 +98,7 @@ public class ParamConfigTest {
         ParamCategory booleans = new ParamCategory("booleans");
         booleans.add(new BooleanParam("bool1", false));
 
-        assertEquals(false, booleans.getBool("bool1"));
+        assertEquals(false, booleans.getBoolean("bool1"));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class ParamConfigTest {
         ParamCategory integers = new ParamCategory("integers");
         integers.add(new IntegerParam("int1", 1));
 
-        assertEquals(1, integers.getInt("int1"));
+        assertEquals(1, integers.getInteger("int1"));
     }
 
     // ===== Set Parameter
@@ -117,7 +117,7 @@ public class ParamConfigTest {
         booleans.add(new BooleanParam("bool1", false));
 
         booleans.set("bool1", true);
-        assertEquals(true, booleans.getBool("bool1"));
+        assertEquals(true, booleans.getBoolean("bool1"));
     }
 
     @Test
@@ -125,14 +125,14 @@ public class ParamConfigTest {
         ParamCategory integers = new ParamCategory("integers");
         integers.add(new IntegerParam("int1", 1));
 
-        assertEquals(1, integers.getInt("int1"));
+        assertEquals(1, integers.getInteger("int1"));
 
-        while (integers.getInt("int1") < 5) {
-            int calc = integers.getInt("int1") + 1;
+        while (integers.getInteger("int1") < 5) {
+            int calc = integers.getInteger("int1") + 1;
             integers.set("int1", calc);
         }
 
-        assertEquals(5, integers.getInt("int1"));
+        assertEquals(5, integers.getInteger("int1"));
     }
 
     // TODO: add more tests and check code coverage

@@ -12,6 +12,20 @@ import fspm.util.exceptions.UnsupportedException;
  * @author Ou-An Chuang
  */
 public class ParamFactory {
+
+    /**
+     * The string representing a null value of a JsonNode.
+     */
+    private String nullString = "NA";
+
+    public String getNullString() {
+        return nullString;
+    }
+
+    public void setNullString(String nullString) {
+        this.nullString = nullString;
+    }
+
     /**
      * Returns a concrete {@link Parameter Parameter} instance depending on
      * the data type of the JsonNode passed in.
@@ -32,6 +46,8 @@ public class ParamFactory {
             return new BooleanParam(name, node.booleanValue());
         } else if (node.isTextual()) {
             return new StringParam(name, node.textValue());
+        } else if (node.isNull()) {
+            return new StringParam(name, nullString);
         }
 
         throw new UnsupportedException(name + " uses an unsupported type.");

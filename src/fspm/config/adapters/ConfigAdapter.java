@@ -3,7 +3,7 @@ package fspm.config.adapters;
 import java.io.FileNotFoundException;
 
 import fspm.config.Config;
-import fspm.config.ParamConfig;
+import fspm.config.params.ParamGroup;
 
 /**
  * Defines the required methods adapters must implement to be 
@@ -11,14 +11,19 @@ import fspm.config.ParamConfig;
  * 
  * @author  Ou-An Chuang
  */
-public interface ConfigAdapter {
-    /**
-     * Parses and returns a {@link ParamConfig} with the parameter contents of the provided file.
+public abstract class ConfigAdapter {
+	protected final String path;
+	
+	/**
      * @param filePath File path to parameter configuration.
-     * @return Parsed {@link ParamConfig} for {@link Config}.
+	 */
+	protected ConfigAdapter(String path) {
+		this.path = path;
+	}
+	
+    /**
+     * Parses and returns a {@link ParamGroup} with the parameter contents of the provided file.
+     * @return Parsed {@link ParamGroup} for {@link Config}.
      */
-    ParamConfig parseParamConfig(String filePath) throws FileNotFoundException;
-
-    // void setModelConfig(String filePath);
-    // void setOrganConfig(String filePath);
+    public abstract ParamGroup parse() throws FileNotFoundException;
 }
