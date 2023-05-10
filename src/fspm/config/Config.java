@@ -28,8 +28,8 @@ public class Config implements ParamAccessor {
      */
     private Map<String, ParamGroup> paramGroups;
     
-    private ParamGroup groupContext = null;
-    private ParamCategory categoryContext = null;
+    private ParamGroup groupContext;
+    private ParamCategory categoryContext;
 
 
     /**
@@ -37,7 +37,7 @@ public class Config implements ParamAccessor {
      * Private access as creation should be controlled to enforce singleton pattern
      */
     private Config() {
-    	paramGroups = new HashMap<>();
+    	reset();
     }
 
     /**
@@ -48,9 +48,15 @@ public class Config implements ParamAccessor {
      */
     public static Config getInstance() {
         if (instance == null) {
-            instance = new Config();
+        	instance = new Config();
         }
         return instance;
+    }
+    
+    public void reset() {
+    	paramGroups = new HashMap<>();
+    	groupContext = null;
+    	categoryContext = null;
     }
 
 
@@ -89,7 +95,20 @@ public class Config implements ParamAccessor {
     	return group;
     }
     
-    
+    /**
+     * Remove the parameter group with the given key.
+     * @param key
+     * @return True if group exists; false otherwise.
+     */
+    public boolean removeGroup(String key) {
+		ParamGroup group = paramGroups.get(key);
+    	
+    	if (group == null) {
+    		return false;
+    	}
+    	paramGroups.remove(key);
+    	return true;
+    }
     
     
     

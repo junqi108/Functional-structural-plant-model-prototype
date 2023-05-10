@@ -6,6 +6,7 @@ import fspm.config.Config;
 import fspm.config.adapters.JsonFileReader;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.ParamGroup;
+import fspm.config.params.type.*;
 
 public class FSPM {
 	static final Config CONFIG = Config.getInstance();
@@ -13,6 +14,8 @@ public class FSPM {
 	public static void main(String[] args) {
 		
 		addGroups();
+		
+		test_getIntAsDouble();
 		
 		accessExamples();
 	}
@@ -22,7 +25,13 @@ public class FSPM {
 	
 	private static void addGroups() {
 		// Manually add new group
-		CONFIG.addGroup(new ParamGroup("group"));
+		ParamCategory category = new ParamCategory("category");
+		category.add(new IntegerParam("doubleParam", 1));
+		
+		ParamGroup group = new ParamGroup("group");
+		group.addCategory(category);
+		
+		CONFIG.addGroup(group);
 		
 		// Read in JSON file and add as new group
 		try {
@@ -36,12 +45,12 @@ public class FSPM {
 	
 	private static void accessExamples() {
 		// Full descriptive access of hierarchy
-		println(" ===== Full descriptive access ");
-		
-		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("useStaticArc"));
-		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("inputLeafN"));
-		
-		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
+//		println(" ===== Full descriptive access ");
+//		
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("useStaticArc"));
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("inputLeafN"));
+//		
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
 		
 		
 		
@@ -63,16 +72,16 @@ public class FSPM {
 		
 		// Access via aliasing
 		
-		println(" ===== Aliasing ");
-		
-		ParamCategory booleans = CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables");
-		
-		println(booleans.getBoolean("useStaticArc"));
-		println(booleans.getBoolean("inputLeafN"));
-		
-		ParamCategory simulationLocation = CONFIG.getGroup("model.input.data.name").getCategory("simulation_location");
-		
-		println(simulationLocation.getString("location_name"));
+//		println(" ===== Aliasing ");
+//		
+//		ParamCategory booleans = CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables");
+//		
+//		println(booleans.getBoolean("useStaticArc"));
+//		println(booleans.getBoolean("inputLeafN"));
+//		
+//		ParamCategory simulationLocation = CONFIG.getGroup("model.input.data.name").getCategory("simulation_location");
+//		
+//		println(simulationLocation.getString("location_name"));
 		
 		
 		
@@ -80,6 +89,12 @@ public class FSPM {
 		
 //		println(" ===== Direct access");
 //		println(CONFIG.getBoolean("useStaticArc"));
+	}
+	
+	private static void test_getIntAsDouble() {
+		CONFIG.setGroupContext("group");
+		CONFIG.setCategoryContext("category");
+		println(CONFIG.getDouble("doubleParam"));
 	}
 	
 
