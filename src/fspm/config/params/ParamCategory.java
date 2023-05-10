@@ -123,12 +123,18 @@ public class ParamCategory implements ParamAccessor {
 	@Override
 	public Double getDouble(String key) {
 		
-		// Safeguard case where 1.0 (double) is formatted as 1 (integer)
 		try {
 			return ((DoubleParam) getIfInstanceOf(key, DoubleParam.class)).getValue();
 		} catch (TypeNotFoundException e) { }
 		
-		return Double.valueOf(((IntegerParam) getIfInstanceOf(key, IntegerParam.class)).getValue());
+		// Safeguard case where 1.0 (double) is formatted as 1 (integer)
+		try {
+			return Double.valueOf(((IntegerParam) getIfInstanceOf(key, IntegerParam.class)).getValue());
+		} catch (TypeNotFoundException e) { }
+		
+		// Safeguard case where 1.0 (float) is formatted as "1.0f" (float string)
+		String value = ((StringParam) getIfInstanceOf(key, StringParam.class)).getValue();
+		return Double.valueOf(value); // Convert "1.0f" to 1.0
 	}
 
 	

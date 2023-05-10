@@ -16,6 +16,7 @@ public class FSPM {
 		addGroups();
 		
 		test_getIntAsDouble();
+		test_getFloatAsDouble();
 		
 		accessExamples();
 	}
@@ -27,6 +28,7 @@ public class FSPM {
 		// Manually add new group
 		ParamCategory category = new ParamCategory("category");
 		category.add(new IntegerParam("doubleParam", 1));
+		category.add(new StringParam("floatParam", "1.0f"));
 		
 		ParamGroup group = new ParamGroup("group");
 		group.addCategory(category);
@@ -94,7 +96,15 @@ public class FSPM {
 	private static void test_getIntAsDouble() {
 		CONFIG.setGroupContext("group");
 		CONFIG.setCategoryContext("category");
+		
 		println(CONFIG.getDouble("doubleParam"));
+	}
+	
+	private static void test_getFloatAsDouble() {
+		CONFIG.setGroupContext("group");
+		CONFIG.setCategoryContext("category");
+		
+		println(CONFIG.getDouble("floatParam"));
 	}
 	
 
