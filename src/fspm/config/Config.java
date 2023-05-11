@@ -206,4 +206,10 @@ public class Config implements ParamAccessor {
 		checkContextsExists();
 		categoryContext.set(key, value);
 	}
+	
+	@Override
+	public boolean isNull(String key) {
+		checkContextsExists();
+		return categoryContext.isNull(key);
+	}
 }

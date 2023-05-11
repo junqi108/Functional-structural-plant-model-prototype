@@ -15,10 +15,10 @@ public class FSPM {
 		
 		addGroups();
 		
-		test_getIntAsDouble();
-		test_getFloatAsDouble();
+//		tests();
+		tests_default();
 		
-		accessExamples();
+//		accessExamples();
 	}
 	
 	
@@ -29,6 +29,7 @@ public class FSPM {
 		ParamCategory category = new ParamCategory("category");
 		category.add(new IntegerParam("doubleParam", 1));
 		category.add(new StringParam("floatParam", "1.0f"));
+		category.add(new NullParam("nullParam"));
 		
 		ParamGroup group = new ParamGroup("group");
 		group.addCategory(category);
@@ -39,6 +40,8 @@ public class FSPM {
 		try {
 			CONFIG.addGroup("model.input.data.name", 
 					new JsonFileReader("./inputs/parameters/model.input.data.name.json"));
+			CONFIG.addGroup("model.input.data.default", 
+					new JsonFileReader("./inputs/parameters/model.input.data.default.json"));
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -48,6 +51,8 @@ public class FSPM {
 	private static void accessExamples() {
 		// Full descriptive access of hierarchy
 //		println(" ===== Full descriptive access ");
+		
+		println(CONFIG.getGroup("model.input.data.name"));
 //		
 //		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("useStaticArc"));
 //		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("inputLeafN"));
@@ -93,18 +98,41 @@ public class FSPM {
 //		println(CONFIG.getBoolean("useStaticArc"));
 	}
 	
-	private static void test_getIntAsDouble() {
+	private static void tests() {
 		CONFIG.setGroupContext("group");
 		CONFIG.setCategoryContext("category");
 		
+//		test_getIntAsDouble();
+//		test_getFloatAsDouble();
+		test_getNullAsTypes();
+	}
+	
+	private static void tests_default() {
+		println(CONFIG.getGroup("model.input.data.default"));
+		
+		CONFIG.setGroupContext("model.input.data.default");
+		CONFIG.setCategoryContext("initial_condition_biomass");
+		
+		Double d = CONFIG.getDouble("BIOMASS_LEAF");
+
+		println(CONFIG.getDouble("BIOMASS_LEAF") == null);
+	}
+	
+	private static void test_getIntAsDouble() {
 		println(CONFIG.getDouble("doubleParam"));
 	}
 	
 	private static void test_getFloatAsDouble() {
-		CONFIG.setGroupContext("group");
-		CONFIG.setCategoryContext("category");
-		
 		println(CONFIG.getDouble("floatParam"));
+	}
+	
+	private static void test_getNullAsTypes() {
+		println(CONFIG.getDouble("nullParam") == null);
+		println(CONFIG.getString("nullParam") == null);
+		println(CONFIG.getInteger("nullParam") == null);
+		println(CONFIG.getDouble("nullParam") == null);
+		
+		println(CONFIG.isNull("nullParam"));
 	}
 	
 

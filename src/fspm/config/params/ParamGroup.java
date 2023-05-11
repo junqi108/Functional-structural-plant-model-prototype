@@ -1,11 +1,12 @@
 package fspm.config.params;
 
+import java.lang.StringBuilder;
+
 import java.util.Map;
 import java.util.HashMap;
 
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
-import fspm.util.exceptions.UnsupportedException;
 
 /**
  * Parameter configuration class for storing parameter categories.
@@ -65,5 +66,14 @@ public class ParamGroup {
             return category;
         }
         throw new KeyNotFoundException(key, "Could not find category");
+    }
+    
+    @Override
+    public String toString() {
+    	StringBuilder string = new StringBuilder();
+    	for (ParamCategory category : categories.values()) {
+    		string.append(category);
+    	}
+    	return string.toString();
     }
 }

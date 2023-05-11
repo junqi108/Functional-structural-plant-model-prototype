@@ -13,4 +13,6 @@ public interface ParamAccessor {
 	void set(String key, String value);
 	void set(String key, int value);
 	void set(String key, double value);
+	
+	boolean isNull(String key);
 }
