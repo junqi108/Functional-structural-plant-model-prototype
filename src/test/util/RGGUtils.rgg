@@ -1,0 +1,8 @@
+// Temporary class to allow printing regardless of file type (rgg, java or xl)
+
+/**
+ * GroIMP specific implementation for printing out to console
+ */
+public static void print(String s) {
+    println(s);
+}

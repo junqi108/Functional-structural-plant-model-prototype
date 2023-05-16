@@ -1,0 +1,143 @@
+<simulation_instance oid="1.2.3.4" type="DHS-Apple_Junqi" name="DHS Apple Junqi">
+	<request oid="1.2.3.4.8888.1"></request>
+	<scenario>
+		<summary>
+			Paragraph 1 Line 1. Paragraph 1 Line 2. Paragraph 2 Line 1. Paragraph 2 Line 2.
+		</summary>
+		<pipeline parser="rev_A" name="simulation topology_for_GroIMP" parser_oid="1.2.3.4.9999.9999.1" pipeline_oid="1.2.3.4.9999.8888.1" request_oid="1.2.3.4.8888.1">
+			<resource name="simulation-cluster"></resource>
+			<resource name="simulation-cache"></resource>
+			<block name="Zhu et al 2022, FSPM Apple model (GroIMP)" type="sequential" >
+				<doc>
+					Runs just the FSPM GroIMP apple model in a single simulation.
+					The pipeline stages are examples.
+				</doc>
+				<task order="1" name="preparation steps: FSPM Apple model" oid="1.2.3.4.8888.1.1"> </task>
+				<task order="2" name="simulation: FSPM Apple model (GroIMP)" oid="1.2.3.4.8888.1.2"> </task>
+				<task order="3" name="post simulation: FSPM Apple model" oid="1.2.3.4.3.8888.1.3"> </task>
+			</block>
+		</pipeline>
+		<models>
+			<model oid="1.2.3.4" type="FSPM-Apple-2022" name="FSPM Apple 2022" code="apple_2022">
+				<parameterset class_oid="1.2.3.9999.1.8.1.1.1" class_name="model.input.data" type="FSPM-Apple-2022-ModelInput" name="FSPM Apple 2022 ModelInput" level="mandatory">
+					<description/>
+					<target url="file://Model_scenario/model.input.data.txt" />
+				</parameterset>
+				<parameterset class_oid="1.2.3.9999.1.8.1.9.1" class_name="parameters" type="FSPM-Apple-2022-Parameter" name="FSPM Apple 2022 Parameter" level="mandatory">
+					<description/>
+					<target url="file://Model_scenario/parameter.txt" />
+				</parameterset>
+				<parameterset class_oid="1.2.3.9999.1.8.1.10.1" class_name="phenology.parameters" type="FSPM-Apple-2022-PhenologyParameter" name="FSPM Apple 2022 ModelInput" level="mandatory">
+					<description/>
+					<target url="file://Model_scenario/phenology-parameter.txt" />
+				</parameterset>
+				<inputset class_oid="1.2.3.9999.1.8.1.2.1" class_name="organ-size" type="FSPM-Apple-2022-OrganSize" name="Exp2013_Bobeica_Italy_organSize">
+					<description />
+					<target url="file://Model_input/organSize.csv" />
+				</inputset>
+				<inputset class_oid="1.2.3.9999.1.8.1.3.4" class_name="climate.data" type="FSPM-Apple-2022-Climate" name="Exp2013_Bobeica_Italy_canopyPhotosynthesis">
+					<!--Todo: resolve class_oid to use-->
+					<description />
+					<target url="file://Model_input/canopyPhotosynthesis.csv" />
+				</inputset>
+				<inputset class_oid="1.2.3.9999.1.8.1.4.1"  class_name="berry-weight"  type="FSPM-Apple-2022-BerryWeight" name="Exp2013_Bobeica_Italy_berryProfile" level="mandatory">
+					<description />
+					<target url="file://Model_input/berryProfile.csv" />
+				</inputset>
+				<inputset class_oid="1.2.3.9999.1.8.1.5.1" class_name="structural.variation.leaf" type="FSPM-Apple-2022-StructuralVariationLeaf" name="grenache.vsp-2">
+					<description />
+					<target url="file://Model_input/structural.variation.leaf.csv" />
+				</inputset>
+				<inputset class_oid="1.2.3.9999.1.8.1.6.1"  class_name="structural.variation.shoot" type="FSPM-Apple-2022-StructuralVariationShoot" name="grenache.vsp-2">
+					<description />
+					<target url="file://Model_input/structural.variation.shoot.csv" />
+				</inputset>
+				<inputset class_oid="1.2.3.9999.1.8.1.7.1" class_name="leaf.declination.angle"  type="FSPM-Apple-2022-LeafDeclinationAngle" name="Exp2015_Zhu_Bordeaux">
+					<description />
+					<target url="file://Model_input/leaf.declination.angle.csv" />
+				</inputset>
+				<inputset class_oid="1.2.3.9999.1.8.1.8.1"  class_name="parameter_sampling" type="FSPM-Apple-2022-ParameterSampling" name="parameter_sampling">
+					<description />
+					<target url="file://Model_input/parameter_sampling.csv" />
+				</inputset>
+			</model>
+		</models>
+	</scenario>
+	<model_options>
+		<parameter source="parameterset://1.2.3.4.1" type="boolean" category="Boolean_variables" name="useStructuralVariation">
+			<action type="on_true" command="add_rgg">
+				<rgg source="" dest="" />
+				<requires parameterset="1.2.3..."/>
+				<generates outputset="1.2.3..."/>
+			</action>
+		</parameter>
+		<parameter source="parameterset://1.2.3.4.1" type="list" category="Boolean_variables" name="useStructuralVariation">
+			<action type="on_value" match="`value`" command="add_rgg">
+				<rgg source="" dest="" />
+			</action>
+		</parameter>
+		<parameter source="file://Model_scenario/model.input.data.txt" type="model.input.data" category="Boolean_variables" name="useStructuralVariation" />
+		<parameter source="parameterset://1.2.3.4.1" type="model.input.data" category="Boolean_variables" name="useComplexBerry" />
+	</model_options>
+	<execution>
+		<parameterset>
+			<instance 
+				oid="1.2.3.9999.1.8.1.1.1.2" 
+				class_oid="1.2.3.9999.1.8.1.1.1" 
+				name="dynamic.example" 
+				type="FSPM-Apple-2022-ModelInput" />
+			<instance 
+				oid="1.2.3.9999.1.8.1.9.1.4" 
+				class_oid="1.2.3.9999.1.8.1.9.1"
+				name="parameter.file.Sangiovese.txt" 
+				type="FSPM-Apple-2022-Parameter" />
+			<instance 
+				oid="1.2.3.9999.1.8.1.10.1.5" 
+				class_oid="1.2.3.9999.1.8.1.10.1" 
+				name="phenology.parameters.SauvignonBlanc.txt" 
+				type="FSPM-Apple-2022-Phenology-Parameter" />
+		</parameterset>
+		<inputset>
+			<instance
+				oid="1.2.3.9999.1.8.1.4.1.1"
+				class_oid="1.2.3.9999.1.8.1.4.1"
+				name="Exp2013_Bobeica_Italy_berryProfile"
+				type="FSPM-Apple-2022-berryProfile" />
+			<instance
+				oid="1.2.3.9999.1.8.1.3.4.3"
+				class_oid="1.2.3.9999.1.8.1.3.4"
+				name="Exp2013_Bobeica_Italy_canopyPhotosynthesis"
+				type="FSPM-Apple-2022-canopyPhotosynthesis" />
+			<instance
+				oid="1.2.3.9999.1.8.1.2.1.4"
+				class_oid="1.2.3.9999.1.8.1.2.1"
+				name="Exp2013_Bobeica_Italy_organSize"
+				type="FSPM-Apple-2022-organSize" />
+			<instance
+				oid="1.2.3.9999.1.8.1.7.1.1"
+				class_oid="1.2.3.9999.1.8.1.7.1"
+				name="Exp2015_Zhu_Bordeaux_leaf.declination.angle"
+				type="FSPM-Apple-2022-leaf.declination.angle" />
+			<instance
+				oid="1.2.3.9999.1.8.1.8.1.1"
+				class_oid="1.2.3.9999.1.8.1.8.1"
+				name="parameter_sampling"
+				type="FSPM-Apple-2022-parameter_sampling" />
+			<instance
+				oid="1.2.3.9999.1.8.1.5.1.1"
+				class_oid="1.2.3.9999.1.8.1.5.1"
+				name="structural.variation.leaf.grenache.vsp-2"
+				type="FSPM-Apple-2022-structural.variation.leaf" />
+			<instance
+				oid="1.2.3.9999.1.8.1.6.1.2"
+				class_oid="1.2.3.9999.1.8.1.6.1"
+				name="structural.variation.shoot.grenache.vsp-2"
+				type="FSPM-Apple-2022-structural.variation.shoot.grenache.vsp-2" />
+		</inputset>
+		<outputset>
+			<instance/>
+			
+		</outputset>
+	</execution>
+	<output_options />
+</simulation_instance>

@@ -1,0 +1,223 @@
+{
+  "name": "model.input.data.default",
+  "class": "model.input.data",
+  "metaclass": "document-category-name",
+  "category": {
+    "module_configuration": {
+      "special_scenario": null,
+      "species": "apple",
+      "initiation_method": "initiation_XEGReader.rgg",
+      "useComplexLeaf": true,
+      "useComplexBerry": true,
+      "useComplexSoil": true,
+      "useComplexRoot": true
+    },
+    "model_functionality": {
+      "calcLightInterception": true,
+      "calcPotential_PT": true,
+      "calcActual_PT": true,
+      "calcCarbonAllocation": true,
+      "useDigitizedArchitecture": true,
+      "useXEGReader": true,
+      "inputEnvironmentCondition": true,
+      "inputLeafN": true,
+      "inputSoilWaterPotential": true,
+      "woodBiomassCalcMethod": 2,
+      "useStructuralVariation": true,
+      "useStaticArc": true,
+      "useFluxLightModel": true,
+      "useCTRAM": true,
+      "useTurtleRadiation": true,
+      "usePhenology": true,
+      "useYieldEst": true,
+      "useShootPositioning": true,
+      "useBerryODE": true,
+      "useTrophicCompetition": true,
+      "useLeafAngleOpt": true,
+      "usePruning": true,
+      "simLightTreatments": true,
+      "simWaterStress": true,
+      "simLeafNumber": true,
+      "simBerryNumber": true,
+      "progressiveWaterStress": true,
+      "snapShot": true,
+      "leafSenescence": true
+    },
+    "location": {
+      "LAT": -39.60698
+    },
+    "plantingsystem": {
+      "trainingSystem": 0,
+      "nrStrips": 1,
+      "stripDistance": 0,
+      "nrRows": 1,
+      "nrPlants": 1,
+      "borderRows": 0,
+      "borderPlants": 0,
+      "INDI_ID_A": 1,
+      "rowDistance": 2,
+      "plantDistance": 3,
+      "radiationControl": 1,
+      "Transmissivity": 0.3,
+      "FractionDiffuseLightDaily": 0.5
+    },
+    "environment_quasi_climate": {
+      "Tmax": 35,
+      "Tmin": 20,
+      "RHmax": 0.85,
+      "RHmin": 0.55,
+      "Ta": 25,
+      "rh": 0.83,
+      "O": 210,
+      "cca": 400,
+      "wind": 2
+    },
+    "simulation_time": {
+      "START_DAY": 34,
+      "START_YEAR": 2021,
+      "delay": 0,
+      "harvest": 40,
+      "varDelay": 0,
+      "halt": 39,
+      "PLANT_AGE_VERASION": 1100,
+      "plastochron": 0.62,
+      "hourOfDay": 0
+    },
+    "temperature_response": {
+      "baseT": 10,
+      "REFTMP": "25.0f"
+    },
+    "morphology": {
+      "CORDEN_NUM": 1,
+      "SHOOT_NUM": 1,
+      "MAX_PHYTOMER_NUM": 18,
+      "STARTING_LEAF_NUMBER": 1,
+      "ENDING_LEAF_NUMBER": 18,
+      "ENDING_PHYTOMER_NUM": 18,
+      "lwRatio": 1,
+      "maxWidth": 0.6,
+      "shapeCoeff": 2,
+      "fpetio": 0.5,
+      "leafCurve": 0,
+      "phyllotaxis": 137.5
+    },
+    "leaf_optical_properties": {
+      "reflectancePAR": 0.06,
+      "transmittancePAR": 0.07
+    },
+    "initial_condition_biomass": {
+      "SLA": 1.9e-05,
+      "PETIOLE_DENSITY": 50.8,
+      "INTERNODE_0": 0.05,
+      "BIOMASS_LEAF": null,
+      "BIOMASS_INTERNODE": 20000,
+      "StrRootToTrunk": 2,
+      "BIOMASS_ROOT": 1,
+      "PERCENT_FINE_ROOT": 0.0476,
+      "BIOMASS_BERRY": null,
+      "BIOMASS_WOOD": null,
+      "BIOMASS_CORDEN": null,
+      "BERRY_FRESH_WEIGHT": 730,
+      "BERRY_DRY_WEIGHT": 126.45,
+      "CONENTRATION_SOLUBLE_SUGAR": 0.096,
+      "bunchNumPerVine": 200,
+      "bunchNumPerShoot": 20,
+      "berryNumPerBunch": 1,
+      "SEED_FRESH_MASS": 50
+    },
+    "initial_condition_fruit_age": {
+      "thermalDay_BB_FS": 32,
+      "thermalDay_FS_VR": 33,
+      "Days_FS_VR": 55,
+      "BERRY_AGE_AFTER_FRUITSET": 55,
+      "BERRY_AGE_AFTER_VERASION": 1
+    },
+    "initial_condition_density_and_dimention": {
+      "WOOD_DENSITY": 400,
+      "WOOD_DIAMETER": 0.066,
+      "WOOD_LENGTH": 0.5,
+      "CORDON_DENSITY": 400,
+      "CORDON_DIAMETER": 0.01,
+      "CORDON_LENGTH": 0.8,
+      "SHOOT_DENSITY": 300,
+      "SHOOT_DIAMETER": 0.008,
+      "SHOOT_LENGTH": 1
+    },
+    "initial_condition_water_content": {
+      "WATER_CONTENT_LEAF": 0.76,
+      "WATER_CONTENT_ROOT": 0.9,
+      "WATER_CONTENT_INTERNODE": 0.8,
+      "WATER_CONTENT_WOOD": 0.56,
+      "WATER_CONTENT_BERRY": 0.82
+    },
+    "initial_condition_carbon_content": {
+      "C_CONTENT_LEAF": 0.439325,
+      "C_CONTENT_INTERNODE": 0.44193125,
+      "C_CONTENT_ROOT": 0.41995625,
+      "C_CONTENT_BERRY": 0.4336625,
+      "C_CONTENT_WOOD": 0.46430625
+    },
+    "initial_condition_structure_carbon": {
+      "STRUCTURE_C_LEAF": 0.863426848005463,
+      "STRUCTURE_C_INTERNODE": 0.898174206960924,
+      "STRUCTURE_C_ROOT": 0.904751983093477,
+      "STRUCTURE_C_BERRY": 0.082812094658865,
+      "STRUCTURE_C_WOOD": 0.903081209869564
+    },
+    "initial_condition_nonstructure_carbon": {
+      "NONSTRUCTURE_C_LEAF": 0.136573151994537,
+      "NONSTRUCTURE_C_INTERNODE": 0.101825793039076,
+      "NONSTRUCTURE_C_ROOT": 0.095248016906523,
+      "NONSTRUCTURE_C_BERRY": 0.917187905341135,
+      "NONSTRUCTURE_C_WOOD": 0.0969187901304365
+    },
+    "initial_condition_nitrogencontent": {
+      "N_CONTENT_LEAF": 0.025,
+      "N_CONTENT_INTERNODE": 0.012,
+      "N_CONTENT_ROOT": 0.019,
+      "N_CONTENT_BERRY": 0.013,
+      "N_CONTENT_WOOD": 0.0086,
+      "N_CONTENT_MOBILE": 0.09,
+      "N_STRUCTURE_LEAF": 0.002,
+      "N_STRUCTURE_INTERNODE": 0.002,
+      "N_STRUCTURE_ROOT": 0.002,
+      "N_STRUCTURE_BERRY": 0.002,
+      "N_STRUCTURE_WOOD": 0.002,
+      "leafNContent_input": 2.1
+    },
+    "environment_soil": {
+      "irrigationPerHour": 0,
+      "initialSoilWaterContent": 0.33,
+      "soildepth": 0.4,
+      "drySoilWeight": 4.7,
+      "Nplant": 1,
+      "potVolumn": 0.0005,
+      "SOIL_N_CONTENT": 15,
+      "Wcmax": 0.352,
+      "Wcmin": 0.086,
+      "alpha": 3.79013220201177,
+      "n_waterPotential": 2.70165770089932,
+      "FRACTION_NH4": 0.2,
+      "FRACTION_NO3": 0.8
+    },
+    "root": {
+      "SRL": 0.0016,
+      "rootRadius": 0.000214
+    },
+    "environment_climate": {
+      "climate_file": "Metdata_NZ_HKB_WhakatuEws.csv"
+    },
+    "scenario_required_files": {
+      "leafDeclinationAngle_file": null,
+      "organSize_file": null,
+      "berryWeight_file": null,
+      "structuralVariationShoot_file": null,
+      "structuralVariationLeaf_file": null,
+      "xylemWaterPotential_file": null,
+      "inputWaterPotential": null,
+      "berryModelInput_file": null,
+      "shootArchitecture_file": "Exp2022_Rojo_Havelock_North_FOPS.RG.example.csv",
+      "rootArchitecture_file": "RG2023_Apple_generalRoot_simple.csv"
+    }
+  }
+}

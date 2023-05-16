@@ -1,0 +1,23 @@
+package fspm.domain.organs;
+
+import fspm.domain.functions.FunctionCollector;
+
+public abstract class GenericOrgan {
+    private FunctionCollector collector;
+
+    public GenericOrgan() {
+        init();
+    }
+
+    public void init() {
+        collector = new FunctionCollector();
+    }
+
+    public void run() {
+        collector.run();
+    }
+
+    public FunctionCollector getCollector() {
+        return collector;
+    }
+}

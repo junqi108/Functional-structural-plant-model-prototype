@@ -1,0 +1,12 @@
+{
+    "name": "test_param",
+    "class": "test.param",
+    "metaclass": "document-category-name",
+    "category": {
+        "booleans": {
+            "bool1": false,
+            "bool2": true,
+            "bool3": false
+        }
+    }
+}
