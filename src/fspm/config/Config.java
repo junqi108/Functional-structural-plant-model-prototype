@@ -180,6 +180,30 @@ public class Config implements ParamAccessor {
 		checkContextsExists();
 		return categoryContext.getDouble(key);
 	}
+	
+	
+	
+	
+	public boolean getBoolean(String key, boolean defaultValue) {
+		Boolean value = getBoolean(key);
+		return value != null ? value : defaultValue;
+	}
+	
+	public String getString(String key, String defaultValue) {
+		String value = getString(key);
+		return value != null ? value : defaultValue;
+	}
+	
+	public int getInteger(String key, int defaultValue) {
+		Integer value = getInteger(key);
+		return value != null ? value : defaultValue;
+	}
+	
+	public double getInteger(String key, double defaultValue) {
+		Double value = getDouble(key);
+		return value != null ? value : defaultValue;
+	}
+	
 
 	
 	
