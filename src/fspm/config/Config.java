@@ -28,8 +28,8 @@ public class Config implements ParamAccessor {
      */
     private Map<String, ParamGroup> paramGroups;
     
-    private ParamGroup groupContext = null;
-    private ParamCategory categoryContext = null;
+    private ParamGroup groupContext;
+    private ParamCategory categoryContext;
 
 
     /**
@@ -37,7 +37,7 @@ public class Config implements ParamAccessor {
      * Private access as creation should be controlled to enforce singleton pattern
      */
     private Config() {
-    	paramGroups = new HashMap<>();
+    	reset();
     }
 
     /**
@@ -48,9 +48,15 @@ public class Config implements ParamAccessor {
      */
     public static Config getInstance() {
         if (instance == null) {
-            instance = new Config();
+        	instance = new Config();
         }
         return instance;
+    }
+    
+    public void reset() {
+    	paramGroups = new HashMap<>();
+    	groupContext = null;
+    	categoryContext = null;
     }
 
 
@@ -89,7 +95,20 @@ public class Config implements ParamAccessor {
     	return group;
     }
     
-    
+    /**
+     * Remove the parameter group with the given key.
+     * @param key
+     * @return True if group exists; false otherwise.
+     */
+    public boolean removeGroup(String key) {
+		ParamGroup group = paramGroups.get(key);
+    	
+    	if (group == null) {
+    		return false;
+    	}
+    	paramGroups.remove(key);
+    	return true;
+    }
     
     
     
@@ -161,6 +180,30 @@ public class Config implements ParamAccessor {
 		checkContextsExists();
 		return categoryContext.getDouble(key);
 	}
+	
+	
+	
+	
+	public boolean getBoolean(String key, boolean defaultValue) {
+		Boolean value = getBoolean(key);
+		return value != null ? value : defaultValue;
+	}
+	
+	public String getString(String key, String defaultValue) {
+		String value = getString(key);
+		return value != null ? value : defaultValue;
+	}
+	
+	public int getInteger(String key, int defaultValue) {
+		Integer value = getInteger(key);
+		return value != null ? value : defaultValue;
+	}
+	
+	public double getInteger(String key, double defaultValue) {
+		Double value = getDouble(key);
+		return value != null ? value : defaultValue;
+	}
+	
 
 	
 	
@@ -186,5 +229,11 @@ public class Config implements ParamAccessor {
 	public void set(String key, double value) {
 		checkContextsExists();
 		categoryContext.set(key, value);
+	}
+	
+	@Override
+	public boolean isNull(String key) {
+		checkContextsExists();
+		return categoryContext.isNull(key);
 	}
 }

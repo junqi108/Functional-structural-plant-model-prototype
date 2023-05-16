@@ -6,6 +6,7 @@ import fspm.config.Config;
 import fspm.config.adapters.JsonFileReader;
 import fspm.config.params.ParamCategory;
 import fspm.config.params.ParamGroup;
+import fspm.config.params.type.*;
 
 public class FSPM {
 	static final Config CONFIG = Config.getInstance();
@@ -14,7 +15,10 @@ public class FSPM {
 		
 		addGroups();
 		
-		accessExamples();
+//		tests();
+		tests_default();
+		
+//		accessExamples();
 	}
 	
 	
@@ -22,12 +26,22 @@ public class FSPM {
 	
 	private static void addGroups() {
 		// Manually add new group
-		CONFIG.addGroup(new ParamGroup("group"));
+		ParamCategory category = new ParamCategory("category");
+		category.add(new IntegerParam("doubleParam", 1));
+		category.add(new StringParam("floatParam", "1.0f"));
+		category.add(new NullParam("nullParam"));
+		
+		ParamGroup group = new ParamGroup("group");
+		group.addCategory(category);
+		
+		CONFIG.addGroup(group);
 		
 		// Read in JSON file and add as new group
 		try {
 			CONFIG.addGroup("model.input.data.name", 
 					new JsonFileReader("./inputs/parameters/model.input.data.name.json"));
+			CONFIG.addGroup("model.input.data.default", 
+					new JsonFileReader("./inputs/parameters/model.input.data.default.json"));
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -36,12 +50,14 @@ public class FSPM {
 	
 	private static void accessExamples() {
 		// Full descriptive access of hierarchy
-		println(" ===== Full descriptive access ");
+//		println(" ===== Full descriptive access ");
 		
-		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("useStaticArc"));
-		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("inputLeafN"));
-		
-		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
+		println(CONFIG.getGroup("model.input.data.name"));
+//		
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("useStaticArc"));
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables").getBoolean("inputLeafN"));
+//		
+//		println(CONFIG.getGroup("model.input.data.name").getCategory("simulation_location").getString("location_name"));
 		
 		
 		
@@ -63,16 +79,16 @@ public class FSPM {
 		
 		// Access via aliasing
 		
-		println(" ===== Aliasing ");
-		
-		ParamCategory booleans = CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables");
-		
-		println(booleans.getBoolean("useStaticArc"));
-		println(booleans.getBoolean("inputLeafN"));
-		
-		ParamCategory simulationLocation = CONFIG.getGroup("model.input.data.name").getCategory("simulation_location");
-		
-		println(simulationLocation.getString("location_name"));
+//		println(" ===== Aliasing ");
+//		
+//		ParamCategory booleans = CONFIG.getGroup("model.input.data.name").getCategory("Boolean_variables");
+//		
+//		println(booleans.getBoolean("useStaticArc"));
+//		println(booleans.getBoolean("inputLeafN"));
+//		
+//		ParamCategory simulationLocation = CONFIG.getGroup("model.input.data.name").getCategory("simulation_location");
+//		
+//		println(simulationLocation.getString("location_name"));
 		
 		
 		
@@ -80,6 +96,43 @@ public class FSPM {
 		
 //		println(" ===== Direct access");
 //		println(CONFIG.getBoolean("useStaticArc"));
+	}
+	
+	private static void tests() {
+		CONFIG.setGroupContext("group");
+		CONFIG.setCategoryContext("category");
+		
+//		test_getIntAsDouble();
+//		test_getFloatAsDouble();
+		test_getNullAsTypes();
+	}
+	
+	private static void tests_default() {
+		println(CONFIG.getGroup("model.input.data.default"));
+		
+		CONFIG.setGroupContext("model.input.data.default");
+		CONFIG.setCategoryContext("initial_condition_biomass");
+		
+		Double d = CONFIG.getDouble("BIOMASS_LEAF");
+
+		println(CONFIG.getDouble("BIOMASS_LEAF") == null);
+	}
+	
+	private static void test_getIntAsDouble() {
+		println(CONFIG.getDouble("doubleParam"));
+	}
+	
+	private static void test_getFloatAsDouble() {
+		println(CONFIG.getDouble("floatParam"));
+	}
+	
+	private static void test_getNullAsTypes() {
+		println(CONFIG.getDouble("nullParam") == null);
+		println(CONFIG.getString("nullParam") == null);
+		println(CONFIG.getInteger("nullParam") == null);
+		println(CONFIG.getDouble("nullParam") == null);
+		
+		println(CONFIG.isNull("nullParam"));
 	}
 	
 

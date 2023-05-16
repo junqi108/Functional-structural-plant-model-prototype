@@ -6,6 +6,7 @@ import java.util.Map;
 import fspm.config.params.type.BooleanParam;
 import fspm.config.params.type.DoubleParam;
 import fspm.config.params.type.IntegerParam;
+import fspm.config.params.type.NullParam;
 import fspm.config.params.type.StringParam;
 import fspm.util.exceptions.KeyConflictException;
 import fspm.util.exceptions.KeyNotFoundException;
@@ -104,28 +105,60 @@ public class ParamCategory implements ParamAccessor {
 	}
 
 
-
 	@Override
 	public Boolean getBoolean(String key) {
+		if (isNull(key)) { return null; }
+		
 		return ((BooleanParam) getIfInstanceOf(key, BooleanParam.class)).getValue();
 	}
 
 	@Override
 	public String getString(String key) {
+		if (isNull(key)) { return null; }
+		
 		return ((StringParam) getIfInstanceOf(key, StringParam.class)).getValue();
 	}
 
 	@Override
 	public Integer getInteger(String key) {
+		if (isNull(key)) { return null; }
+		
 		return ((IntegerParam) getIfInstanceOf(key, IntegerParam.class)).getValue();
 	}
 
 	@Override
 	public Double getDouble(String key) {
-		return ((DoubleParam) getIfInstanceOf(key, DoubleParam.class)).getValue();
+		if (isNull(key)) { return null; }
+		
+		try {
+			return ((DoubleParam) getIfInstanceOf(key, DoubleParam.class)).getValue();
+		} catch (TypeNotFoundException e) { }
+		
+		// Safeguard case where 1.0 (double) is formatted as 1 (integer)
+		try {
+			return Double.valueOf(((IntegerParam) getIfInstanceOf(key, IntegerParam.class)).getValue());
+		} catch (TypeNotFoundException e) { }
+		
+		// Safeguard case where 1.0 (float) is formatted as "1.0f" (float string)
+		String value = ((StringParam) getIfInstanceOf(key, StringParam.class)).getValue();
+		return Double.valueOf(value); // Convert "1.0f" to 1.0
 	}
 
 	
+	
+	/**
+	 * Check and return if is NullParam.
+	 * @param key The parameter key.
+	 * @return True if is NullParam, false otherwise.
+	 */
+	public boolean isNull(String key) {
+		try {
+			getIfInstanceOf(key, NullParam.class);
+		} catch (TypeNotFoundException e) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 	
